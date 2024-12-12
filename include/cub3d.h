@@ -6,7 +6,7 @@
 /*   By: sramos <sramos@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/12/11 11:42:29 by sramos        #+#    #+#                 */
-/*   Updated: 2024/12/11 11:56:40 by sramos        ########   odam.nl         */
+/*   Updated: 2024/12/12 12:12:16 by sramos        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,24 @@
 
 typedef	struct s_data
 {
+	char	**map;
+	char	*no;
+	char	*so;
+	char	*we;
+	char	*ea;
+	char	*f_color;
+	char	*c_color;
 	//Textures.
 	//Position Player
 }	t_data;
+
+
+//------------INPUT CHECKER-------------//
+void	valid_map_extension_checker(char *str);
+int	valid_map_file(char *file);
+
+//------------ERROR EXIT---------------//
+int	error_print_exit(char *str, int error);
+int	error_print_return(char *str, int error);
 
 #endif

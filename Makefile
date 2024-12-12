@@ -6,7 +6,7 @@
 #    By: sramos <sramos@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2024/12/11 11:43:31 by sramos        #+#    #+#                  #
-#    Updated: 2024/12/12 12:09:57 by sramos        ########   odam.nl          #
+#    Updated: 2024/12/12 14:21:59 by sramos        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME = cub3D
 SRC_PATH = src
 
 SRC_FILES = src/main.c\
-			src/valid_map_extension.c\
+			src/valid_map_extension_checker.c\
 			src/valid_map_file.c\
 			src/error_functions.c
 

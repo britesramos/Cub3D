@@ -6,7 +6,7 @@
 #    By: sramos <sramos@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2024/12/11 11:43:31 by sramos        #+#    #+#                  #
-#    Updated: 2024/12/12 14:21:59 by sramos        ########   odam.nl          #
+#    Updated: 2024/12/16 17:46:43 by sramos        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ LIBFT = $(LIBFT_PATH)/libft.a
 
 CC = cc
 CFLAGS = -Wall -Werror -Wextra -g
-#CFLAGS += -fsanitizer=address
+# CFLAGS += -fsanitize=address
 
 RM = rm -f
 RD = rm -rf

@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   main.c                                             :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: sramos <sramos@student.codam.nl>             +#+                     */
+/*   By: marvin <marvin@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/12/11 11:42:06 by sramos        #+#    #+#                 */
-/*   Updated: 2024/12/12 18:42:31 by sramos        ########   odam.nl         */
+/*   Updated: 2024/12/20 16:52:05 by anonymous     ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int	main(int argc, char *argv[])
 {
 	//Questions?
-		//-How do the maps look like?
 		//-How is the data structure going to look like?
 	if (argc == 2)
 	{

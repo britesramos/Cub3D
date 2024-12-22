@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   valid_map_file.c                                   :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: sramos <sramos@student.codam.nl>             +#+                     */
+/*   By: marvin <marvin@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/12/12 12:02:10 by sramos        #+#    #+#                 */
-/*   Updated: 2024/12/16 18:31:14 by sramos        ########   odam.nl         */
+/*   Updated: 2024/12/22 23:51:07 by anonymous     ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,20 +42,47 @@ static char	*realloc_str_file(char *str_file, int size_alloc)
 	return (str_file);
 }
 
-// static int	new_line_middle_map(char **file_2d_array, char *str)
-// {
-// 	int	i;
+static int	is_space_or_1(char c)
+{
+	if (c == 1)
+		return (0);
+	if (c == ' ' || c == '\t' || c == '\v' || c == 'b')
+		return (0);
+	return (1);
+}
 
-// 	i = 0;
-// 	while (str[i])
-// 	{
-// 		//if only_spaces or ones - Start of the map.
-// 		//after this check for multiple newlines.
-// 		//If after newlines there are no more characters besides spaces it is valid. 
-// 	}
+static int	new_line_middle_map(char *str)
+{
+	int	i;
+	bool	inside_map;
+
+	i = 0;
+	inside_map = false;
+	while (str[i])
+	{
+		//if only_spaces or ones - Start of the map.
+		if (is_space_or_1(str[i]))
+		{
+			while (is_space_or_1(str[i]))
+			{
+				if (!is_space_or_1(str[i]) && str[i] != '\n')
+					break ;
+				i++;
+			}
+			if (str[i] == '\n')
+				inside_map = true;
+		}
+		//after this check for multiple newlines.
+		if (inside_map == true && str[i] == '\n' && str[i + 1] == '\n')
+			return (0);
+		//If after newlines there are no more characters besides spaces it is valid.
+		//Could check from the back if there are still characters.
+		//After the maps it could exist consecutive new lines.
+		i++;
+	}
 	
-// 	return (1);
-// }
+	return (1);
+}
 
 static char	*read_file(int fd)
 {
@@ -105,8 +132,8 @@ int	valid_map_file(char *file)
 	file_2d_array = NULL;
 	fd = open_file(file, fd);
 	str_file = read_file(fd);
-	// if (new_line_middle_map(file_2d_array, str_file));
-	// 	return (-1);
+	if (new_line_middle_map(str_file));
+		return (-1);
 	file_2d_array = split_str_file(str_file);
 	close(fd);
 	int i = 0;

@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/12/12 12:02:10 by sramos        #+#    #+#                 */
-/*   Updated: 2024/12/22 23:51:07 by anonymous     ########   odam.nl         */
+/*   Updated: 2024/12/24 00:41:07 by anonymous     ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,21 @@ static char	*realloc_str_file(char *str_file, int size_alloc)
 	return (str_file);
 }
 
-static int	is_space_or_1(char c)
+static int	is_space(char c)
 {
-	if (c == 1)
-		return (0);
-	if (c == ' ' || c == '\t' || c == '\v' || c == 'b')
-		return (0);
+	if (c == ' ' || c == '\t' || c == '\v' || c == '\b')
+		return (1);
+	return (0);
+}
+
+static int	only_white_spaces_left(char *str, int i)
+{
+	while(str[i])
+	{
+		if (!is_space(str[i]) && str[i] != '\n')
+			return (0);
+		i++;
+	}
 	return (1);
 }
 
@@ -60,27 +69,21 @@ static int	new_line_middle_map(char *str)
 	inside_map = false;
 	while (str[i])
 	{
-		//if only_spaces or ones - Start of the map.
-		if (is_space_or_1(str[i]))
+		if (str[i] == '\n' && inside_map == false)
 		{
-			while (is_space_or_1(str[i]))
-			{
-				if (!is_space_or_1(str[i]) && str[i] != '\n')
-					break ;
+			while(is_space(str[i]))
 				i++;
-			}
-			if (str[i] == '\n')
+			i++;
+			if (str[i] == '1')
 				inside_map = true;
 		}
-		//after this check for multiple newlines.
 		if (inside_map == true && str[i] == '\n' && str[i + 1] == '\n')
-			return (0);
-		//If after newlines there are no more characters besides spaces it is valid.
-		//Could check from the back if there are still characters.
-		//After the maps it could exist consecutive new lines.
+		{
+			if (!only_white_spaces_left(str, i))
+				return (0);
+		}
 		i++;
 	}
-	
 	return (1);
 }
 
@@ -132,18 +135,29 @@ int	valid_map_file(char *file)
 	file_2d_array = NULL;
 	fd = open_file(file, fd);
 	str_file = read_file(fd);
-	if (new_line_middle_map(str_file));
-		return (-1);
-	file_2d_array = split_str_file(str_file);
 	close(fd);
-	int i = 0;
-	while(file_2d_array[i])
+	if (new_line_middle_map(str_file) == 0)
 	{
-		printf("file_2d_array[%i]: %s\n", i, file_2d_array[i]);
-		free(file_2d_array[i]);
-		file_2d_array[i] = NULL;
-		i++;
+		free(str_file);
+		return (0);
 	}
+	file_2d_array = split_str_file(str_file);
+	if(!valid_file_2d_array(file_2d_array))
+	{
+		free(file_2d_array);
+		file_2d_array = NULL;
+		return (0);
+	}
+	//PARSING!!!!!!
+	
+	// int i = 0;
+	// while(file_2d_array[i])
+	// {
+	// 	printf("file_2d_array[%i]: %s\n", i, file_2d_array[i]);
+	// 	free(file_2d_array[i]);
+	// 	file_2d_array[i] = NULL;
+	// 	i++;
+	// }
 	free(file_2d_array);
 	file_2d_array = NULL;
 	return (1);

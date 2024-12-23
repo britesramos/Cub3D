@@ -3,10 +3,10 @@
 #                                                         ::::::::             #
 #    Makefile                                           :+:    :+:             #
 #                                                      +:+                     #
-#    By: sramos <sramos@student.codam.nl>             +#+                      #
+#    By: marvin <marvin@student.42.fr>                +#+                      #
 #                                                    +#+                       #
 #    Created: 2024/12/11 11:43:31 by sramos        #+#    #+#                  #
-#    Updated: 2024/12/16 17:46:43 by sramos        ########   odam.nl          #
+#    Updated: 2024/12/24 00:40:01 by anonymous     ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ SRC_PATH = src
 SRC_FILES = src/main.c\
 			src/valid_map_extension_checker.c\
 			src/valid_map_file.c\
+			src/valid_file_2d_array.c\
 			src/error_functions.c
 
 OBJ_PATH = obj

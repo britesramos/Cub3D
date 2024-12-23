@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/12/11 11:42:29 by sramos        #+#    #+#                 */
-/*   Updated: 2024/12/22 23:40:52 by anonymous     ########   odam.nl         */
+/*   Updated: 2024/12/24 00:40:18 by anonymous     ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,9 @@ typedef	struct s_data
 
 //------------INPUT CHECKER-------------//
 void	valid_map_extension_checker(char *str);
-int	valid_map_file(char *file);
+int		valid_map_file(char *file);
+int		valid_file_2d_array(char **file_2d_array);
+
 
 //------------ERROR EXIT---------------//
 int	error_print_exit(char *str, int error);

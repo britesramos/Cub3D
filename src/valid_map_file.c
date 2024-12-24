@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/12/12 12:02:10 by sramos        #+#    #+#                 */
-/*   Updated: 2024/12/24 00:41:07 by anonymous     ########   odam.nl         */
+/*   Updated: 2024/12/24 19:54:43 by anonymous     ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,51 +42,6 @@ static char	*realloc_str_file(char *str_file, int size_alloc)
 	return (str_file);
 }
 
-static int	is_space(char c)
-{
-	if (c == ' ' || c == '\t' || c == '\v' || c == '\b')
-		return (1);
-	return (0);
-}
-
-static int	only_white_spaces_left(char *str, int i)
-{
-	while(str[i])
-	{
-		if (!is_space(str[i]) && str[i] != '\n')
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
-static int	new_line_middle_map(char *str)
-{
-	int	i;
-	bool	inside_map;
-
-	i = 0;
-	inside_map = false;
-	while (str[i])
-	{
-		if (str[i] == '\n' && inside_map == false)
-		{
-			while(is_space(str[i]))
-				i++;
-			i++;
-			if (str[i] == '1')
-				inside_map = true;
-		}
-		if (inside_map == true && str[i] == '\n' && str[i + 1] == '\n')
-		{
-			if (!only_white_spaces_left(str, i))
-				return (0);
-		}
-		i++;
-	}
-	return (1);
-}
-
 static char	*read_file(int fd)
 {
 	int		i;
@@ -113,7 +68,7 @@ static char	*read_file(int fd)
 	return (str_file);
 }
 
-static char **split_str_file(char *str_file)
+static char	**split_str_file(char *str_file)
 {
 	char	**file_2d_array;
 
@@ -122,10 +77,9 @@ static char **split_str_file(char *str_file)
 	free(str_file);
 	str_file = NULL;
 	return (file_2d_array);
-
 }
 
-int	valid_map_file(char *file)
+int	valid_map_file(char *file, t_data *data)
 {
 	int		fd;
 	char	*str_file;
@@ -142,22 +96,13 @@ int	valid_map_file(char *file)
 		return (0);
 	}
 	file_2d_array = split_str_file(str_file);
-	if(!valid_file_2d_array(file_2d_array))
+	if (!valid_file_2d_array(file_2d_array, data))
 	{
 		free(file_2d_array);
 		file_2d_array = NULL;
 		return (0);
 	}
 	//PARSING!!!!!!
-	
-	// int i = 0;
-	// while(file_2d_array[i])
-	// {
-	// 	printf("file_2d_array[%i]: %s\n", i, file_2d_array[i]);
-	// 	free(file_2d_array[i]);
-	// 	file_2d_array[i] = NULL;
-	// 	i++;
-	// }
 	free(file_2d_array);
 	file_2d_array = NULL;
 	return (1);

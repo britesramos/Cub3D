@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/12/12 12:02:10 by sramos        #+#    #+#                 */
-/*   Updated: 2024/12/24 19:54:43 by anonymous     ########   odam.nl         */
+/*   Updated: 2024/12/27 13:46:12 by anonymous     ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,6 @@ int	valid_map_file(char *file, t_data *data)
 		file_2d_array = NULL;
 		return (0);
 	}
-	//PARSING!!!!!!
 	free(file_2d_array);
 	file_2d_array = NULL;
 	return (1);

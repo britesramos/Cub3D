@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/12/11 11:42:29 by sramos        #+#    #+#                 */
-/*   Updated: 2024/12/24 20:54:07 by anonymous     ########   odam.nl         */
+/*   Updated: 2024/12/27 13:57:51 by anonymous     ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,9 @@ int		valid_file_2d_array(char **file_2d_array, t_data *data);
 int		new_line_middle_map(char *str);
 //------------INPUT CHECKER UTILS-------//
 int		is_space(char c);
+
+//------------PARSING-------------------//
+int	parse_textures(char **file_2d_array, t_data *data);
 
 
 //------------ERROR EXIT---------------//

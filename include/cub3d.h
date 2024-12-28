@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/12/11 11:42:29 by sramos        #+#    #+#                 */
-/*   Updated: 2024/12/28 20:32:08 by anonymous     ########   odam.nl         */
+/*   Updated: 2024/12/28 23:41:23 by anonymous     ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,8 @@ int		parse_map(char **file_2d_array, t_data *data);
 //------------ERROR EXIT---------------//
 int		error_print_exit(char *str, int error);
 int		error_print_return(char *str, int error);
+
+//------------CLEAN UP-----------------//
+void	clean_up(t_data *data);
 
 #endif

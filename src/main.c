@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/12/11 11:42:06 by sramos        #+#    #+#                 */
-/*   Updated: 2024/12/24 20:55:46 by anonymous     ########   odam.nl         */
+/*   Updated: 2024/12/28 23:40:41 by anonymous     ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	main(int argc, char *argv[])
 			return (error_print_return("Error\nInvalid map file.\n", 1));
 	//Execution
 		//Raycasting.
+	clean_up(data);
 	//Clean_up.
 	//Clean_up in case of error during program.
 	}

@@ -12,7 +12,22 @@
 
 #include "../../include/cub3d.h"
 
-int	parse_map(char **file_2d_array, t_data *data)
+static void	alloc_data_map(t_data *data, char **file_2d_array)
+{
+	int	i;
+
+	i = 6;
+	while (file_2d_array[i])
+		i++;
+	data->map = ft_calloc(sizeof(char *), (i - 6) + 1);
+	if (!data->map)
+	{
+		printf("Fail alloc data->map.\n");
+		//error return function.
+	}
+}
+
+static void	parse_map2(t_data *data, char **file_2d_array)
 {
 	int	i;
 	int	j;
@@ -21,15 +36,6 @@ int	parse_map(char **file_2d_array, t_data *data)
 	i = 6;
 	j = 0;
 	a = 0;
-	while (file_2d_array[i + j])
-		j++;
-	data->map = ft_calloc(sizeof(char), (j - 6) + 1);
-	if (!data->map)
-	{
-		printf("Fail alloc data->map.\n");
-		//error return function.
-	}
-	j = 0;
 	while (file_2d_array[i])
 	{
 		while (file_2d_array[i][j])
@@ -45,19 +51,35 @@ int	parse_map(char **file_2d_array, t_data *data)
 		a++;
 		i++;
 	}
+}
+
+static void	free_file_2d_array(char **file_2d_array)
+{
+	int	i;
+
 	i = 0;
-	j = 0;
-	while (i <= 8)
+	while (file_2d_array[i])
 	{
-		while(data->map[i][j])
-		{
-			write(1, &data->map[i][j], 1);
-			j++;
-		}
-		write (1, "\n", 1);
-		j = 0;
+		free(file_2d_array[i]);
+		file_2d_array[i] = NULL;
 		i++;
 	}
+	// free(file_2d_array);
+	// file_2d_array = NULL;
+}
+
+int	parse_map(char **file_2d_array, t_data *data)
+{
+	alloc_data_map(data, file_2d_array);
+	parse_map2(data, file_2d_array);
+	free_file_2d_array(file_2d_array);
+	int	i = 0;
+	while(data->map[i])
+	{
+		printf("data->map[%i]: %s\n", i, data->map[i]);
+		i++;
+	}
+
 	// 	if (map)
 	// 		//check valid map.
 	// 		//valid caracters.

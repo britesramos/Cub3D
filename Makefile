@@ -6,7 +6,7 @@
 #    By: marvin <marvin@student.42.fr>                +#+                      #
 #                                                    +#+                       #
 #    Created: 2024/12/11 11:43:31 by sramos        #+#    #+#                  #
-#    Updated: 2024/12/28 23:40:53 by anonymous     ########   odam.nl          #
+#    Updated: 2024/12/28 23:53:31 by anonymous     ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRC_FILES = src/main.c\
 			src/parsing/valid_file_2d_array.c\
 			src/parsing/parse_textures.c\
 			src/parsing/parse_map.c\
+			src/parsing/valid_map.c\
 			src/error_functions.c\
 			src/clean_up.c
 

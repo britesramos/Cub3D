@@ -73,16 +73,13 @@ int	parse_map(char **file_2d_array, t_data *data)
 	alloc_data_map(data, file_2d_array);
 	parse_map2(data, file_2d_array);
 	free_file_2d_array(file_2d_array);
-	int	i = 0;
-	while(data->map[i])
-	{
-		printf("data->map[%i]: %s\n", i, data->map[i]);
-		i++;
-	}
-
-	// 	if (map)
-	// 		//check valid map.
-	// 		//valid caracters.
-	// 		//flood fill algorithm.
+	// int	i = 0;
+	// while(data->map[i])
+	// {
+	// 	printf("data->map[%i]: %s\n", i, data->map[i]);
+	// 	i++;
+	// }
+	if (!valid_map(data->map))
+		return (0);
 	return (1);
 }

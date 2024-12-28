@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/12/11 11:42:29 by sramos        #+#    #+#                 */
-/*   Updated: 2024/12/28 23:41:23 by anonymous     ########   odam.nl         */
+/*   Updated: 2024/12/29 00:23:34 by anonymous     ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ typedef	struct s_data
 	char	*ea;
 	char	*f_color;
 	char	*c_color;
-	//Textures.
-	//Position Player
+	int		start_player_position_x;
+	int		start_player_position_y;
 }	t_data;
 
 void	init_data(t_data *data);
@@ -56,6 +56,7 @@ int		is_space(char c);
 //------------PARSING-------------------//
 int		parse_textures(char **file_2d_array, t_data *data);
 int		parse_map(char **file_2d_array, t_data *data);
+int		valid_map(char **map);
 
 
 //------------ERROR EXIT---------------//

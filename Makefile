@@ -6,7 +6,7 @@
 #    By: marvin <marvin@student.42.fr>                +#+                      #
 #                                                    +#+                       #
 #    Created: 2024/12/11 11:43:31 by sramos        #+#    #+#                  #
-#    Updated: 2024/12/27 13:52:57 by anonymous     ########   odam.nl          #
+#    Updated: 2024/12/27 17:22:42 by anonymous     ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,12 +15,13 @@ NAME = cub3D
 SRC_PATH = src
 
 SRC_FILES = src/main.c\
-			src/valid_map_extension_checker.c\
 			src/init_data.c\
-			src/valid_map_file.c\
-			src/new_line_middle_map.c\
-			src/valid_file_2d_array.c\
-			src/parse_textures.c\
+			src/parsing/valid_map_extension_checker.c\
+			src/parsing/valid_map_file.c\
+			src/parsing/new_line_middle_map.c\
+			src/parsing/valid_file_2d_array.c\
+			src/parsing/parse_textures.c\
+			src/parsing/parse_map.c\
 			src/error_functions.c
 
 OBJ_PATH = obj

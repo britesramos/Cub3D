@@ -6,11 +6,11 @@
 /*   By: marvin <marvin@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/12/12 12:02:10 by sramos        #+#    #+#                 */
-/*   Updated: 2024/12/27 13:46:12 by anonymous     ########   odam.nl         */
+/*   Updated: 2024/12/27 17:21:17 by anonymous     ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../../include/cub3d.h"
 
 static int	open_file(char *file, int fd)
 {

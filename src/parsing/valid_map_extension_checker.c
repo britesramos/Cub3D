@@ -3,14 +3,14 @@
 /*                                                        ::::::::            */
 /*   valid_map_extension_checker.c                      :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: sramos <sramos@student.codam.nl>             +#+                     */
+/*   By: marvin <marvin@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/12/12 11:54:25 by sramos        #+#    #+#                 */
-/*   Updated: 2024/12/12 18:41:23 by sramos        ########   odam.nl         */
+/*   Updated: 2024/12/27 17:21:10 by anonymous     ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../../include/cub3d.h"
 
 void	valid_map_extension_checker(char *str)
 {

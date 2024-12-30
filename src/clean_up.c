@@ -18,7 +18,7 @@ void	free_char_pointer(char *str)
 	str = NULL;
 }
 
-static void	free_char_pointer_pointer(char **str)
+void	free_char_pointer_pointer(char **str)
 {
 	int	i;
 

@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/12/11 11:42:29 by sramos        #+#    #+#                 */
-/*   Updated: 2024/12/30 22:12:39 by anonymous     ########   odam.nl         */
+/*   Updated: 2024/12/30 22:53:23 by anonymous     ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int		parse_map(char **file_2d_array, t_data *data);
 int		valid_map(t_data *data);
 int		no_limit(t_data *data);
 char 	**flood_algorithm(t_data *data, char **map_flood, t_node *q);
-t_node 	*create_node(t_node *q, t_data *data, int x, int y);
+t_node 	*create_node(t_node *q, int x, int y);
 
 //------------ERROR EXIT---------------//
 int		error_print_exit(t_data *data, char *str, int error);
@@ -76,5 +76,6 @@ int		error_print_return(t_data *data, char *str, int error); //
 //------------CLEAN UP-----------------//
 void	clean_up(t_data *data);
 void	free_char_pointer(char *str);
+void	free_char_pointer_pointer(char **str);
 
 #endif

@@ -12,7 +12,7 @@
 
 #include "../../include/cub3d.h"
 
-t_node	*create_node(t_node *q, t_data *data, int x, int y)
+t_node	*create_node(t_node *q, int x, int y)
 {
 	t_node	*n_node;
 
@@ -25,8 +25,7 @@ t_node	*create_node(t_node *q, t_data *data, int x, int y)
 			q = NULL;
 			q = q->next;
 		}
-		//free map_flood.
-		error_print_exit(data, "Error\nFail malloc q.\n", -1);
+		return (NULL);
 	}
 	n_node->x = x;
 	n_node->y = y;
@@ -41,7 +40,12 @@ static	t_node	*add_node_set_x(t_node *q, char **map_flood, int y, int x, t_data 
 	current = q;
 	while (current->next)
 		current = current->next;
-	current->next = create_node(q, data, x, y);
+	current->next = create_node(q, x, y);
+	if (!current->next)
+	{
+		free_char_pointer_pointer(map_flood);
+		error_print_exit(data, "Error\nFail malloc q.\n", -1);
+	}
 	map_flood[y][x] = 'X';
 	return (q);
 }

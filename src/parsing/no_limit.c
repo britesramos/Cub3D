@@ -29,7 +29,12 @@ static t_node	*find_player_position(t_data *data, t_node *q, char **map_flood)
 				data->player_sp_x = j;
 				data->player_sp_y = i;
 				map_flood[i][j] = 'X';
-				q = create_node(q, data, data->player_sp_x, data->player_sp_y);
+				q = create_node(q, data->player_sp_x, data->player_sp_y);
+				if (!q)
+				{
+					free_char_pointer_pointer(map_flood);
+					error_print_exit(data, "Fail to alloc player node.\n", -1);
+				}
 				break ;
 			}
 			j++;
@@ -78,11 +83,13 @@ static int	x_on_limit(char **map_flood, int i, int j)
 		rows++;
 	if (i + 1 >= rows)
 		return (1);
-	else if (i - 1 > 0 && map_flood[i - 1][j] != '1' && map_flood[i - 1][j] != 'X')
+	else if (i - 1 > 0 && map_flood[i - 1][j] != '1'
+		&& map_flood[i - 1][j] != 'X')
 		return (1);
 	else if (map_flood[i + 1][j] != '1' && map_flood[i + 1][j] != 'X')
 		return (1);
-	else if (j - 1 > 0 && map_flood[i][j - 1] != '1' && map_flood[i][j - 1] != 'X')
+	else if (j - 1 > 0 && map_flood[i][j - 1] != '1'
+		&& map_flood[i][j - 1] != 'X')
 		return (1);
 	else if (map_flood[i][j + 1] != '1' && map_flood[i][j + 1] != 'X')
 		return (1);
@@ -126,21 +133,12 @@ int	no_limit(t_data *data)
 	if (map_flood == NULL)
 		error_print_exit(data, "Error\nFail to cpy_map\n", -1);
 	q = find_player_position(data, q, map_flood);
-	// int	i = 0;
-	// while (map_flood[i])
-	// {
-	// 	printf("map_flood[%i]: %s\n", i, map_flood[i]);
-	// 	i++;
-	// }
 	map_flood = flood_algorithm(data, map_flood, q);
-	// i = 0;
-	// printf("\n");
-	// while (map_flood[i])
-	// {
-	// 	printf("map_flood[%i]: %s\n", i, map_flood[i]);
-	// 	i++;
-	// }
 	if (!valid_map_flood(map_flood))
+	{
+		free_char_pointer_pointer(map_flood);
 		return (1);
+	}
+	free_char_pointer_pointer(map_flood);
 	return (0);
 }

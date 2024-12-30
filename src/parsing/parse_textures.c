@@ -12,35 +12,18 @@
 
 #include "../../include/cub3d.h"
 
-static int	all_textures_found(t_data *data)
-{
-	if (data->c_color == NULL)
-		return (0);
-	if (data->f_color == NULL)
-		return (0);
-	if (data->ea == NULL)
-		return (0);
-	if (data->no == NULL)
-		return (0);
-	if (data->so == NULL)
-		return (0);
-	if (data->we == NULL)
-		return (0);
-	return (1);
-}
-
-static char	*add_texture_utils(t_data *data, char *data_texture, char *str, int len)
+static char	*add_texture_utils(t_data *data, char *texture, char *str, int len)
 {
 	int	i;
 
 	i = 0;
 	while (is_space(str[i]))
 		i++;
-	data_texture = ft_calloc(sizeof(char), len + 1);
-	if (!data_texture)
+	texture = ft_calloc(sizeof(char), len + 1);
+	if (!texture)
 		error_print_exit(data, "Error\nFail to alloc for new texture.\n", -1);
-	ft_strlcpy(data_texture, &str[i], len);
-	return (data_texture);
+	ft_strlcpy(texture, &str[i], len + 4);
+	return (texture);
 }
 
 static int	get_len(char *str, int i)
@@ -108,8 +91,5 @@ int	parse_textures(char **file_2d_array, t_data *data)
 		j = 0;
 		i++;
 	}
-	if (!all_textures_found(data))
-		error_print_exit(data, "Error\nNot all textures found.\n", -1);
-	//Check if there is .png format.
 	return (1);
 }

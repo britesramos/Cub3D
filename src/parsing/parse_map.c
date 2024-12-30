@@ -58,8 +58,6 @@ static void	free_file_2d_array(char **file_2d_array)
 		file_2d_array[i] = NULL;
 		i++;
 	}
-	// free(file_2d_array);
-	// file_2d_array = NULL;
 }
 
 int	parse_map(char **file_2d_array, t_data *data)

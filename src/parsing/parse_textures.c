@@ -29,7 +29,7 @@ static int	all_textures_found(t_data *data)
 	return (1);
 }
 
-static char	*add_texture_utils(char *data_texture, char *str, int len)
+static char	*add_texture_utils(t_data *data, char *data_texture, char *str, int len)
 {
 	int	i;
 
@@ -38,12 +38,8 @@ static char	*add_texture_utils(char *data_texture, char *str, int len)
 		i++;
 	data_texture = ft_calloc(sizeof(char), len + 1);
 	if (!data_texture)
-	{
-		printf("Fail to alloc data->so.\n");
-		//exit_clean_up_function //TO DO.
-	}
+		error_print_exit(data, "Error\nFail to alloc for new texture.\n", -1);
 	ft_strlcpy(data_texture, &str[i], len);
-	// printf("Texture: %s\n", data_texture);
 	return (data_texture);
 }
 
@@ -68,21 +64,21 @@ static void	add_texture_data(t_data *data, char *str, int type)
 	{
 		len = get_len(str, 2);
 		if (type == SO)
-			data->so = add_texture_utils(data->so, str, len);
+			data->so = add_texture_utils(data, data->so, str, len);
 		else if (type == NO)
-			data->no = add_texture_utils(data->no, str, len);
+			data->no = add_texture_utils(data, data->no, str, len);
 		else if (type == EA)
-			data->ea = add_texture_utils(data->ea, str, len);
+			data->ea = add_texture_utils(data, data->ea, str, len);
 		else if (type == WE)
-			data->we = add_texture_utils(data->we, str, len);
+			data->we = add_texture_utils(data, data->we, str, len);
 	}
 	else if (type == C || type == F)
 	{
 		len = get_len(str, 1);
 		if (type == C)
-			data->c_color = add_texture_utils(data->c_color, str, len);
+			data->c_color = add_texture_utils(data, data->c_color, str, len);
 		else if (type == F)
-			data->f_color = add_texture_utils(data->f_color, str, len);
+			data->f_color = add_texture_utils(data, data->f_color, str, len);
 	}
 }
 
@@ -113,10 +109,7 @@ int	parse_textures(char **file_2d_array, t_data *data)
 		i++;
 	}
 	if (!all_textures_found(data))
-	{
-		printf("Not all textures found!\n");
-		return (0);
-	}
+		error_print_exit(data, "Error\nNot all textures found.\n", -1);
 	//Check if there is .png format.
 	return (1);
 }

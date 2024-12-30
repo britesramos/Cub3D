@@ -12,34 +12,34 @@
 
 #include "../../include/cub3d.h"
 
-static int	is_one(char *map)
-{
-	int	j;
+// static int	is_one(char *map)
+// {
+// 	int	j;
 
-	j = 0;
-	while (map[j])
-	{
-		if (map[j] != '1' && map[j] != ' ')
-			return (0);
-		j++;
-	}
-	return (1);
-}
+// 	j = 0;
+// 	while (map[j])
+// 	{
+// 		if (map[j] != '1' && map[j] != ' ')
+// 			return (0);
+// 		j++;
+// 	}
+// 	return (1);
+// }
 
-static int	first_last_ones(char **map)
-{
-	int	i;
+// static int	first_last_ones(char **map)
+// {
+// 	int	i;
 
-	i = 0;
-	if (!is_one(map[i]))
-		return (0);
-	while (map[i])
-		i++;
-	i--;
-	if (!is_one(map[i]))
-		return (0);
-	return (1);
-}
+// 	i = 0;
+// 	if (!is_one(map[i]))
+// 		return (0);
+// 	while (map[i])
+// 		i++;
+// 	i--;
+// 	if (!is_one(map[i]))
+// 		return (0);
+// 	return (1);
+// }
 
 static int	odd_characters(char **map)
 {
@@ -75,11 +75,15 @@ static int	more_than_one_player(char **map)
 	player = false;
 	while (map[i])
 	{
-		while(map[i][j])
+		while (map[i][j])
 		{
-			if ((map[i][j] == 'N' || map[i][j] == 'S' || map[i][j] == 'E' || map[i][j] == 'W') && player == true)
+			if ((map[i][j] == 'N' || map[i][j] == 'S'
+				|| map[i][j] == 'E' || map[i][j] == 'W')
+				&& player == true)
 				return (1);
-			if ((map[i][j] == 'N' || map[i][j] == 'S' || map[i][j] == 'E' || map[i][j] == 'W') && player == false)
+			if ((map[i][j] == 'N' || map[i][j] == 'S'
+				|| map[i][j] == 'E' || map[i][j] == 'W')
+				&& player == false)
 				player = true;
 			j++;
 		}
@@ -89,19 +93,39 @@ static int	more_than_one_player(char **map)
 	return (0);
 }
 
-int	valid_map(char **map)
+static int	no_player(char **map)
 {
-	if (!first_last_ones(map))
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (map[i])
+	{
+		while(map[i][j])
+		{
+			if (map[i][j] == 'N' || map[i][j] == 'S'
+				|| map[i][j] == 'E' || map[i][j] == 'W')
+				return (0);
+			j++;
+		}
+		j = 0;
+		i++;
+	}
+	return (1);
+}
+
+int	valid_map(t_data *data)
+{
+	// if (!first_last_ones(data->map))
+	// 	return (0);
+	if (odd_characters(data->map))
 		return (0);
-	if (odd_characters(map))
+	if (more_than_one_player(data->map))
 		return (0);
-	if (more_than_one_player(map))
+	if (no_player(data->map))
 		return (0);
-	//Do not found player.
-	//flood algorithm.
-	//
-	//found player position.
-	//must be surrounded by walls.
-	//doesnt need to have a valid path as so_long.
+	if (no_limit(data))
+		return (0);
 	return (1);
 }

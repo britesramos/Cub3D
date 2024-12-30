@@ -21,10 +21,7 @@ static void	alloc_data_map(t_data *data, char **file_2d_array)
 		i++;
 	data->map = ft_calloc(sizeof(char *), (i - 6) + 1);
 	if (!data->map)
-	{
-		printf("Fail alloc data->map.\n");
-		//error return function.
-	}
+		error_print_exit(data, "Error\nFail alloc data->map.\n", -1);
 }
 
 static void	parse_map2(t_data *data, char **file_2d_array)
@@ -42,10 +39,7 @@ static void	parse_map2(t_data *data, char **file_2d_array)
 			j++;
 		data->map[a] = ft_calloc(sizeof(char), j + 1);
 		if (!data->map[a])
-		{
-			printf("Fail alloc data->map[%i].\n", a);
-			//error return funtion.
-		}
+			error_print_exit(data, "Error\nFail to alloc string\n", -1);
 		ft_strlcpy(data->map[a], file_2d_array[i], j + 1);
 		j = 0;
 		a++;
@@ -79,7 +73,7 @@ int	parse_map(char **file_2d_array, t_data *data)
 	// 	printf("data->map[%i]: %s\n", i, data->map[i]);
 	// 	i++;
 	// }
-	if (!valid_map(data->map))
+	if (!valid_map(data))
 		return (0);
 	return (1);
 }

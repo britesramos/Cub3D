@@ -6,13 +6,13 @@
 /*   By: marvin <marvin@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/12/12 11:56:00 by sramos        #+#    #+#                 */
-/*   Updated: 2024/12/30 16:12:02 by anonymous     ########   odam.nl         */
+/*   Updated: 2024/12/30 22:06:13 by anonymous     ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-//Needed?
+//Needed? I only used the error_print_exit.
 int	error_print_return(t_data *data, char *str, int error)
 {
 	printf("%s", str);

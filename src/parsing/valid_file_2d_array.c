@@ -12,21 +12,8 @@
 
 #include "../../include/cub3d.h"
 
-// static void	print_array(char **file_2d_array)
-// {
-// 	int i = 0;
-// 	while(file_2d_array[i])
-// 	{
-// 		printf("file_2d_array[%i]: %s\n", i, file_2d_array[i]);
-// 		free(file_2d_array[i]);
-// 		file_2d_array[i] = NULL;
-// 		i++;
-// 	}
-// }
-
 int	valid_file_2d_array(char **file_2d_array, t_data *data)
 {
-	// print_array(file_2d_array); //temp
 	if (parse_textures(file_2d_array, data) == 0)
 		return (0);
 	if (parse_map(file_2d_array, data) == 0)

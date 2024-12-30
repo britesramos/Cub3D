@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/12/11 11:42:29 by sramos        #+#    #+#                 */
-/*   Updated: 2024/12/30 20:36:18 by anonymous     ########   odam.nl         */
+/*   Updated: 2024/12/30 22:12:39 by anonymous     ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,10 @@ t_node 	*create_node(t_node *q, t_data *data, int x, int y);
 
 //------------ERROR EXIT---------------//
 int		error_print_exit(t_data *data, char *str, int error);
-int		error_print_return(t_data *data, char *str, int error);
+int		error_print_return(t_data *data, char *str, int error); //
 
 //------------CLEAN UP-----------------//
 void	clean_up(t_data *data);
+void	free_char_pointer(char *str);
 
 #endif

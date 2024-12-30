@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/12/11 11:42:06 by sramos        #+#    #+#                 */
-/*   Updated: 2024/12/30 16:23:34 by anonymous     ########   odam.nl         */
+/*   Updated: 2024/12/30 22:09:10 by anonymous     ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 int	main(int argc, char *argv[])
 {
 	t_data	*data;
-	//Questions?
-		//-How is the data structure going to look like?
+
 	if (argc == 2)
 	{
 		valid_map_extension_checker(argv[1]);

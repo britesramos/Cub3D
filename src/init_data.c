@@ -21,4 +21,6 @@ void	init_data(t_data *data)
 	data->ea = NULL;
 	data->f_color = NULL;
 	data->c_color = NULL;
+	data->player_sp_x = 0;
+	data->player_sp_y = 0;
 }

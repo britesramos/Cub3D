@@ -12,7 +12,7 @@
 
 #include "../include/cub3d.h"
 
-static void	free_char_pointer(char *str)
+void	free_char_pointer(char *str)
 {
 	free(str);
 	str = NULL;
@@ -51,5 +51,4 @@ void	clean_up(t_data *data)
 		free_char_pointer_pointer(data->map);
 	if (data)
 		free(data);
-
 }

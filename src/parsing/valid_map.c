@@ -12,35 +12,6 @@
 
 #include "../../include/cub3d.h"
 
-// static int	is_one(char *map)
-// {
-// 	int	j;
-
-// 	j = 0;
-// 	while (map[j])
-// 	{
-// 		if (map[j] != '1' && map[j] != ' ')
-// 			return (0);
-// 		j++;
-// 	}
-// 	return (1);
-// }
-
-// static int	first_last_ones(char **map)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	if (!is_one(map[i]))
-// 		return (0);
-// 	while (map[i])
-// 		i++;
-// 	i--;
-// 	if (!is_one(map[i]))
-// 		return (0);
-// 	return (1);
-// }
-
 static int	odd_characters(char **map)
 {
 	int	i;
@@ -102,7 +73,7 @@ static int	no_player(char **map)
 	j = 0;
 	while (map[i])
 	{
-		while(map[i][j])
+		while (map[i][j])
 		{
 			if (map[i][j] == 'N' || map[i][j] == 'S'
 				|| map[i][j] == 'E' || map[i][j] == 'W')
@@ -117,8 +88,6 @@ static int	no_player(char **map)
 
 int	valid_map(t_data *data)
 {
-	// if (!first_last_ones(data->map))
-	// 	return (0);
 	if (odd_characters(data->map))
 		return (0);
 	if (more_than_one_player(data->map))

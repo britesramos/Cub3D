@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/12/12 12:02:10 by sramos        #+#    #+#                 */
-/*   Updated: 2024/12/30 23:06:03 by anonymous     ########   odam.nl         */
+/*   Updated: 2024/12/31 18:04:14 by anonymous     ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ void	valid_map_file(char *file, t_data *data)
 		error_print_exit(data, "Error\nNew line in the middle map.\n", -1);
 	}
 	file_2d_array = split_str_file(str_file);
+	//Do not free file_2d_array if exit in valid_file_2d_array.
 	if (!valid_file_2d_array(file_2d_array, data))
 	{
 		free(file_2d_array);
@@ -106,6 +107,5 @@ void	valid_map_file(char *file, t_data *data)
 	file_2d_array = NULL;
 	//CHECK texture after map - it is giving "New line in the middle map." error mensage"
 	//CHECK if can open the texture files?
-	//CHECK if color format is correct."R, G, B colors in range [0,255]: 0, 255, 255"
 	printf("VALID MAP!\n");
 }

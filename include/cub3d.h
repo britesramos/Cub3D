@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/12/11 11:42:29 by sramos        #+#    #+#                 */
-/*   Updated: 2024/12/30 22:53:23 by anonymous     ########   odam.nl         */
+/*   Updated: 2024/12/31 14:10:56 by anonymous     ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef	struct s_data
 	char	*c_color;
 	int		player_sp_x;
 	int		player_sp_y;
+	char	*player_facing;
 }	t_data;
 
 typedef struct s_node
@@ -58,6 +59,7 @@ void	valid_map_extension_checker(char *str);
 void	valid_map_file(char *file, t_data *data);
 int		valid_file_2d_array(char **file_2d_array, t_data *data);
 int		new_line_middle_map(char *str);
+void	valid_texture_rgb_checker(t_data *data);
 //------------INPUT CHECKER UTILS-------//
 int		is_space(char c);
 

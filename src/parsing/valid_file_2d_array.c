@@ -48,6 +48,7 @@ int	valid_file_2d_array(char **file_2d_array, t_data *data)
 		return (0);
 	all_textures_found(data);
 	valid_texture_extension_checker(data);
+	valid_texture_rgb_checker(data);
 	if (parse_map(file_2d_array, data) == 0)
 		return (0);
 	return (1);

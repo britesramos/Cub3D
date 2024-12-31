@@ -12,6 +12,7 @@
 
 #include "../../include/cub3d.h"
 
+//Need to save with direction player is facing.
 static t_node	*find_player_position(t_data *data, t_node *q, char **map_flood)
 {
 	int	i;

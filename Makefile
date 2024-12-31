@@ -6,7 +6,7 @@
 #    By: marvin <marvin@student.42.fr>                +#+                      #
 #                                                    +#+                       #
 #    Created: 2024/12/11 11:43:31 by sramos        #+#    #+#                  #
-#    Updated: 2024/12/30 20:01:40 by anonymous     ########   odam.nl          #
+#    Updated: 2024/12/31 14:18:19 by anonymous     ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ SRC_FILES = src/main.c\
 			src/parsing/valid_map.c\
 			src/parsing/no_limit.c\
 			src/parsing/flood_algorithm.c\
+			src/parsing/valid_texture_rgb_checker.c\
 			src/error_functions.c\
 			src/clean_up.c
 

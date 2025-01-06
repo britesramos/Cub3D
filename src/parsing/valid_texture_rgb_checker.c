@@ -45,34 +45,43 @@ static int	digits_left(char *str)
 	return (0);
 }
 
+static int	check_rgb_util(char *str, int j)
+{
+	char	*dig;
+
+	dig = NULL;
+	dig = ft_calloc(sizeof(char), j + 1);
+	if (!dig)
+		return (error_print_return("Fail to alloc dig\n", 0));
+	ft_strlcpy(dig, str, j + 1);
+	if (!valid_rgb(dig))
+	{
+		free_char_pointer(dig);
+		return (0);
+	}
+	free_char_pointer(dig);
+	return (1);
+}
+
 static int	check_rgb(char *str)
 {
 	int		i;
 	int		j;
 	int		dig_c;
-	char	*dig;
 
 	i = 0;
 	j = 0;
 	dig_c = 0;
-	dig = NULL;
 	while (str[i] && digits_left(&str[i]))
 	{
-		if (!str[i])
-			return (error_print_return("Missing RGB value\n", 0));
 		while (!ft_isdigit(str[i]) && str[i] != '-')
 			i++;
 		if (str[i] == '-')
 			j++;
 		while (ft_isdigit(str[i + j]) || str[i + j] == '-')
 			j++;
-		dig = ft_calloc(sizeof(char), j + 1);
-		if (!dig)
-			return (error_print_return("Fail to alloc dig\n", 0));
-		ft_strlcpy(dig, &str[i], j + 1);
-		if (!valid_rgb(dig))
+		if (!check_rgb_util(&str[i], j))
 			return (0);
-		free_char_pointer(dig);
 		i = i + j;
 		j = 0;
 		dig_c++;

@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/12/11 11:42:06 by sramos        #+#    #+#                 */
-/*   Updated: 2025/01/06 11:50:42 by sramos        ########   odam.nl         */
+/*   Updated: 2025/01/06 15:45:33 by sramos        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	main(int argc, char *argv[])
 		init_data(data);
 		valid_map_file(argv[1], data);
 	//Execution
+		//Textures
 		//Raycasting.
 		clean_up(data);
 	}

@@ -12,7 +12,7 @@
 
 #include "../../include/cub3d.h"
 
-static void	alloc_data_map(t_data *data, char **file_2d_array)
+static int	alloc_data_map(t_data *data, char **file_2d_array)
 {
 	int	i;
 
@@ -21,10 +21,11 @@ static void	alloc_data_map(t_data *data, char **file_2d_array)
 		i++;
 	data->map = ft_calloc(sizeof(char *), (i - 6) + 1);
 	if (!data->map)
-		error_print_exit(data, "Error\nFail alloc data->map.\n", -1);
+		return (error_print_return("Fail alloc data->map.\n", 0));
+	return (1);
 }
 
-static void	parse_map2(t_data *data, char **file_2d_array)
+static int	parse_map2(t_data *data, char **file_2d_array)
 {
 	int	i;
 	int	j;
@@ -39,32 +40,21 @@ static void	parse_map2(t_data *data, char **file_2d_array)
 			j++;
 		data->map[a] = ft_calloc(sizeof(char), j + 1);
 		if (!data->map[a])
-			error_print_exit(data, "Error\nFail to alloc string\n", -1);
+			return (error_print_return("Fail to alloc string\n", 0));
 		ft_strlcpy(data->map[a], file_2d_array[i], j + 1);
 		j = 0;
 		a++;
 		i++;
 	}
-}
-
-static void	free_file_2d_array(char **file_2d_array)
-{
-	int	i;
-
-	i = 0;
-	while (file_2d_array[i])
-	{
-		free(file_2d_array[i]);
-		file_2d_array[i] = NULL;
-		i++;
-	}
+	return (1);
 }
 
 int	parse_map(char **file_2d_array, t_data *data)
 {
-	alloc_data_map(data, file_2d_array);
-	parse_map2(data, file_2d_array);
-	free_file_2d_array(file_2d_array);
+	if (!alloc_data_map(data, file_2d_array))
+		return (0);
+	if (!parse_map2(data, file_2d_array))
+		return (0);
 	if (!valid_map(data))
 		return (0);
 	return (1);

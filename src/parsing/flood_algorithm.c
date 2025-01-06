@@ -33,7 +33,7 @@ t_node	*create_node(t_node *q, int x, int y)
 	return (n_node);
 }
 
-static	t_node	*add_node_set_x(t_node *q, char **map_flood, int y, int x, t_data *data)
+static	t_node	*add_node_set_x(t_node *q, char **map_flood, int y, int x)
 {
 	t_node	*current;
 
@@ -44,7 +44,7 @@ static	t_node	*add_node_set_x(t_node *q, char **map_flood, int y, int x, t_data 
 	if (!current->next)
 	{
 		free_char_pointer_pointer(map_flood);
-		error_print_exit(data, "Error\nFail malloc q.\n", -1);
+		return (0);
 	}
 	map_flood[y][x] = 'X';
 	return (q);
@@ -61,7 +61,7 @@ static t_node	*remove_node(t_node *q)
 	return (q);
 }
 
-char	**flood_algorithm(t_data *data, char **map_flood, t_node *q)
+char	**flood_algorithm(char **map_flood, t_node *q)
 {
 	int	rows;
 
@@ -71,13 +71,13 @@ char	**flood_algorithm(t_data *data, char **map_flood, t_node *q)
 	while (q)
 	{
 		if (q->y - 1 > 0 && map_flood[q->y - 1][q->x] == '0')
-			q = add_node_set_x(q, map_flood, q->y - 1, q->x, data);
+			q = add_node_set_x(q, map_flood, q->y - 1, q->x);
 		if (q->y + 1 < rows && map_flood[q->y + 1][q->x] == '0')
-			q = add_node_set_x(q, map_flood, q->y + 1, q->x, data);
+			q = add_node_set_x(q, map_flood, q->y + 1, q->x);
 		if (q->x - 1 > 0 && map_flood[q->y][q->x - 1] == '0')
-			q = add_node_set_x(q, map_flood, q->y, q->x - 1, data);
+			q = add_node_set_x(q, map_flood, q->y, q->x - 1);
 		if (map_flood[q->y][q->x + 1] == '0')
-			q = add_node_set_x(q, map_flood, q->y, q->x + 1, data);
+			q = add_node_set_x(q, map_flood, q->y, q->x + 1);
 		q = remove_node (q);
 	}
 	return (map_flood);

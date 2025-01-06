@@ -23,8 +23,8 @@ static int	odd_characters(char **map)
 	{
 		while (map[i][j])
 		{
-			if (map[i][j] != ' ' && map[i][j] != '1' && map[i][j] != '0'
-				&& map[i][j] != 'N' && map[i][j] != 'S'
+			if (map[i][j] != ' ' && map[i][j] != '	' && map[i][j] != '1'
+				&& map[i][j] != '0' && map[i][j] != 'N' && map[i][j] != 'S'
 				&& map[i][j] != 'E' && map[i][j] != 'W')
 				return (1);
 			j++;
@@ -89,12 +89,12 @@ static int	no_player(char **map)
 int	valid_map(t_data *data)
 {
 	if (odd_characters(data->map))
-		return (0);
+		return (error_print_return("Odd characters in the map.\n", 0));
 	if (more_than_one_player(data->map))
-		return (0);
+		return (error_print_return("More than one player.\n", 0));
 	if (no_player(data->map))
-		return (0);
+		return (error_print_return("No player.\n", 0));
 	if (no_limit(data))
-		return (0);
+		return (error_print_return("This is not a closed map.\n", 0));
 	return (1);
 }

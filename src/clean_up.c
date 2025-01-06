@@ -51,6 +51,8 @@ void	clean_up(t_data *data)
 		free_char_pointer_pointer(data->map);
 	if (data->player_facing)
 		free_char_pointer(data->player_facing);
+	if (data->parse_utils)
+		free(data->parse_utils);
 	if (data)
 		free(data);
 }

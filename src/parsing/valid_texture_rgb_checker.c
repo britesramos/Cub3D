@@ -12,7 +12,7 @@
 
 #include "../../include/cub3d.h"
 
-static void	valid_rgb(char *dig)
+static int	valid_rgb(char *dig)
 {
 	int	value;
 	int	i;
@@ -22,13 +22,13 @@ static void	valid_rgb(char *dig)
 	while (dig[i])
 	{
 		if (dig[i] == '-')
-			printf("ERROR\n");
+			return (error_print_return("RGB value misconfiguration\n", 0));
 		i++;
 	}
 	value = ft_atoi(dig);
-	//Return error or exit program
 	if (value < 0 || value > 255)
-		printf("ERROR\n");
+		return (error_print_return("RGB value misconfiguration\n", 0));
+	return (1);
 }
 
 static int	digits_left(char *str)
@@ -45,7 +45,7 @@ static int	digits_left(char *str)
 	return (0);
 }
 
-static void	check_rgb(t_data *data, char *str)
+static int	check_rgb(char *str)
 {
 	int		i;
 	int		j;
@@ -59,7 +59,7 @@ static void	check_rgb(t_data *data, char *str)
 	while (str[i] && digits_left(&str[i]))
 	{
 		if (!str[i])
-			error_print_exit(data, "Error\nMissing RGB value\n", -1);
+			return (error_print_return("Missing RGB value\n", 0));
 		while (!ft_isdigit(str[i]) && str[i] != '-')
 			i++;
 		if (str[i] == '-')
@@ -68,20 +68,25 @@ static void	check_rgb(t_data *data, char *str)
 			j++;
 		dig = ft_calloc(sizeof(char), j + 1);
 		if (!dig)
-			error_print_exit(data, "Error\nFail to alloc dig\n", -1);
+			return (error_print_return("Fail to alloc dig\n", 0));
 		ft_strlcpy(dig, &str[i], j + 1);
-		valid_rgb(dig);
+		if (!valid_rgb(dig))
+			return (0);
 		free_char_pointer(dig);
 		i = i + j;
 		j = 0;
 		dig_c++;
 	}
 	if (dig_c != 3)
-		printf("ERROR\nRGB value misconfiguration\n");
+		return (error_print_return("RGB value misconfiguration\n", 0));
+	return (1);
 }
 
-void	valid_texture_rgb_checker(t_data *data)
+int	valid_texture_rgb_checker(t_data *data)
 {
-	check_rgb(data, data->c_color);
-	check_rgb(data, data->f_color);
+	if (!check_rgb(data->c_color))
+		return (0);
+	if (!check_rgb(data->f_color))
+		return (0);
+	return (1);
 }

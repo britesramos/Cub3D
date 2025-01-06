@@ -12,7 +12,7 @@
 
 #include "../../include/cub3d.h"
 
-//Need to save with direction player is facing.
+//Need to save witch direction player is facing.
 static t_node	*find_player_position(t_data *data, t_node *q, char **map_flood)
 {
 	int	i;
@@ -34,7 +34,7 @@ static t_node	*find_player_position(t_data *data, t_node *q, char **map_flood)
 				if (!q)
 				{
 					free_char_pointer_pointer(map_flood);
-					error_print_exit(data, "Fail to alloc player node.\n", -1);
+					return (q);
 				}
 				break ;
 			}
@@ -57,7 +57,7 @@ static char	**cpy_map(t_data *data)
 		i++;
 	map_flood = ft_calloc(sizeof(char *), i + 1);
 	if (!map_flood)
-		error_print_exit(data, "Error\nFail to alloc map_flood\n", -1);
+		return (map_flood);
 	i = 0;
 	while (data->map[i])
 	{
@@ -131,10 +131,14 @@ int	no_limit(t_data *data)
 
 	q = NULL;
 	map_flood = cpy_map(data);
-	if (map_flood == NULL)
-		error_print_exit(data, "Error\nFail to cpy_map\n", -1);
+	if (!map_flood)
+		return (error_print_return("Fail to cpy_map\n", 0));
 	q = find_player_position(data, q, map_flood);
-	map_flood = flood_algorithm(data, map_flood, q);
+	if (!q)
+		return (error_print_return("Couldn't find player position\n", 0));
+	map_flood = flood_algorithm(map_flood, q);
+	if (!map_flood)
+		return (0);
 	if (!valid_map_flood(map_flood))
 	{
 		free_char_pointer_pointer(map_flood);

@@ -6,7 +6,7 @@
 /*   By: sramos <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/10/03 10:39:19 by sramos        #+#    #+#                 */
-/*   Updated: 2024/02/27 18:05:44 by sramos        ########   odam.nl         */
+/*   Updated: 2025/01/06 12:00:24 by sramos        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ int	ft_isdigit(int i)
 	return (i >= '0' && i <= '9');
 }
 
-int	main(void)
-{
-	char	*string;
+// int	main(void)
+// {
+// 	char	*string;
 
-	string = "456";
-	printf("%i", ft_isdigit(*string));
-	printf("\n%i", isdigit(*string));
-	return (0);
-}
+// 	string = "456";
+// 	printf("%i", ft_isdigit(*string));
+// 	printf("\n%i", isdigit(*string));
+// 	return (0);
+// }

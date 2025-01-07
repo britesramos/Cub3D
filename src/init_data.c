@@ -36,6 +36,8 @@ void	init_data(t_data *data)
 	data->c_color = NULL;
 	data->player_sp_x = 0;
 	data->player_sp_y = 0;
-	data->player_facing = NULL;
+	data->player_facing = ft_calloc(sizeof(char), 1 + 1);
+	if (!data->player_facing)
+		error_print_exit(data, "Fail alloc player_facing\n", -2);
 	init_parse_utils(data);
 }

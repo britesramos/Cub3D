@@ -12,40 +12,6 @@
 
 #include "../../include/cub3d.h"
 
-//Need to save witch direction player is facing.
-static t_node	*find_player_position(t_data *data, t_node *q, char **map_flood)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	while (data->map[i])
-	{
-		while (data->map[i][j])
-		{
-			if (data->map[i][j] == 'N' || data->map[i][j] == 'S'
-				|| data->map[i][j] == 'E' || data->map[i][j] == 'W')
-			{
-				data->player_sp_x = j;
-				data->player_sp_y = i;
-				map_flood[i][j] = 'X';
-				q = create_node(q, data->player_sp_x, data->player_sp_y);
-				if (!q)
-				{
-					free_char_pointer_pointer(map_flood);
-					return (q);
-				}
-				break ;
-			}
-			j++;
-		}
-		j = 0;
-		i++;
-	}
-	return (q);
-}
-
 static char	**cpy_map(t_data *data)
 {
 	int		i;

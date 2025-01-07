@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/12/11 11:42:29 by sramos        #+#    #+#                 */
-/*   Updated: 2025/01/06 16:15:35 by sramos        ########   odam.nl         */
+/*   Updated: 2025/01/07 13:39:00 by sramos        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,11 +75,14 @@ int		is_space(char c);
 
 //------------PARSING-------------------//
 int		parse_textures(char **file_2d_array, t_data *data);
+int		get_i(char *str);
+int		get_len(char *str, int i);
 int		parse_map(char **file_2d_array, t_data *data);
 int		valid_map(t_data *data);
 int		no_limit(t_data *data);
 char	**flood_algorithm(char **map_flood, t_node *q);
 t_node	*create_node(t_node *q, int x, int y);
+t_node	*find_player_position(t_data *data, t_node *q, char **map_flood);
 
 //------------ERROR EXIT---------------//
 int		error_print_exit(t_data *data, char *str, int error);

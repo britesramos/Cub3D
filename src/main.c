@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/12/11 11:42:06 by sramos        #+#    #+#                 */
-/*   Updated: 2025/01/06 15:45:33 by sramos        ########   odam.nl         */
+/*   Updated: 2025/01/07 13:56:15 by sramos        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,6 @@ int	main(int argc, char *argv[])
 		clean_up(data);
 	}
 	else
-		printf("Error\nPlease provide a '*.cub' map.\n");
+		printf("Error\nPlease provide a valid map.\n");
 	return (0);
 }

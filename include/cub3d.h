@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/12/11 11:42:29 by sramos        #+#    #+#                 */
-/*   Updated: 2025/01/07 13:39:00 by sramos        ########   odam.nl         */
+/*   Updated: 2025/01/13 15:52:37 by sramos        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,15 @@
 # define CUB3D_H
 
 # include "../libft/libft.h"
+# include "../MLX42/include/MLX42/MLX42.h"
 
 # include <unistd.h>
 # include <stdio.h>
 # include <fcntl.h>
 # include <stdbool.h>
+
+# define WIDTH 1920
+# define HEIGHT 1080
 
 typedef enum e_textures
 {
@@ -40,6 +44,14 @@ typedef struct s_parse_utils
 	bool	c;
 }	t_parse_utils;
 
+typedef struct s_mlx_textures
+{
+	mlx_image_t	*no;
+	mlx_image_t *so;
+	mlx_image_t	*we;
+	mlx_image_t *ea;
+}	t_mlx_textures;
+
 typedef struct s_data
 {
 	t_parse_utils	*parse_utils;
@@ -53,6 +65,8 @@ typedef struct s_data
 	int				player_sp_x;
 	int				player_sp_y;
 	char			*player_facing;
+	t_mlx_textures	*mlx_textures;
+	mlx_t			*mlx;
 }	t_data;
 
 typedef struct s_node
@@ -83,6 +97,10 @@ int		no_limit(t_data *data);
 char	**flood_algorithm(char **map_flood, t_node *q);
 t_node	*create_node(t_node *q, int x, int y);
 t_node	*find_player_position(t_data *data, t_node *q, char **map_flood);
+
+//------------EXECUTION-------------------//
+void	init_textures(t_data *data);
+
 
 //------------ERROR EXIT---------------//
 int		error_print_exit(t_data *data, char *str, int error);

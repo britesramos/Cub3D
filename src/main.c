@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/12/11 11:42:06 by sramos        #+#    #+#                 */
-/*   Updated: 2025/01/07 13:56:15 by sramos        ########   odam.nl         */
+/*   Updated: 2025/01/13 16:49:19 by sramos        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,16 @@ int	main(int argc, char *argv[])
 		if (!data)
 			return (error_print_exit(NULL, "Error\nFail to malloc data.\n", 1));
 		init_data(data);
-		valid_map_file(argv[1], data);
-	//Execution
-		//Textures
-		//Raycasting.
+		valid_map_file(argv[1], data); //It is validating C and F withouth ','.
+		init_textures(data);
+		data->mlx = mlx_init(WIDTH, HEIGHT, "cub3D", false);
+		if (!data->mlx)
+			return (error_print_exit(data, "Fail to init window!\n", -2));
+		//init game (map).
+		// mlx_key_hook(data->mlx, key_actions, &data); //TO DO - write key_actions.
+		mlx_loop(data->mlx);
+		//delete images.
+		mlx_terminate(data->mlx);
 		clean_up(data);
 	}
 	else

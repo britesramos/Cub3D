@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/12/11 11:42:06 by sramos        #+#    #+#                 */
-/*   Updated: 2025/01/13 16:49:19 by sramos        ########   odam.nl         */
+/*   Updated: 2025/01/16 12:14:23 by sramos        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	main(int argc, char *argv[])
 		data->mlx = mlx_init(WIDTH, HEIGHT, "cub3D", false);
 		if (!data->mlx)
 			return (error_print_exit(data, "Fail to init window!\n", -2));
-		//init game (map).
+		//init_game(map)
 		// mlx_key_hook(data->mlx, key_actions, &data); //TO DO - write key_actions.
 		mlx_loop(data->mlx);
 		//delete images.

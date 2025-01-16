@@ -36,9 +36,9 @@ void	free_char_pointer_pointer(char **str)
 void	clean_up(t_data *data)
 {
 	if (data->c_color)
-		free_char_pointer(data->c_color);
+		free_char_pointer_pointer(data->c_color);
 	if (data->f_color)
-		free_char_pointer(data->f_color);
+		free_char_pointer_pointer(data->f_color);
 	if (data->ea)
 		free_char_pointer(data->ea);
 	if (data->no)

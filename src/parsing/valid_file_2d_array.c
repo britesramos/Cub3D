@@ -52,11 +52,11 @@ int	valid_file_2d_array(char **file_2d_array, t_data *data)
 {
 	if (!parse_textures(file_2d_array, data))
 		return (0);
-	if (!all_textures_found(data))
+	if (!valid_texture_rgb_checker(data)) //check
+		return (0);
+	if (!all_textures_found(data)) //change to check on c and f values 2d array, instead of 1d array. // DO I NEED TO CHANGE THIS?
 		return (0);
 	if (!valid_texture_extension_checker(data))
-		return (0);
-	if (!valid_texture_rgb_checker(data))
 		return (0);
 	if (!parse_map(file_2d_array, data))
 		return (0);

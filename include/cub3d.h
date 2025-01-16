@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/12/11 11:42:29 by sramos        #+#    #+#                 */
-/*   Updated: 2025/01/13 15:52:37 by sramos        ########   odam.nl         */
+/*   Updated: 2025/01/16 12:41:40 by sramos        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ typedef struct s_parse_utils
 	bool	ea;
 	bool	f;
 	bool	c;
+	char	*f_util;
+	char	*c_util;
 }	t_parse_utils;
 
 typedef struct s_mlx_textures
@@ -60,8 +62,8 @@ typedef struct s_data
 	char			*so;
 	char			*we;
 	char			*ea;
-	char			*f_color;
-	char			*c_color;
+	char			**f_color; //2d array
+	char			**c_color; //2d array
 	int				player_sp_x;
 	int				player_sp_y;
 	char			*player_facing;

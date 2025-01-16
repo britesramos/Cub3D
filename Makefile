@@ -6,7 +6,7 @@
 #    By: marvin <marvin@student.42.fr>                +#+                      #
 #                                                    +#+                       #
 #    Created: 2024/12/11 11:43:31 by sramos        #+#    #+#                  #
-#    Updated: 2025/01/15 15:31:50 by rkaras        ########   odam.nl          #
+#    Updated: 2025/01/16 12:21:52 by sramos        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,8 @@ SRC_FILES = src/main.c\
 			src/parsing/flood_algorithm.c\
 			src/parsing/valid_texture_rgb_checker.c\
 			src/parsing/find_player.c\
+			src/init_textures.c\
+			src/execution/key_actions.c\
 			src/error_functions.c\
 			src/clean_up.c
 
@@ -47,6 +49,10 @@ CC = cc
 CFLAGS = -Wall -Werror -Wextra -g
 # CFLAGS += -fsanitize=address
 
+MLXFLAGS = -ldl -lglfw -lm -lpthread
+MLX42_PATH = ./MLX42/build
+MLX42 = $(MLX42_PATH)/libmlx42.a
+
 RM = rm -f
 RD = rm -rf
 
@@ -61,8 +67,9 @@ libmlx:
 $(NAME): $(OBJ_FILES) $(HEADER)
 	@echo "SOURCE FILES COMPILED"
 	make -C $(LIBFT_PATH)
+	make -C $(MLX42_PATH)
 	@echo "CREATING CUB3D"
-	$(CC) $(OBJ_FILES) $(CFLAGS) $(FLAGSMLX) $(OFLAGS) -o $(NAME) $(LIBFT) $(MLXLIB)
+	$(CC) $(OBJ_FILES) $(CFLAGS) $(OFLAGS) -o $(NAME) $(LIBFT) $(MLX42) $(MLXFLAGS)
 	@echo "CUB3D CREATED"
 
 $(OBJ_PATH)/%.o:$(SRC_PATH)/%.c

@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/12/11 11:42:29 by sramos        #+#    #+#                 */
-/*   Updated: 2025/01/13 15:52:37 by sramos        ########   odam.nl         */
+/*   Updated: 2025/01/16 18:43:38 by rkaras        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,20 @@
 # include <stdio.h>
 # include <fcntl.h>
 # include <stdbool.h>
+# include <math.h>
 
 # define WIDTH 1920
 # define HEIGHT 1080
+# define TILE_SIZE 64
+# define PI 3.1415926535897932384626433
+
+//------------PLAYER MOVES-------------//
+# define LEFT -1
+# define RIGHT 1
+# define UP 1
+# define DOWN -1
+# define PLAYER_MOVE_SPEED 5
+# define PLAYER_TURN_SPEED 0.05
 
 typedef enum e_textures
 {
@@ -52,6 +63,17 @@ typedef struct s_mlx_textures
 	mlx_image_t *ea;
 }	t_mlx_textures;
 
+typedef struct s_player
+{
+	int			pos_x;
+	int			pos_y;
+	double		angle;
+	double		fov_rad;
+	double		rotation;
+	int			horizontal;
+	int			vertical;
+}	t_player;
+
 typedef struct s_data
 {
 	t_parse_utils	*parse_utils;
@@ -67,6 +89,8 @@ typedef struct s_data
 	char			*player_facing;
 	t_mlx_textures	*mlx_textures;
 	mlx_t			*mlx;
+	mlx_image_t		*img;
+	t_player		*player;
 }	t_data;
 
 typedef struct s_node

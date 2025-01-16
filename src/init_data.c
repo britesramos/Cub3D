@@ -12,6 +12,17 @@
 
 #include "../include/cub3d.h"
 
+void	init_player(t_data *input)
+{
+	input->player->pos_x = (input->player_sp_x * TILE_SIZE) + TILE_SIZE / 2;
+	input->player->pos_y = (input->player_sp_y * TILE_SIZE) + TILE_SIZE / 2;
+	input->player->fov_rad = (60 * PI) / 180; //formula for degrees to radians
+	input->player->angle = facing_angle(input->player_facing);
+	input->player->rotation = 0;
+	input->player->horizontal = 0;
+	input->player->vertical = 0;
+}
+
 static void	init_parse_utils(t_data *data)
 {
 	data->parse_utils = malloc(sizeof(t_parse_utils));

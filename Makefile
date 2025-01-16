@@ -6,13 +6,16 @@
 #    By: marvin <marvin@student.42.fr>                +#+                      #
 #                                                    +#+                       #
 #    Created: 2024/12/11 11:43:31 by sramos        #+#    #+#                  #
-#    Updated: 2025/01/07 13:37:28 by sramos        ########   odam.nl          #
+#    Updated: 2025/01/15 15:31:50 by rkaras        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3D
 
 SRC_PATH = src
+MLXLIB = MLX42/build/libmlx42.a
+LIBMLX = ./MLX42
+FLAGSMLX = -ldl -lglfw -pthread -lm
 
 SRC_FILES = src/main.c\
 			src/init_data.c\
@@ -50,13 +53,16 @@ RD = rm -rf
 info-%:
 	$(info $($*))
 
-all: $(NAME)
+all: libmlx $(NAME)
+
+libmlx:
+	@cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4
 
 $(NAME): $(OBJ_FILES) $(HEADER)
 	@echo "SOURCE FILES COMPILED"
 	make -C $(LIBFT_PATH)
 	@echo "CREATING CUB3D"
-	$(CC) $(OBJ_FILES) $(CFLAGS) $(OFLAGS) -o $(NAME) $(LIBFT)
+	$(CC) $(OBJ_FILES) $(CFLAGS) $(FLAGSMLX) $(OFLAGS) -o $(NAME) $(LIBFT) $(MLXLIB)
 	@echo "CUB3D CREATED"
 
 $(OBJ_PATH)/%.o:$(SRC_PATH)/%.c
@@ -65,12 +71,15 @@ $(OBJ_PATH)/%.o:$(SRC_PATH)/%.c
 
 clean:
 	@echo "REMOVING OBJECT FILES"
+	@$(MAKE) clean -C ./libft
 	$(RM) $(OBJ_FILES)
 	$(RD) $(OBJ_PATH)
+	$(RD) $(LIBMLX)/build
 	@echo "OBJECT FILES REMOVED"
 
 fclean: clean
 	@echo "REMOVING CUB3D"
+	@$(MAKE) fclean -C $ ./libft
 	$(RM) $(NAME)
 	@echo "CUB3D REMOVED"
 

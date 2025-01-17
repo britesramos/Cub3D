@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/12/11 11:42:29 by sramos        #+#    #+#                 */
-/*   Updated: 2025/01/17 11:10:09 by sramos        ########   odam.nl         */
+/*   Updated: 2025/01/17 14:23:31 by sramos        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ typedef struct s_mlx_textures
 typedef struct s_data
 {
 	t_parse_utils	*parse_utils;
-	char			**map;
+	char			**map; //replace player with 0
 	char			*no;
 	char			*so;
 	char			*we;
@@ -69,6 +69,7 @@ typedef struct s_data
 	char			*player_facing;
 	t_mlx_textures	*mlx_textures;
 	mlx_t			*mlx;
+	mlx_image_t		*img;
 }	t_data;
 
 typedef struct s_node
@@ -113,5 +114,6 @@ int		error_print_return(char *str, int error); //
 void	clean_up(t_data *data);
 void	free_char_pointer(char *str);
 void	free_char_pointer_pointer(char **str);
+void	delete_images(t_data *data);
 
 #endif

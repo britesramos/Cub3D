@@ -6,11 +6,11 @@
 /*   By: sramos <sramos@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/01/13 15:51:42 by sramos        #+#    #+#                 */
-/*   Updated: 2025/01/13 17:57:16 by sramos        ########   odam.nl         */
+/*   Updated: 2025/01/17 14:05:47 by sramos        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../../include/cub3d.h"
 
 static int	init_textures_util(t_data *data, int type)
 {
@@ -20,7 +20,12 @@ static int	init_textures_util(t_data *data, int type)
 	if (type == SO)
 	{
 		tex = mlx_load_png(data->so);
-		data->mlx_textures->so = mlx_texture_to_image(data->mlx, tex); //segfault /*mlx_texture->so needs to be initialized? */
+		if (!tex)
+		{
+			//TO DO
+			printf("There is no tex\n");
+		}
+		data->mlx_textures->so = mlx_texture_to_image(data->mlx, tex);
 		if (!data->mlx_textures->so)
 			return (0);
 	}
@@ -49,9 +54,23 @@ static int	init_textures_util(t_data *data, int type)
 	return (1);
 }
 
+// static void add_quotations(t_data *data)
+// {
+// 	char *res;
+
+// 	res = NULL;
+// 	res = ft_calloc(sizeof(char), 1 + 1);
+// 	if (!res)
+// 		error_print_exit(data, "Fail add_quotations - tex\n", -1);
+	
+	
+// 	ft_strlcat()
+// }
+
 /*There is a segfault here somewhere.*/
 void	init_textures(t_data *data)
 {
+	// add_quotations(data);
 	if (init_textures_util(data, SO) == 0)
 		error_print_exit(data, "Fail tex to img : SO\n", -1);
 	if (init_textures_util(data, NO) == 0)

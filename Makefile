@@ -6,7 +6,7 @@
 #    By: marvin <marvin@student.42.fr>                +#+                      #
 #                                                    +#+                       #
 #    Created: 2024/12/11 11:43:31 by sramos        #+#    #+#                  #
-#    Updated: 2025/01/17 11:25:24 by sramos        ########   odam.nl          #
+#    Updated: 2025/01/17 14:18:29 by sramos        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ SRC_FILES = src/main.c\
 			src/parsing/valid_texture_rgb_checker.c\
 			src/parsing/check_rgb.c\
 			src/parsing/find_player.c\
-			src/init_textures.c\
+			src/parsing/init_textures.c\
 			src/execution/key_actions.c\
 			src/error_functions.c\
 			src/clean_up.c

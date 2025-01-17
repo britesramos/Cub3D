@@ -26,12 +26,12 @@ static int	png_checker(char *str)
 	int	i;
 
 	i = 0;
-	while (str[i] != '.' && str[i])
+	while (str[i])
 		i++;
-	i++;
-	while (str[i] != '.' && str[i])
-		i++;
-	if (ft_strncmp(&str[i], ".png", 4) != 0)
+	i--;
+	while (is_space(str[i]))
+		i--;
+	if (ft_strncmp(&str[i - 3], ".png", 4) != 0)
 		return (error_print_return("Invalid texture extension\n", 0));
 	return (1);
 }

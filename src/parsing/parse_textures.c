@@ -64,12 +64,14 @@ static void	add_texture_cf(t_data *data, char *str, int type, char **file)
 {
 	if (type == C && data->parse_utils->c == false)
 	{
-		data->parse_utils->c_util = add_texture_u(data, data->parse_utils->c_util, str, file);
+		data->parse_utils->c_util = add_texture_u(data,
+				data->parse_utils->c_util, str, file);
 		data->parse_utils->c = true;
 	}
 	else if (type == F && data->parse_utils->f == false)
 	{
-		data->parse_utils->f_util = add_texture_u(data, data->parse_utils->f_util, str, file);
+		data->parse_utils->f_util = add_texture_u(data,
+				data->parse_utils->f_util, str, file);
 		data->parse_utils->f = true;
 	}
 }

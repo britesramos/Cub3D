@@ -12,107 +12,6 @@
 
 #include "../../include/cub3d.h"
 
-static int	valid_rgb(char *dig)
-{
-	int	value;
-	int	i;
-
-	value = 0;
-	i = 1;
-	while (dig[i])
-	{
-		if (dig[i] == '-')
-			return (error_print_return("RGB value misconfiguration\n", 0));
-		i++;
-	}
-	value = ft_atoi(dig);
-	if (value < 0 || value > 255)
-		return (error_print_return("RGB value misconfiguration\n", 0));
-	return (1);
-}
-
-// static int	digits_left(char *str)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	while (str[i])
-// 	{
-// 		if (ft_isdigit(str[i]))
-// 			return (1);
-// 		i++;
-// 	}
-// 	return (0);
-// }
-
-// static int	check_rgb_util(char *str, int j)
-// {
-// 	char	*dig;
-
-// 	dig = NULL;
-// 	dig = ft_calloc(sizeof(char), j + 1);
-// 	if (!dig)
-// 		return (error_print_return("Fail to alloc dig\n", 0));
-// 	ft_strlcpy(dig, str, j + 1);
-// 	if (!valid_rgb(dig))
-// 	{
-// 		free_char_pointer(dig);
-// 		return (0);
-// 	}
-// 	free_char_pointer(dig);
-// 	return (1);
-// }
-
-// static int	check_rgb(char **rgb_array)
-// {
-// 	int		i;
-// 	int		j;
-
-// 	i = 0;
-// 	j = 0;
-// 	while (rgb_array[i] && digits_left(&rgb_array[i]))
-// 	{
-// 		while (!ft_isdigit(rgb_array[i]) && rgb_array[i] != '-')
-// 			i++;
-// 		if (rgb_array[i] == '-')
-// 			j++;
-// 		while (ft_isdigit(rgb_array[i + j]) || rgb_array[i + j] == '-')
-// 			j++;
-// 		if (!check_rgb_util(&rgb_array[i], j))
-// 			return (0);
-// 		i = i + j;
-// 		j = 0;
-// 	}
-// 	return (1);
-// }
-
-static int	check_rgb(char **rgb_array)
-{
-	int		i;
-	int		j;
-
-	i = 0;
-	j = 0;
-	while (rgb_array[i])
-	{
-		while (rgb_array[i][j])
-		{
-			if (!ft_isdigit(rgb_array[i][j]))
-				return (0);
-			j++;
-		}
-		j = 0;
-		i++;
-	}
-	i = 0;
-	while (rgb_array[i])
-	{
-		if (!valid_rgb(rgb_array[i]))
-			return (0);
-		i++;
-	}
-	return (1);
-}
 static int	more_than_spaces_left(char *str)
 {
 	int	i;
@@ -139,16 +38,16 @@ static int	cpy_value_to_data(char **str, char **dst)
 	j = 0;
 	c = 0;
 	while (str[i])
-	{	
+	{
 		while (is_space(str[i][j]) || str[i][j] == '0')
 			j++;
 		while (str[i][j + c] && !is_space(str[i][j + c]))
 			c++;
-		if (!more_than_spaces_left(&str[i][j + c])) //TO DO
+		if (!more_than_spaces_left(&str[i][j + c]))
 			return (0);
 		dst[i] = ft_calloc(sizeof(char), c + 1);
-		// if (!dst[i])
-			// return (-1);
+		if (!dst[i])
+			return (0);
 		ft_strlcpy(dst[i], &str[i][j], c + 1);
 		c = 0;
 		j = 0;
@@ -157,53 +56,65 @@ static int	cpy_value_to_data(char **str, char **dst)
 	return (1);
 }
 
-static char **split_parse_utils(char *str)
+static int	parse_rgb(char *str, char **dst)
 {
 	int		i;
-	char	**ret;
+	char	**split;
 
 	i = 0;
-	ret = ft_split(str, ',');
-	while(ret[i])
+	split = ft_split(str, ',');
+	if (!split)
+		return (0);
+	while (split[i])
 		i++;
 	if (i != 3)
 	{
-		//free ret.
-		return (NULL);
+		free_char_pointer_pointer(split);
+		return (0);
 	}
-	return (ret);
+	if (!cpy_value_to_data(split, dst))
+	{
+		free_char_pointer_pointer(split);
+		return (0);
+	}
+	free_char_pointer_pointer(split);
+	return (1);
 }
 
-//coma at the end. and multiple commas at the end
-//coma at begging. No fucking comas.
+static int	commas_misconfiguration(char *str)
+{
+	int	i;
+	int	c_commas;
+
+	i = 0;
+	c_commas = 0;
+	while (is_space(str[i]))
+		i++;
+	if (str[i] == ',')
+		return (1);
+	while (str[i])
+	{
+		if (str[i] == ',' && str[i + 1] == ',')
+			return (1);
+		else if (str[i] == ',')
+			c_commas++;
+		i++;
+	}
+	if (c_commas != 2)
+		return (1);
+	return (0);
+}
+
 int	valid_texture_rgb_checker(t_data *data)
 {
-	char **split_c;
-	char **split_f;
-
-	//check if there are multiple consecutive ',' (comas with only spaces in between.)
-	split_c = split_parse_utils(data->parse_utils->c_util);
-	if (!split_c)
+	if (commas_misconfiguration(data->parse_utils->c_util))
 		return (0);
-	split_f = split_parse_utils(data->parse_utils->f_util);
-	if (!split_f)
+	if (commas_misconfiguration(data->parse_utils->f_util))
 		return (0);
-	if (!cpy_value_to_data(split_c, data->c_color))
-	{
-		//free split_c
+	if (!parse_rgb(data->parse_utils->c_util, data->c_color))
 		return (0);
-	}
-	// free split_c
-	if (!cpy_value_to_data(split_f, data->f_color))
-	{
-		//free split_f
+	if (!parse_rgb(data->parse_utils->f_util, data->f_color))
 		return (0);
-	}
-	//free split_f
-
-	
-	//check if values are only digits.
-	//check if values are between 0-255.
 	if (!check_rgb(data->c_color))
 		return (0);
 	if (!check_rgb(data->f_color))

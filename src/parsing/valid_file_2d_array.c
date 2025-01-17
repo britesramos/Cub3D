@@ -14,8 +14,9 @@
 
 static int	all_textures_found(t_data *data)
 {
-	if (data->c_color == NULL || data->f_color == NULL || data->ea == NULL
-		||data->no == NULL || data->so == NULL || data->we == NULL)
+	if (data->parse_utils->c_util == NULL || data->parse_utils->f_util == NULL
+		|| data->ea == NULL || data->no == NULL || data->so == NULL
+		|| data->we == NULL)
 		return (error_print_return("Not all textures found\n", 0));
 	return (1);
 }
@@ -52,9 +53,9 @@ int	valid_file_2d_array(char **file_2d_array, t_data *data)
 {
 	if (!parse_textures(file_2d_array, data))
 		return (0);
-	if (!valid_texture_rgb_checker(data)) //check
+	if (!all_textures_found(data))
 		return (0);
-	if (!all_textures_found(data)) //change to check on c and f values 2d array, instead of 1d array. // DO I NEED TO CHANGE THIS?
+	if (!valid_texture_rgb_checker(data))
 		return (0);
 	if (!valid_texture_extension_checker(data))
 		return (0);

@@ -6,7 +6,7 @@
 /*   By: sramos <sramos@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/01/13 15:43:26 by sramos        #+#    #+#                 */
-/*   Updated: 2025/01/13 15:49:02 by sramos        ########   odam.nl         */
+/*   Updated: 2025/01/17 11:05:47 by sramos        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 //Rotate left.
 //Move forward.
 //Move back.
-
 
 // EXAMPLE so_long:
 

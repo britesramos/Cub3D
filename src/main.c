@@ -6,12 +6,13 @@
 /*   By: marvin <marvin@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/12/11 11:42:06 by sramos        #+#    #+#                 */
-/*   Updated: 2025/01/16 18:48:39 by sramos        ########   odam.nl         */
+/*   Updated: 2025/01/17 11:24:12 by sramos        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
+//TEMP
 static void	print_data(t_data *data)
 {
 	if (data)
@@ -41,7 +42,6 @@ static void	print_data(t_data *data)
 			printf("Map[%i]: %s\n", i, data->map[i]);
 			i++;
 		}
-
 	}
 }
 

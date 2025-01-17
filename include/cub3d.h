@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/12/11 11:42:29 by sramos        #+#    #+#                 */
-/*   Updated: 2025/01/16 12:41:40 by sramos        ########   odam.nl         */
+/*   Updated: 2025/01/17 11:10:09 by sramos        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,8 @@ typedef struct s_data
 	char			*so;
 	char			*we;
 	char			*ea;
-	char			**f_color; //2d array
-	char			**c_color; //2d array
+	char			**f_color;
+	char			**c_color;
 	int				player_sp_x;
 	int				player_sp_y;
 	char			*player_facing;
@@ -86,6 +86,7 @@ void	valid_map_file(char *file, t_data *data);
 int		valid_file_2d_array(char **file_2d_array, t_data *data);
 int		new_line_middle_map(char *str);
 int		valid_texture_rgb_checker(t_data *data);
+int		check_rgb(char **rgb_array);
 //------------INPUT CHECKER UTILS-------//
 int		is_space(char c);
 

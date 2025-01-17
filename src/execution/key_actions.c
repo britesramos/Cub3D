@@ -6,7 +6,7 @@
 /*   By: sramos <sramos@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/01/13 15:43:26 by sramos        #+#    #+#                 */
-/*   Updated: 2025/01/17 11:05:47 by sramos        ########   odam.nl         */
+/*   Updated: 2025/01/17 12:32:04 by sramos        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,12 @@
 //If press ESC
 	//mlx_close_window(data->mlx);
 //USE ARROWS.
-//Rotate right.
-//Rotate left.
-//Move forward.
-//Move back.
+//Rotate right. (Arrow)
+//Rotate left. (Arrow)
+//Move right. (D)
+//Move left. (A)
+//Move forward. (W)
+//Move back. (S)
 
 // EXAMPLE so_long:
 

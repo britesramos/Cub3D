@@ -12,6 +12,14 @@
 
 #include "../include/cub3d.h"
 
+void	delete_images(t_data *data)
+{
+	mlx_delete_image(data->mlx, data->mlx_textures->ea);
+	mlx_delete_image(data->mlx , data->mlx_textures->no);
+	mlx_delete_image(data->mlx, data->mlx_textures->so);
+	mlx_delete_image(data->mlx, data->mlx_textures->we);
+}
+
 void	free_char_pointer(char *str)
 {
 	free(str);
@@ -53,6 +61,8 @@ void	clean_up(t_data *data)
 		free_char_pointer(data->player_facing);
 	if (data->parse_utils)
 		free(data->parse_utils);
+	if (data->mlx_textures)
+		free(data->mlx_textures);
 	if (data)
 		free(data);
 }

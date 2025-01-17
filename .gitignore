@@ -1,0 +1,12 @@
+# object files
+*.o
+
+# library
+*.a
+
+# program
+cub3D
+
+# any other
+.vscode/
+# readline.supp

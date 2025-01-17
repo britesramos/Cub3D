@@ -12,87 +12,109 @@
 
 #include "../../include/cub3d.h"
 
-static int	valid_rgb(char *dig)
-{
-	int	value;
-	int	i;
-
-	value = 0;
-	i = 1;
-	while (dig[i])
-	{
-		if (dig[i] == '-')
-			return (error_print_return("RGB value misconfiguration\n", 0));
-		i++;
-	}
-	value = ft_atoi(dig);
-	if (value < 0 || value > 255)
-		return (error_print_return("RGB value misconfiguration\n", 0));
-	return (1);
-}
-
-static int	digits_left(char *str)
+static int	more_than_spaces_left(char *str)
 {
 	int	i;
 
 	i = 0;
+	if (ft_strlen(str) == 0)
+		return (1);
 	while (str[i])
 	{
-		if (ft_isdigit(str[i]))
-			return (1);
+		if (!is_space(str[i]))
+			return (0);
 		i++;
 	}
-	return (0);
-}
-
-static int	check_rgb_util(char *str, int j)
-{
-	char	*dig;
-
-	dig = NULL;
-	dig = ft_calloc(sizeof(char), j + 1);
-	if (!dig)
-		return (error_print_return("Fail to alloc dig\n", 0));
-	ft_strlcpy(dig, str, j + 1);
-	if (!valid_rgb(dig))
-	{
-		free_char_pointer(dig);
-		return (0);
-	}
-	free_char_pointer(dig);
 	return (1);
 }
 
-static int	check_rgb(char *str)
+static int	cpy_value_to_data(char **str, char **dst)
 {
-	int		i;
-	int		j;
-	int		dig_c;
+	int	i;
+	int	j;
+	int	c;
 
 	i = 0;
 	j = 0;
-	dig_c = 0;
-	while (str[i] && digits_left(&str[i]))
+	c = 0;
+	while (str[i])
 	{
-		while (!ft_isdigit(str[i]) && str[i] != '-')
-			i++;
-		if (str[i] == '-')
+		while (is_space(str[i][j]) || str[i][j] == '0')
 			j++;
-		while (ft_isdigit(str[i + j]) || str[i + j] == '-')
-			j++;
-		if (!check_rgb_util(&str[i], j))
+		while (str[i][j + c] && !is_space(str[i][j + c]))
+			c++;
+		if (!more_than_spaces_left(&str[i][j + c]))
 			return (0);
-		i = i + j;
+		dst[i] = ft_calloc(sizeof(char), c + 1);
+		if (!dst[i])
+			return (0);
+		ft_strlcpy(dst[i], &str[i][j], c + 1);
+		c = 0;
 		j = 0;
-		dig_c++;
+		i++;
 	}
-	if (dig_c != 3)
-		return (error_print_return("RGB value misconfiguration\n", 0));
 	return (1);
+}
+
+static int	parse_rgb(char *str, char **dst)
+{
+	int		i;
+	char	**split;
+
+	i = 0;
+	split = ft_split(str, ',');
+	if (!split)
+		return (0);
+	while (split[i])
+		i++;
+	if (i != 3)
+	{
+		free_char_pointer_pointer(split);
+		return (0);
+	}
+	if (!cpy_value_to_data(split, dst))
+	{
+		free_char_pointer_pointer(split);
+		return (0);
+	}
+	free_char_pointer_pointer(split);
+	return (1);
+}
+
+static int	commas_misconfiguration(char *str)
+{
+	int	i;
+	int	c_commas;
+
+	i = 0;
+	c_commas = 0;
+	while (is_space(str[i]))
+		i++;
+	if (str[i] == ',')
+		return (1);
+	while (str[i])
+	{
+		if (str[i] == ',' && str[i + 1] == ',')
+			return (1);
+		else if (str[i] == ',')
+			c_commas++;
+		i++;
+	}
+	if (c_commas != 2)
+		return (1);
+	return (0);
 }
 
 int	valid_texture_rgb_checker(t_data *data)
 {
+	if (commas_misconfiguration(data->parse_utils->c_util))
+		return (0);
+	if (commas_misconfiguration(data->parse_utils->f_util))
+		return (0);
+	if (!parse_rgb(data->parse_utils->c_util, data->c_color))
+		return (0);
+	if (!parse_rgb(data->parse_utils->f_util, data->f_color))
+		return (0);
 	if (!check_rgb(data->c_color))
 		return (0);
 	if (!check_rgb(data->f_color))

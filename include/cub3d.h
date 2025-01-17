@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/12/11 11:42:29 by sramos        #+#    #+#                 */
-/*   Updated: 2025/01/16 18:43:38 by rkaras        ########   odam.nl         */
+/*   Updated: 2025/01/17 14:35:33 by rkaras        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,9 @@ t_node	*find_player_position(t_data *data, t_node *q, char **map_flood);
 
 //------------EXECUTION-------------------//
 void	init_textures(t_data *data);
+void	init_player(t_data *input);
+double	facing_angle(char *player_facing);
+
 
 
 //------------ERROR EXIT---------------//

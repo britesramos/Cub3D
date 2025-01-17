@@ -14,7 +14,7 @@
 
 void	init_player(t_data *input)
 {
-	input->player->pos_x = (input->player_sp_x * TILE_SIZE) + TILE_SIZE / 2;
+	input->player->pos_x = (input->player_sp_x * TILE_SIZE) + TILE_SIZE / 2; //divided by 2 so that the player is in the middle of a tile
 	input->player->pos_y = (input->player_sp_y * TILE_SIZE) + TILE_SIZE / 2;
 	input->player->fov_rad = (60 * PI) / 180; //formula for degrees to radians
 	input->player->angle = facing_angle(input->player_facing);
@@ -50,5 +50,8 @@ void	init_data(t_data *data)
 	data->player_facing = ft_calloc(sizeof(char), 1 + 1);
 	if (!data->player_facing)
 		error_print_exit(data, "Fail alloc player_facing\n", -2);
+	data->player = ft_calloc(1, sizeof(t_player));
+	if (!data->player)
+		error_print_exit(data, "Fail alloc player struct\n", -2);
 	init_parse_utils(data);
 }

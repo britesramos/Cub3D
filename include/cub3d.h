@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/12/11 11:42:29 by sramos        #+#    #+#                 */
-/*   Updated: 2025/01/17 14:10:26 by sramos        ########   odam.nl         */
+/*   Updated: 2025/01/17 14:37:51 by sramos        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,10 +101,12 @@ int		no_limit(t_data *data);
 char	**flood_algorithm(char **map_flood, t_node *q);
 t_node	*create_node(t_node *q, int x, int y);
 t_node	*find_player_position(t_data *data, t_node *q, char **map_flood);
-
-//------------EXECUTION-------------------//
 void	init_textures(t_data *data);
 
+//------------EXECUTION-------------------//
+
+//------------KEY_ACTIONS-------------------//
+void	key_actions(mlx_key_data_t keydata, void *param);
 
 //------------ERROR EXIT---------------//
 int		error_print_exit(t_data *data, char *str, int error);

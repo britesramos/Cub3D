@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/12/11 11:42:06 by sramos        #+#    #+#                 */
-/*   Updated: 2025/01/17 14:38:27 by sramos        ########   odam.nl         */
+/*   Updated: 2025/01/20 18:01:25 by sramos        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,10 @@ int	main(int argc, char *argv[])
 		data->img = mlx_new_image(data->mlx, WIDTH, HEIGHT);
 		if (!data->img)
 			return (error_print_exit(data, "Fail init new image MLX42\n", -2));
+		mini_map(data);
 		init_textures(data);
-		//start_game(map) //RENATA
-		mlx_key_hook(data->mlx, key_actions, &data);
+		// start_game(data); //RENATA
+		// mlx_key_hook(data->mlx, key_actions, &data);
 		mlx_loop(data->mlx);
 		delete_images(data);
 		mlx_terminate(data->mlx);

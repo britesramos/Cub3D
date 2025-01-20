@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/12/11 11:42:29 by sramos        #+#    #+#                 */
-/*   Updated: 2025/01/17 14:37:51 by sramos        ########   odam.nl         */
+/*   Updated: 2025/01/20 18:06:42 by sramos        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,10 @@ t_node	*find_player_position(t_data *data, t_node *q, char **map_flood);
 void	init_textures(t_data *data);
 
 //------------EXECUTION-------------------//
+
+
+//------------MINI_MAP-------------------//
+void	mini_map(t_data *data);
 
 //------------KEY_ACTIONS-------------------//
 void	key_actions(mlx_key_data_t keydata, void *param);

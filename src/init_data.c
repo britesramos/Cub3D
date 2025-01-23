@@ -47,6 +47,9 @@ void	init_data(t_data *data)
 		error_print_exit(data, "Fail alloc player_facing\n", -2);
 	data->mlx_textures = malloc(sizeof(t_mlx_textures));
 	if (!data->mlx_textures)
-		error_print_exit(data, "Fail alloc mlx_textures", -2);
+		error_print_exit(data, "Fail alloc mlx_textures\n", -2);
+	data->player = malloc(sizeof(t_player));
+	if (!data->player)
+		error_print_exit(data, "Fail alloc player\n", -2);
 	init_parse_utils(data);
 }

@@ -63,6 +63,8 @@ void	clean_up(t_data *data)
 		free(data->parse_utils);
 	if (data->mlx_textures)
 		free(data->mlx_textures);
+	if (data->player)
+		free(data->player);
 	if (data)
 		free(data);
 }

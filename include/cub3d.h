@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/12/11 11:42:29 by sramos        #+#    #+#                 */
-/*   Updated: 2025/01/20 18:06:42 by sramos        ########   odam.nl         */
+/*   Updated: 2025/01/23 18:41:27 by sramos        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <stdio.h>
 # include <fcntl.h>
 # include <stdbool.h>
+# include <math.h>
 
 # define WIDTH 1920
 # define HEIGHT 1080
@@ -54,6 +55,13 @@ typedef struct s_mlx_textures
 	mlx_image_t *ea;
 }	t_mlx_textures;
 
+typedef struct s_player
+{
+	int		player_x;
+	int		player_y;
+}	t_player;
+
+
 typedef struct s_data
 {
 	t_parse_utils	*parse_utils;
@@ -67,6 +75,7 @@ typedef struct s_data
 	int				player_sp_x;
 	int				player_sp_y;
 	char			*player_facing;
+	t_player		*player;
 	t_mlx_textures	*mlx_textures;
 	mlx_t			*mlx;
 	mlx_image_t		*img;

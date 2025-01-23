@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/12/11 11:42:29 by sramos        #+#    #+#                 */
-/*   Updated: 2025/01/17 17:42:54 by rkaras        ########   odam.nl         */
+/*   Updated: 2025/01/23 16:44:55 by rkaras        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 # define UP 1
 # define DOWN -1
 # define PLAYER_MOVE_SPEED 5
-# define PLAYER_TURN_SPEED 0.05
+# define PLAYER_ROTATION_SPEED 0.05
 
 typedef enum e_textures
 {
@@ -141,7 +141,8 @@ t_node	*find_player_position(t_data *data, t_node *q, char **map_flood);
 void	init_textures(t_data *data);
 void	init_player(t_data *input);
 double	facing_angle(char *player_facing);
-
+void	key_actions(mlx_key_data_t keydata, void *data);
+void	release_key(mlx_key_data_t keydata, t_data *data);
 
 
 //------------ERROR EXIT---------------//

@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/12/11 11:42:29 by sramos        #+#    #+#                 */
-/*   Updated: 2025/01/17 15:08:13 by rkaras        ########   odam.nl         */
+/*   Updated: 2025/01/17 17:42:54 by rkaras        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,17 @@ typedef struct s_player
 	int			vertical;
 }	t_player;
 
+typedef struct s_ray
+{
+	double		ray_angle;
+	double		wall_distance;
+	int			flag;
+	double		horiz_x;
+	double		horiz_y;
+	double		vert_x;
+	double		vert_y;
+}	t_ray;
+
 typedef struct s_data
 {
 	t_parse_utils	*parse_utils;
@@ -93,6 +104,7 @@ typedef struct s_data
 	mlx_t			*mlx;
 	mlx_image_t		*img;
 	t_player		*player;
+	t_ray			*ray;
 }	t_data;
 
 typedef struct s_node

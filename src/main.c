@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/12/11 11:42:06 by sramos        #+#    #+#                 */
-/*   Updated: 2025/01/17 15:06:41 by rkaras        ########   odam.nl         */
+/*   Updated: 2025/01/17 17:51:16 by rkaras        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,17 @@
 //     printf("  Vertical Movement: %d\n", player->vertical);
 // }
 
+void	game_loop(void *data)
+{
+	
+	t_data	*input;
+	
+	input = data;
+	
+	// player_hook/directions
+	// raycasting
+}
+
 int start_game(t_data *input)
 {
 	input->mlx = mlx_init(WIDTH, HEIGHT, "cub3d", true);
@@ -89,6 +100,12 @@ int start_game(t_data *input)
 		return (error_print_exit(input, "Failed to init imge to window\n", -2));
 	init_player(input);
 	// print_player(input->player);
+	mlx_image_to_window(input->mlx, input->img, 0, 0);
+	mlx_loop_hook(input->mlx, &game_loop, input);
+	
+	// mlx_key_hook(controls);
+	// mlx_loop(input->mlx);
+	// exit the game
 	return (0);
 }
 

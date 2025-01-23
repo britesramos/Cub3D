@@ -6,7 +6,7 @@
 /*   By: sramos <sramos@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/01/20 18:01:50 by sramos        #+#    #+#                 */
-/*   Updated: 2025/01/23 19:19:21 by sramos        ########   odam.nl         */
+/*   Updated: 2025/01/23 19:34:53 by sramos        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static uint32_t	ft_my_pixel(uint32_t r, uint32_t g, uint32_t b, uint32_t a)
 	return (r << 24 | g << 16 | b << 8 | a);
 }
 
-static void	init_map(t_data *data)
+static void	draw_map(t_data *data)
 {
 	int				i;
 	int				j;
@@ -59,7 +59,7 @@ static void	init_map(t_data *data)
 	}
 }
 
-static void	init_player(t_data *data)
+static void	draw_player(t_data *data)
 {
 	int				i;
 	int				j;
@@ -72,7 +72,7 @@ static void	init_player(t_data *data)
 	{
 		while (j < PLAYER_TILE_SIZE)
 		{
-			mlx_put_pixel(data->img, (data->player_sp_x * MM_TILE_SIZE) - (PLAYER_TILE_SIZE / 2) + j, (data->player_sp_y * MM_TILE_SIZE) - (PLAYER_TILE_SIZE / 2) + i, colour[0]);
+			mlx_put_pixel(data->img, (data->player->pos_x * MM_TILE_SIZE) - (PLAYER_TILE_SIZE / 2) + j, (data->player->pos_y * MM_TILE_SIZE) - (PLAYER_TILE_SIZE / 2) + i, colour[0]);
 			j++;
 		}
 		j = 0;
@@ -82,6 +82,6 @@ static void	init_player(t_data *data)
 
 void	mini_map(t_data *data)
 {
-	init_map(data);
-	init_player(data);
+	draw_map(data);
+	draw_player(data);
 }

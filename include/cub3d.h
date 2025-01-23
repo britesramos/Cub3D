@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/12/11 11:42:29 by sramos        #+#    #+#                 */
-/*   Updated: 2025/01/23 19:25:46 by sramos        ########   odam.nl         */
+/*   Updated: 2025/01/23 19:30:21 by sramos        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,6 @@ typedef struct s_data
 	int				player_sp_x;
 	int				player_sp_y;
 	char			*player_facing;
-	t_player		*player;
 	t_mlx_textures	*mlx_textures;
 	mlx_t			*mlx;
 	mlx_image_t		*img;

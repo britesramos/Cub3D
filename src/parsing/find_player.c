@@ -6,7 +6,7 @@
 /*   By: sramos <sramos@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/01/07 10:44:18 by sramos        #+#    #+#                 */
-/*   Updated: 2025/01/23 19:12:06 by sramos        ########   odam.nl         */
+/*   Updated: 2025/01/23 19:34:03 by sramos        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,8 @@ static void	get_player_data(t_data *data, char **map_flood, int i, int j)
 	ft_strlcpy(data->player_facing, &map_flood[i][j], 2);
 	data->player_sp_x = j;
 	data->player_sp_y = i;
-	printf("HERE!\n");
-	data->player->player_x = j;
-	data->player->player_y = i;
+	data->player->pos_x = j;
+	data->player->pos_y = i;
 	data->map[i][j] = '0';
 }
 

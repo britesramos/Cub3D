@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/12/11 11:42:06 by sramos        #+#    #+#                 */
-/*   Updated: 2025/01/23 19:29:26 by sramos        ########   odam.nl         */
+/*   Updated: 2025/01/23 19:32:36 by sramos        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,8 @@ void	game_loop(void *data)
 	mlx_delete_image(input->mlx, input->img);
 	input->img = mlx_new_image(input->mlx, WIDTH, HEIGHT);
 	if (!input->img)
-		return (error_print_exit(input, "Failed to create new image\n", -2));
-	hook_player_directions(input, 0, 0);
+		error_print_exit(input, "Failed to create new image\n", -2);
+	// hook_player_directions(input, 0, 0);
 	
 	
 	// player_hook/directions
@@ -125,7 +125,7 @@ int	main(int argc, char *argv[])
 			return (error_print_exit(NULL, "Error\nFail to malloc data.\n", 1));
 		init_data(data);
 		valid_map_file(argv[1], data);
-		print_data(data); //TEMP - DELETE THIS!
+		// print_data(data); //TEMP - DELETE THIS!
 		data->mlx = mlx_init(WIDTH, HEIGHT, "cub3D", false);
 		if (!data->mlx)
 			return (error_print_exit(data, "Fail to init window!\n", -2));

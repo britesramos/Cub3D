@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/12/11 11:42:29 by sramos        #+#    #+#                 */
-/*   Updated: 2025/01/23 16:44:55 by rkaras        ########   odam.nl         */
+/*   Updated: 2025/01/23 19:30:21 by sramos        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,6 +144,12 @@ double	facing_angle(char *player_facing);
 void	key_actions(mlx_key_data_t keydata, void *data);
 void	release_key(mlx_key_data_t keydata, t_data *data);
 
+//------------MINI_MAP-------------------//
+void	mini_map(t_data *data);
+
+
+//------------KEY_ACTIONS-------------------//
+void	key_actions(mlx_key_data_t keydata, void *param);
 
 //------------ERROR EXIT---------------//
 int		error_print_exit(t_data *data, char *str, int error);

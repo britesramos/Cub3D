@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/12/11 11:42:06 by sramos        #+#    #+#                 */
-/*   Updated: 2025/01/23 16:39:58 by rkaras        ########   odam.nl         */
+/*   Updated: 2025/01/23 19:32:36 by sramos        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,8 @@ void	game_loop(void *data)
 	mlx_delete_image(input->mlx, input->img);
 	input->img = mlx_new_image(input->mlx, WIDTH, HEIGHT);
 	if (!input->img)
-		return (error_print_exit(input, "Failed to create new image\n", -2));
-	hook_player_directions(input, 0, 0);
+		error_print_exit(input, "Failed to create new image\n", -2);
+	// hook_player_directions(input, 0, 0);
 	
 	
 	// player_hook/directions
@@ -98,6 +98,7 @@ void	game_loop(void *data)
 
 int start_game(t_data *input)
 {
+	mini_map(input);
 	input->mlx = mlx_init(WIDTH, HEIGHT, "cub3d", true);
 	if (!input->mlx)
 		return (error_print_exit(input, "Failed to init window\n", -2));
@@ -123,12 +124,16 @@ int	main(int argc, char *argv[])
 		if (!data)
 			return (error_print_exit(NULL, "Error\nFail to malloc data.\n", 1));
 		init_data(data);
-		valid_map_file(argv[1], data); //It is validating C and F withouth ','.
-		// maybe move all of this below to start_game? 
-		// init_textures(data);
-		// print_t_data(data);
+		valid_map_file(argv[1], data);
+		// print_data(data); //TEMP - DELETE THIS!
+		data->mlx = mlx_init(WIDTH, HEIGHT, "cub3D", false);
+		if (!data->mlx)
+			return (error_print_exit(data, "Fail to init window!\n", -2));
+		data->img = mlx_new_image(data->mlx, WIDTH, HEIGHT);
+		if (!data->img)
+			return (error_print_exit(data, "Fail init new image MLX42\n", -2));
+		init_textures(data);
 		start_game(data);
-		// mlx_key_hook(data->mlx, key_actions, &data); //TO DO - write key_actions.
 		mlx_loop(data->mlx);
 		delete_images(data);
 		mlx_terminate(data->mlx);

@@ -6,7 +6,7 @@
 /*   By: rkaras <rkaras@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/01/16 18:47:44 by rkaras        #+#    #+#                 */
-/*   Updated: 2025/01/23 17:37:24 by rkaras        ########   odam.nl         */
+/*   Updated: 2025/01/23 19:35:16 by sramos        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,76 +15,76 @@
 // convention (2d Cartesian angle system) is that the east position is 0 because it aligns with the x axis, and then we increase
 // by 90 in clockwise direction
 
-double	facing_angle(char *player_facing)
-{
-	double	angle;
+// double	facing_angle(char *player_facing)
+// {
+// 	double	angle;
 	
-	if (strcmp(player_facing, "N") == 0)
-		angle = 3 * PI / 2; // 270
-	else if (strcmp(player_facing, "S") == 0)
-		angle = PI / 2; // 90
-	else if (strcmp(player_facing, "E") == 0)
-		angle = 0;
-	else
-		angle = PI; //180
-	return (angle);
-}
+// 	if (strcmp(player_facing, "N") == 0)
+// 		angle = 3 * PI / 2; // 270
+// 	else if (strcmp(player_facing, "S") == 0)
+// 		angle = PI / 2; // 90
+// 	else if (strcmp(player_facing, "E") == 0)
+// 		angle = 0;
+// 	else
+// 		angle = PI; //180
+// 	return (angle);
+// }
 
-void	rotate_player(t_data *data, int i)
-{
-	if (i == RIGHT)
-	{
-		data->player->angle += PLAYER_ROTATION_SPEED;
-		if (data->player->angle > 2 * PI) // 2 * PI is a full circle in radians
-			data->player->angle -= 2 * PI;
-	}
-	else if (i == LEFT)
-	{
-		data->player->angle -= PLAYER_ROTATION_SPEED;
-		if (data->player->angle < 0)
-			data->player->angle += 2 * PI;
-	}
-}
+// void	rotate_player(t_data *data, int i)
+// {
+// 	if (i == RIGHT)
+// 	{
+// 		data->player->angle += PLAYER_ROTATION_SPEED;
+// 		if (data->player->angle > 2 * PI) // 2 * PI is a full circle in radians
+// 			data->player->angle -= 2 * PI;
+// 	}
+// 	else if (i == LEFT)
+// 	{
+// 		data->player->angle -= PLAYER_ROTATION_SPEED;
+// 		if (data->player->angle < 0)
+// 			data->player->angle += 2 * PI;
+// 	}
+// }
 
-void	move_player(t_data *data, double move_x, double move_y)
-{
-	int	new_x;
-	int	new_y;
-	int	map_x;
-	int	map_y;
+// void	move_player(t_data *data, double move_x, double move_y)
+// {
+// 	int	new_x;
+// 	int	new_y;
+// 	int	map_x;
+// 	int	map_y;
 	
-	new_x = roundf(data->player->pos_x + move_x);
-	new_y = roundf(data->player->pos_y + move_y);
-	map_x = new_x / TILE_SIZE;
-	map_y = new_y / TILE_SIZE;
-	// check the walls and if there are no walls move the player to new_x and new_y
-}
+// 	new_x = roundf(data->player->pos_x + move_x);
+// 	new_y = roundf(data->player->pos_y + move_y);
+// 	map_x = new_x / TILE_SIZE;
+// 	map_y = new_y / TILE_SIZE;
+// 	// check the walls and if there are no walls move the player to new_x and new_y
+// }
 
-void	hook_player_directions(t_data *data, double move_x, double move_y)
-{
-	if (data->player->rotation == RIGHT) //rotate right
-		rotate_player(data, RIGHT);
-	if (data->player->rotation == -1) //rotate left
-		rotate_player(data, LEFT);
-	if (data->player->horizontal = RIGHT)
-	{
-		move_x = -sin(data->player->angle) * PLAYER_MOVE_SPEED;
-		move_y = cos(data->player->angle) * PLAYER_MOVE_SPEED;
-	}
-	if (data->player->horizontal = LEFT)
-	{
-		move_x = sin(data->player->angle) * PLAYER_MOVE_SPEED;
-		move_y = -cos(data->player->angle) * PLAYER_MOVE_SPEED;
-	}
-	if (data->player->horizontal = UP)
-	{
-		move_x = cos(data->player->angle) * PLAYER_MOVE_SPEED;
-		move_y = sin(data->player->angle) * PLAYER_MOVE_SPEED;
-	}
-	if (data->player->horizontal = DOWN)
-	{
-		move_x = -cos(data->player->angle) * PLAYER_MOVE_SPEED;
-		move_y = -sin(data->player->angle) * PLAYER_MOVE_SPEED;
-	}
-	move_player(data, move_x, move_y);
-}
+// void	hook_player_directions(t_data *data, double move_x, double move_y)
+// {
+// 	if (data->player->rotation == RIGHT) //rotate right
+// 		rotate_player(data, RIGHT);
+// 	if (data->player->rotation == -1) //rotate left
+// 		rotate_player(data, LEFT);
+// 	if (data->player->horizontal = RIGHT)
+// 	{
+// 		move_x = -sin(data->player->angle) * PLAYER_MOVE_SPEED;
+// 		move_y = cos(data->player->angle) * PLAYER_MOVE_SPEED;
+// 	}
+// 	if (data->player->horizontal = LEFT)
+// 	{
+// 		move_x = sin(data->player->angle) * PLAYER_MOVE_SPEED;
+// 		move_y = -cos(data->player->angle) * PLAYER_MOVE_SPEED;
+// 	}
+// 	if (data->player->horizontal = UP)
+// 	{
+// 		move_x = cos(data->player->angle) * PLAYER_MOVE_SPEED;
+// 		move_y = sin(data->player->angle) * PLAYER_MOVE_SPEED;
+// 	}
+// 	if (data->player->horizontal = DOWN)
+// 	{
+// 		move_x = -cos(data->player->angle) * PLAYER_MOVE_SPEED;
+// 		move_y = -sin(data->player->angle) * PLAYER_MOVE_SPEED;
+// 	}
+// 	move_player(data, move_x, move_y);
+// }

@@ -6,7 +6,7 @@
 /*   By: sramos <sramos@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/01/13 15:43:26 by sramos        #+#    #+#                 */
-/*   Updated: 2025/01/24 13:04:07 by rkaras        ########   odam.nl         */
+/*   Updated: 2025/01/24 18:46:31 by sramos        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,11 @@ void	key_actions(mlx_key_data_t keydata, void *data)
 	t_data	*input;
 	
 	input = data;
-	// if (keydata.key == MLX_KEY_ESCAPE && (keydata.action == MLX_PRESS || keydata.action == MLX_REPEAT))
-	// 	//ft_exit(input);
+	if (keydata.key == MLX_KEY_ESCAPE && (keydata.action == MLX_PRESS || keydata.action == MLX_REPEAT)) //Segfault here somewhere.
+	{
+		error_print_exit(input, "Good bye!", 1);
+		mlx_close_window(input->mlx);
+	}
 	if (keydata.key == MLX_KEY_A && keydata.action == MLX_PRESS)
 		input->player->horizontal = LEFT;
 	else if (keydata.key == MLX_KEY_D && keydata.action == MLX_PRESS)

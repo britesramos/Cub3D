@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/12/11 11:42:29 by sramos        #+#    #+#                 */
-/*   Updated: 2025/01/23 19:30:21 by sramos        ########   odam.nl         */
+/*   Updated: 2025/01/24 14:26:52 by rkaras        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,15 +141,18 @@ t_node	*find_player_position(t_data *data, t_node *q, char **map_flood);
 void	init_textures(t_data *data);
 void	init_player(t_data *input);
 double	facing_angle(char *player_facing);
-void	key_actions(mlx_key_data_t keydata, void *data);
 void	release_key(mlx_key_data_t keydata, t_data *data);
+void	rotate_player(t_data *data, int i);
+void	move_player(t_data *data, double move_x, double move_y);
+void	hook_player_directions(t_data *data, double move_x, double move_y);
+
 
 //------------MINI_MAP-------------------//
 void	mini_map(t_data *data);
 
 
 //------------KEY_ACTIONS-------------------//
-void	key_actions(mlx_key_data_t keydata, void *param);
+void	key_actions(mlx_key_data_t keydata, void *data);
 
 //------------ERROR EXIT---------------//
 int		error_print_exit(t_data *data, char *str, int error);

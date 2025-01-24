@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/12/11 11:42:06 by sramos        #+#    #+#                 */
-/*   Updated: 2025/01/23 19:32:36 by sramos        ########   odam.nl         */
+/*   Updated: 2025/01/24 16:16:59 by rkaras        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,34 +81,31 @@
 
 void	game_loop(void *data)
 {
-	
 	t_data	*input;
-	
+
 	input = data;
-	mlx_delete_image(input->mlx, input->img);
+	// mlx_delete_image(input->mlx, input->img);
 	input->img = mlx_new_image(input->mlx, WIDTH, HEIGHT);
 	if (!input->img)
 		error_print_exit(input, "Failed to create new image\n", -2);
-	// hook_player_directions(input, 0, 0);
+	hook_player_directions(input, 0, 0);
+	// raycasting(input);
 	
-	
-	// player_hook/directions
-	// raycasting
 }
 
 int start_game(t_data *input)
 {
+	printf("in start game\n");
 	mini_map(input);
-	input->mlx = mlx_init(WIDTH, HEIGHT, "cub3d", true);
+	input->mlx = mlx_init(WIDTH, HEIGHT, "cub3d", false);
 	if (!input->mlx)
 		return (error_print_exit(input, "Failed to init window\n", -2));
 	init_player(input);
+	mlx_image_to_window(input->mlx, input->img, 0, 0);
 	// print_player(input->player);
 	mlx_key_hook(input->mlx, &key_actions, &input); //done
 	mlx_loop_hook(input->mlx, &game_loop, &input);
-	mlx_image_to_window(input->mlx, input->img, 0, 0);
-	
-	// mlx_loop(input->mlx);
+	mlx_loop(input->mlx);
 	// exit the game
 	return (0);
 }
@@ -126,15 +123,15 @@ int	main(int argc, char *argv[])
 		init_data(data);
 		valid_map_file(argv[1], data);
 		// print_data(data); //TEMP - DELETE THIS!
-		data->mlx = mlx_init(WIDTH, HEIGHT, "cub3D", false);
-		if (!data->mlx)
-			return (error_print_exit(data, "Fail to init window!\n", -2));
-		data->img = mlx_new_image(data->mlx, WIDTH, HEIGHT);
-		if (!data->img)
-			return (error_print_exit(data, "Fail init new image MLX42\n", -2));
-		init_textures(data);
+		// data->mlx = mlx_init(WIDTH, HEIGHT, "cub3D", false);
+		// if (!data->mlx)
+		// 	return (error_print_exit(data, "Fail to init window!\n", -2));
+		// data->img = mlx_new_image(data->mlx, WIDTH, HEIGHT);
+		// if (!data->img)
+		// 	return (error_print_exit(data, "Fail init new image MLX42\n", -2));
+		// init_textures(data);
 		start_game(data);
-		mlx_loop(data->mlx);
+		// mlx_loop(data->mlx);
 		delete_images(data);
 		mlx_terminate(data->mlx);
 		clean_up(data);

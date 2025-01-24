@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/12/11 11:42:29 by sramos        #+#    #+#                 */
-/*   Updated: 2025/01/23 19:30:21 by sramos        ########   odam.nl         */
+/*   Updated: 2025/01/24 16:37:14 by sramos        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ typedef struct s_ray
 typedef struct s_data
 {
 	t_parse_utils	*parse_utils;
-	char			**map; //replace player with 0
+	char			**map;
 	char			*no;
 	char			*so;
 	char			*we;

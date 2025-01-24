@@ -6,7 +6,7 @@
 /*   By: sramos <sramos@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/01/13 15:51:42 by sramos        #+#    #+#                 */
-/*   Updated: 2025/01/17 14:05:47 by sramos        ########   odam.nl         */
+/*   Updated: 2025/01/24 16:38:55 by sramos        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ static int	init_textures_util(t_data *data, int type)
 	mlx_texture_t	*tex;
 
 	tex = NULL;
+
 	if (type == SO)
 	{
 		tex = mlx_load_png(data->so);
@@ -25,7 +26,10 @@ static int	init_textures_util(t_data *data, int type)
 			//TO DO
 			printf("There is no tex\n");
 		}
+		if (data->mlx_textures->so == NULL)
+			printf("IT IS NULL!\n");
 		data->mlx_textures->so = mlx_texture_to_image(data->mlx, tex);
+		printf("HELLO!\n");
 		if (!data->mlx_textures->so)
 			return (0);
 	}
@@ -70,7 +74,6 @@ static int	init_textures_util(t_data *data, int type)
 /*There is a segfault here somewhere.*/
 void	init_textures(t_data *data)
 {
-	// add_quotations(data);
 	if (init_textures_util(data, SO) == 0)
 		error_print_exit(data, "Fail tex to img : SO\n", -1);
 	if (init_textures_util(data, NO) == 0)

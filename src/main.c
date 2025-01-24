@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/12/11 11:42:06 by sramos        #+#    #+#                 */
-/*   Updated: 2025/01/23 19:32:36 by sramos        ########   odam.nl         */
+/*   Updated: 2025/01/24 16:45:08 by sramos        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,17 +98,19 @@ void	game_loop(void *data)
 
 int start_game(t_data *input)
 {
-	mini_map(input);
-	input->mlx = mlx_init(WIDTH, HEIGHT, "cub3d", true);
+	input->mlx = mlx_init(WIDTH, HEIGHT, "cub3d", false);
 	if (!input->mlx)
 		return (error_print_exit(input, "Failed to init window\n", -2));
+	input->img = mlx_new_image(input->mlx, WIDTH, HEIGHT);
+	if (!input->img)
+		return (error_print_exit(input, "Fail init new image MLX42\n", -2));
+	mlx_image_to_window(input->mlx, input->img, 0, 0);
+	mini_map(input);
 	init_player(input);
 	// print_player(input->player);
 	mlx_key_hook(input->mlx, &key_actions, &input); //done
-	mlx_loop_hook(input->mlx, &game_loop, &input);
-	mlx_image_to_window(input->mlx, input->img, 0, 0);
-	
-	// mlx_loop(input->mlx);
+	// mlx_loop_hook(input->mlx, &game_loop, &input); //This is causing the segfault//
+	mlx_loop(input->mlx);
 	// exit the game
 	return (0);
 }
@@ -126,15 +128,8 @@ int	main(int argc, char *argv[])
 		init_data(data);
 		valid_map_file(argv[1], data);
 		// print_data(data); //TEMP - DELETE THIS!
-		data->mlx = mlx_init(WIDTH, HEIGHT, "cub3D", false);
-		if (!data->mlx)
-			return (error_print_exit(data, "Fail to init window!\n", -2));
-		data->img = mlx_new_image(data->mlx, WIDTH, HEIGHT);
-		if (!data->img)
-			return (error_print_exit(data, "Fail init new image MLX42\n", -2));
-		init_textures(data);
+		// init_textures(data); //*There is a segfault in here as well*//
 		start_game(data);
-		mlx_loop(data->mlx);
 		delete_images(data);
 		mlx_terminate(data->mlx);
 		clean_up(data);

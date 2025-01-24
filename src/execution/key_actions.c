@@ -6,7 +6,7 @@
 /*   By: sramos <sramos@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/01/13 15:43:26 by sramos        #+#    #+#                 */
-/*   Updated: 2025/01/24 18:46:31 by sramos        ########   odam.nl         */
+/*   Updated: 2025/01/24 18:49:44 by sramos        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	key_actions(mlx_key_data_t keydata, void *data)
 		error_print_exit(input, "Good bye!", 1);
 		mlx_close_window(input->mlx);
 	}
-	if (keydata.key == MLX_KEY_A && keydata.action == MLX_PRESS)
+	else if (keydata.key == MLX_KEY_A && keydata.action == MLX_PRESS)
 		input->player->horizontal = LEFT;
 	else if (keydata.key == MLX_KEY_D && keydata.action == MLX_PRESS)
 		input->player->horizontal = RIGHT;

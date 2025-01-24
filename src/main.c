@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/12/11 11:42:06 by sramos        #+#    #+#                 */
-/*   Updated: 2025/01/24 18:44:42 by sramos        ########   odam.nl         */
+/*   Updated: 2025/01/24 18:50:15 by sramos        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,7 @@ int	main(int argc, char *argv[])
 		init_data(data);
 		valid_map_file(argv[1], data);
 		print_data(data); //TEMP - DELETE THIS!
-		// init_textures(data); //*There is a segfault in here as well*//
+		init_textures(data); //*There is a segfault in here as well*//
 		start_game(data);
 		delete_images(data);
 		mlx_terminate(data->mlx);

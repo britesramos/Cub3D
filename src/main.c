@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/12/11 11:42:06 by sramos        #+#    #+#                 */
-/*   Updated: 2025/01/24 16:54:41 by rkaras        ########   odam.nl         */
+/*   Updated: 2025/01/27 15:46:16 by rkaras        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,12 +84,9 @@ void	game_loop(void *data)
 	t_data	*input;
 
 	input = data;
-	// mlx_delete_image(input->mlx, input->img);
-	input->img = mlx_new_image(input->mlx, WIDTH, HEIGHT);
-	if (!input->img)
-		error_print_exit(input, "Failed to create new image\n", -2);
-	hook_player_directions(input, 0, 0);
-	// raycasting(input);
+	
+	hook_player_directions(data, 0, 0);
+	raycasting(input);
 	
 }
 
@@ -105,9 +102,8 @@ int start_game(t_data *input)
 	mini_map(input);
 	init_player(input);
 	mlx_image_to_window(input->mlx, input->img, 0, 0);
-	// print_player(input->player);
-	mlx_key_hook(input->mlx, &key_actions, &input); //done
-	// mlx_loop_hook(input->mlx, &game_loop, &input); //This is causing the segfault//
+	mlx_key_hook(input->mlx, &key_actions, input); //done
+	mlx_loop_hook(input->mlx, &game_loop, input); //This is causing the segfault//
 	mlx_loop(input->mlx);
 	// exit the game
 	return (0);

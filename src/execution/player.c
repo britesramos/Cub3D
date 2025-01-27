@@ -6,27 +6,24 @@
 /*   By: rkaras <rkaras@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/01/16 18:47:44 by rkaras        #+#    #+#                 */
-/*   Updated: 2025/01/24 16:58:27 by rkaras        ########   odam.nl         */
+/*   Updated: 2025/01/27 14:31:10 by rkaras        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
-
-// convention (2d Cartesian angle system) is that the east position is 0 because it aligns with the x axis, and then we increase
-// by 90 in counter-clockwise direction
 
 double	facing_angle(char *player_facing)
 {
 	double	angle;
 
 	if (strcmp(player_facing, "N") == 0)
-		angle = PI / 2; // 90
+		angle = (3 * PI) / 2;
 	else if (strcmp(player_facing, "S") == 0)
-		angle = (3 * PI) / 2; // 270
+		angle = PI / 2;
 	else if (strcmp(player_facing, "E") == 0)
-		angle = PI; // 180
-	else
 		angle = 0;
+	else
+		angle = PI;
 	return (angle);
 }
 
@@ -66,11 +63,12 @@ void	move_player(t_data *data, double move_x, double move_y)
 	}
 }
 
+
 void	hook_player_directions(t_data *data, double move_x, double move_y)
 {
 	if (data->player->rotation == RIGHT) //rotate right
 		rotate_player(data, RIGHT);
-	if (data->player->rotation == -1) //rotate left
+	if (data->player->rotation == LEFT) //rotate left
 		rotate_player(data, LEFT);
 	if (data->player->horizontal == RIGHT)
 	{
@@ -82,12 +80,12 @@ void	hook_player_directions(t_data *data, double move_x, double move_y)
 		move_x = sin(data->player->angle) * PLAYER_MOVE_SPEED;
 		move_y = -cos(data->player->angle) * PLAYER_MOVE_SPEED;
 	}
-	if (data->player->horizontal == UP)
+	if (data->player->vertical == UP)
 	{
 		move_x = cos(data->player->angle) * PLAYER_MOVE_SPEED;
 		move_y = sin(data->player->angle) * PLAYER_MOVE_SPEED;
 	}
-	if (data->player->horizontal == DOWN)
+	if (data->player->vertical == DOWN)
 	{
 		move_x = -cos(data->player->angle) * PLAYER_MOVE_SPEED;
 		move_y = -sin(data->player->angle) * PLAYER_MOVE_SPEED;

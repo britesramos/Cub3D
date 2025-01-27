@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/12/11 11:42:29 by sramos        #+#    #+#                 */
-/*   Updated: 2025/01/24 16:56:40 by rkaras        ########   odam.nl         */
+/*   Updated: 2025/01/27 14:16:11 by rkaras        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@
 # define DOWN -1
 # define PLAYER_MOVE_SPEED 5
 # define PLAYER_ROTATION_SPEED 0.05
+# define VERTICAL 0
+# define HORIZONTAL 1
 
 typedef enum e_textures
 {
@@ -80,7 +82,7 @@ typedef struct s_ray
 {
 	double		ray_angle;
 	double		wall_distance;
-	int			flag;
+	int			intersection_type;
 	double		horiz_x;
 	double		horiz_y;
 	double		vert_x;
@@ -163,5 +165,7 @@ void	clean_up(t_data *data);
 void	free_char_pointer(char *str);
 void	free_char_pointer_pointer(char **str);
 void	delete_images(t_data *data);
+
+void print_player(t_player *player);
 
 #endif

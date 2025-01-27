@@ -111,7 +111,7 @@ int	parse_textures(char **file, t_data *data)
 		if (!ft_strncmp(&file[i][j], "SO", 2))
 			add_texture_data(data, file[i], SO, file);
 		else if (!ft_strncmp(&file[i][j], "NO", 2))
-			add_texture_data(data, &file[i][j], NO, file);
+			add_texture_data(data, file[i], NO, file);
 		else if (!ft_strncmp(&file[i][j], "EA", 2))
 			add_texture_data(data, file[i], EA, file);
 		else if (!ft_strncmp(&file[i][j], "WE", 2))

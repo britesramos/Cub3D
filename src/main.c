@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/12/11 11:42:06 by sramos        #+#    #+#                 */
-/*   Updated: 2025/01/24 18:50:15 by sramos        ########   odam.nl         */
+/*   Updated: 2025/01/27 15:52:06 by sramos        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 #include <stdio.h>
 
-void print_data(t_data *data)
+void	print_data(t_data *data)
 {
 	if (!data)
 	{
@@ -92,11 +92,11 @@ void	game_loop(void *data)
 	// print_player(input->player);
 	// hook_player_directions(input, 0, 0);
 	// raycasting(input);
-	
 }
 
-int start_game(t_data *input)
+int	start_game(t_data *input)
 {
+	printf("0 %p\n", input->mlx);
 	input->mlx = mlx_init(WIDTH, HEIGHT, "cub3d", false);
 	if (!input->mlx)
 		return (error_print_exit(input, "Failed to init window\n", -2));
@@ -105,11 +105,13 @@ int start_game(t_data *input)
 		return (error_print_exit(input, "Fail init new image MLX42\n", -2));
 	mlx_image_to_window(input->mlx, input->img, 0, 0);
 	mini_map(input);
-	init_player(input);
-	mlx_image_to_window(input->mlx, input->img, 0, 0);
-	print_player(input->player);
-	mlx_key_hook(input->mlx, &key_actions, &input); //done
-	mlx_loop_hook(input->mlx, &game_loop, &input); //This is causing the segfault//
+	printf("1 %p\n", input->mlx);
+	//init_textures(input); //This needs mlx and img. Otherwise there is a segfault.
+	//init_player(input);
+	//print_player(input->player);
+	mlx_key_hook(input->mlx, key_actions_mm, input);
+	// mlx_key_hook(input->mlx, &key_actions, input); //done
+	// mlx_loop_hook(input->mlx, &game_loop, &input); //This is causing the segfault//
 	mlx_loop(input->mlx);
 	// exit the game
 	return (0);
@@ -128,7 +130,6 @@ int	main(int argc, char *argv[])
 		init_data(data);
 		valid_map_file(argv[1], data);
 		print_data(data); //TEMP - DELETE THIS!
-		init_textures(data); //*There is a segfault in here as well*//
 		start_game(data);
 		delete_images(data);
 		mlx_terminate(data->mlx);

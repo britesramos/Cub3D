@@ -21,6 +21,8 @@ void	init_player(t_data *input)
 	input->player->rotation = 0;
 	input->player->horizontal = 0;
 	input->player->vertical = 0;
+	input->player->mm_pos_x = 0;
+	input->player->mm_pos_y = 0;
 }
 
 static void	init_parse_utils(t_data *data)
@@ -45,6 +47,8 @@ void	init_data(t_data *data)
 	data->so = NULL;
 	data->we = NULL;
 	data->ea = NULL;
+	data->map_height = 0;
+	data->map_width = 0;
 	data->f_color = ft_calloc(sizeof(char *), 3 + 1);
 	if (!data->f_color)
 		error_print_exit(data, "Fail alloc f_color\n", -2);

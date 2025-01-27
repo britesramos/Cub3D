@@ -12,6 +12,31 @@
 
 #include "../../include/cub3d.h"
 
+static void	init_map_width(t_data *data)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (data->map[i])
+	{
+		while (data->map[i][j])
+		{
+			while (is_space(data->map[i][j]))
+				j++;
+			while (ft_isdigit(data->map[i][j]))
+				j++;
+			if (is_space(data->map[i][j]))
+				break ;
+		}
+		if (j > data->map_width)
+			data->map_width = j;
+		j = 0;
+		i++;
+	}
+}
+
 static int	alloc_data_map(t_data *data, char **file_2d_array)
 {
 	int	i;
@@ -22,6 +47,7 @@ static int	alloc_data_map(t_data *data, char **file_2d_array)
 	data->map = ft_calloc(sizeof(char *), (i - 6) + 1);
 	if (!data->map)
 		return (error_print_return("Fail alloc data->map.\n", 0));
+	data->map_height = i - 6;
 	return (1);
 }
 
@@ -57,5 +83,6 @@ int	parse_map(char **file_2d_array, t_data *data)
 		return (0);
 	if (!valid_map(data))
 		return (0);
+	init_map_width(data);
 	return (1);
 }

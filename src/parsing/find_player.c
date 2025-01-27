@@ -6,7 +6,7 @@
 /*   By: sramos <sramos@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/01/07 10:44:18 by sramos        #+#    #+#                 */
-/*   Updated: 2025/01/23 19:34:03 by sramos        ########   odam.nl         */
+/*   Updated: 2025/01/27 12:15:26 by sramos        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ static void	get_player_data(t_data *data, char **map_flood, int i, int j)
 	data->player_sp_y = i;
 	data->player->pos_x = j;
 	data->player->pos_y = i;
+	data->player->mm_pos_x = j;
+	data->player->mm_pos_y = i;
 	data->map[i][j] = '0';
 }
 

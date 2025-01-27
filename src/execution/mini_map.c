@@ -6,14 +6,11 @@
 /*   By: sramos <sramos@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/01/20 18:01:50 by sramos        #+#    #+#                 */
-/*   Updated: 2025/01/24 15:53:38 by rkaras        ########   odam.nl         */
+/*   Updated: 2025/01/27 17:24:30 by rkaras        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
-
-#define MM_TILE_SIZE 20
-#define PLAYER_TILE_SIZE 10
 
 static uint32_t	ft_my_pixel(uint32_t r, uint32_t g, uint32_t b, uint32_t a)
 {
@@ -26,7 +23,7 @@ static void	draw_map(t_data *data)
 	int				j;
 	uint32_t		x;
 	uint32_t		y;
-	uint32_t		colour[5];
+	uint32_t		colour[2];
 
 	x = 0;
 	y = 0;
@@ -72,7 +69,7 @@ static void	draw_player(t_data *data)
 	{
 		while (j < PLAYER_TILE_SIZE)
 		{
-			mlx_put_pixel(data->img, (data->player->pos_x * MM_TILE_SIZE) - (PLAYER_TILE_SIZE / 2) + j, (data->player->pos_y * MM_TILE_SIZE) - (PLAYER_TILE_SIZE / 2) + i, colour[0]);
+			mlx_put_pixel(data->img, (data->player->mm_pos_x * MM_TILE_SIZE) - (PLAYER_TILE_SIZE / 2) + j, (data->player->mm_pos_y * MM_TILE_SIZE) - (PLAYER_TILE_SIZE / 2) + i, colour[0]);
 			j++;
 		}
 		j = 0;

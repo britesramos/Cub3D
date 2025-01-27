@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/12/11 11:42:29 by sramos        #+#    #+#                 */
-/*   Updated: 2025/01/27 14:16:11 by rkaras        ########   odam.nl         */
+/*   Updated: 2025/01/27 17:21:04 by rkaras        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,11 @@
 # define PLAYER_ROTATION_SPEED 0.05
 # define VERTICAL 0
 # define HORIZONTAL 1
+
+//------------MINI-MAP-------------//
+# define MM_TILE_SIZE 20
+# define PLAYER_TILE_SIZE 10
+# define OFFSET 0.25
 
 typedef enum e_textures
 {
@@ -69,6 +74,8 @@ typedef struct s_mlx_textures
 
 typedef struct s_player
 {
+	float			mm_pos_x;
+	float			mm_pos_y;
 	int			pos_x;
 	int			pos_y;
 	double		angle;
@@ -93,6 +100,8 @@ typedef struct s_data
 {
 	t_parse_utils	*parse_utils;
 	char			**map;
+	int				map_width;
+	int				map_height;
 	char			*no;
 	char			*so;
 	char			*we;
@@ -154,7 +163,8 @@ void	mini_map(t_data *data);
 
 
 //------------KEY_ACTIONS-------------------//
-void	key_actions(mlx_key_data_t keydata, void *data);
+void	key_actions(mlx_key_data_t keydata, void *param);
+void	key_actions_mm(mlx_key_data_t keydata, void *param);
 
 //------------ERROR EXIT---------------//
 int		error_print_exit(t_data *data, char *str, int error);

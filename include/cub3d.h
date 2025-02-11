@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/12/11 11:42:29 by sramos        #+#    #+#                 */
-/*   Updated: 2025/01/27 17:21:04 by rkaras        ########   odam.nl         */
+/*   Updated: 2025/02/11 16:58:46 by rkaras        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <fcntl.h>
 # include <stdbool.h>
 # include <math.h>
+# include <stdint.h>
 
 # define WIDTH 1920
 # define HEIGHT 1080
@@ -34,6 +35,7 @@
 # define DOWN -1
 # define PLAYER_MOVE_SPEED 5
 # define PLAYER_ROTATION_SPEED 0.05
+
 # define VERTICAL 0
 # define HORIZONTAL 1
 
@@ -67,22 +69,24 @@ typedef struct s_parse_utils
 typedef struct s_mlx_textures
 {
 	mlx_image_t	*no;
-	mlx_image_t *so;
+	mlx_image_t	*so;
 	mlx_image_t	*we;
-	mlx_image_t *ea;
+	mlx_image_t	*ea;
+	uint32_t	floor;
+	uint32_t	ceiling;
 }	t_mlx_textures;
 
 typedef struct s_player
 {
 	float			mm_pos_x;
 	float			mm_pos_y;
-	int			pos_x;
-	int			pos_y;
-	double		angle;
-	double		fov_rad;
-	double		rotation;
-	int			horizontal;
-	int			vertical;
+	int				pos_x;
+	int				pos_y;
+	double			angle;
+	double			fov_rad;
+	double			rotation;
+	int				horizontal;
+	int				vertical;
 }	t_player;
 
 typedef struct s_ray
@@ -156,11 +160,17 @@ void	release_key(mlx_key_data_t keydata, t_data *data);
 void	rotate_player(t_data *data, int i);
 void	move_player(t_data *data, double move_x, double move_y);
 void	hook_player_directions(t_data *data, double move_x, double move_y);
-
+void	raycasting(t_data *data);
+double	get_v_inter(t_data *data, double angle);
+double	get_h_inter(t_data *data, double angle);
+bool	wall_hit(double x, double y, t_data *data);
+double	angle_check(double angle);
+int		unit_circle(double angle, char ch);
+int		inter_check(double angle, double *inter, double *step,
+			int is_horizontal);
 
 //------------MINI_MAP-------------------//
 void	mini_map(t_data *data);
-
 
 //------------KEY_ACTIONS-------------------//
 void	key_actions(mlx_key_data_t keydata, void *param);
@@ -176,6 +186,6 @@ void	free_char_pointer(char *str);
 void	free_char_pointer_pointer(char **str);
 void	delete_images(t_data *data);
 
-void print_player(t_player *player);
+void	print_player(t_player *player);
 
 #endif

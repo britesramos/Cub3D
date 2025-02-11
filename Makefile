@@ -6,7 +6,7 @@
 #    By: marvin <marvin@student.42.fr>                +#+                      #
 #                                                    +#+                       #
 #    Created: 2024/12/11 11:43:31 by sramos        #+#    #+#                  #
-#    Updated: 2025/01/27 17:20:24 by rkaras        ########   odam.nl          #
+#    Updated: 2025/02/11 14:30:44 by rkaras        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ SRC_FILES = src/main.c\
 			src/execution/key_actions_mm.c\
 			src/execution/player.c\
 			src/execution/raycasting.c\
+			src/execution/raycasting_utils.c\
 			src/error_functions.c\
 			src/clean_up.c
 

@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/12/11 11:42:29 by sramos        #+#    #+#                 */
-/*   Updated: 2025/02/11 16:58:46 by rkaras        ########   odam.nl         */
+/*   Updated: 2025/02/14 15:53:25 by rkaras        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,9 +168,11 @@ double	angle_check(double angle);
 int		unit_circle(double angle, char ch);
 int		inter_check(double angle, double *inter, double *step,
 			int is_horizontal);
+void	render_wall(t_data *data, int ray);
+void	draw_ceiling(t_data *data, int ray, int top_pixel);
 
 //------------MINI_MAP-------------------//
-void	mini_map(t_data *data);
+// void	mini_map(t_data *data);
 
 //------------KEY_ACTIONS-------------------//
 void	key_actions(mlx_key_data_t keydata, void *param);

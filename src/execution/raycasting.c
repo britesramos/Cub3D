@@ -6,7 +6,7 @@
 /*   By: rkaras <rkaras@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/01/24 14:30:52 by rkaras        #+#    #+#                 */
-/*   Updated: 2025/02/11 16:19:48 by rkaras        ########   odam.nl         */
+/*   Updated: 2025/02/14 14:33:04 by rkaras        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ void	raycasting(t_data *data)
 			data->ray->wall_distance = h_intersection;
 			data->ray->intersection_type = HORIZONTAL;
 		}
-		// render_wall(data, ray);
+		render_wall(data, ray);
 		ray++;
 		data->ray->ray_angle += (data->player->fov_rad / WIDTH);
 	}

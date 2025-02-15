@@ -6,7 +6,7 @@
 /*   By: rkaras <rkaras@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/01/16 18:47:44 by rkaras        #+#    #+#                 */
-/*   Updated: 2025/01/27 14:31:10 by rkaras        ########   odam.nl         */
+/*   Updated: 2025/02/15 13:45:31 by rkaras        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,9 @@ void	move_player(t_data *data, double move_x, double move_y)
 	new_y = roundf(data->player->pos_y + move_y);
 	map_x = new_x / TILE_SIZE;
 	map_y = new_y / TILE_SIZE;
+	if (map_x < 0 || map_y < 0 || map_x >= data->map_width
+		|| map_y >= data->map_height)
+		return ;
 	if (data->map[map_y][map_x] != 1 &&
 		data->map[map_y][data->player->pos_x / TILE_SIZE] != 1 &&
 		data->map[data->player->pos_y / TILE_SIZE][map_x] != 1)
@@ -66,9 +69,9 @@ void	move_player(t_data *data, double move_x, double move_y)
 
 void	hook_player_directions(t_data *data, double move_x, double move_y)
 {
-	if (data->player->rotation == RIGHT) //rotate right
+	if (data->player->rotation == RIGHT)
 		rotate_player(data, RIGHT);
-	if (data->player->rotation == LEFT) //rotate left
+	if (data->player->rotation == LEFT)
 		rotate_player(data, LEFT);
 	if (data->player->horizontal == RIGHT)
 	{

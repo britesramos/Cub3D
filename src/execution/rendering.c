@@ -6,7 +6,7 @@
 /*   By: rkaras <rkaras@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/02/11 14:38:09 by rkaras        #+#    #+#                 */
-/*   Updated: 2025/02/15 15:09:17 by rkaras        ########   odam.nl         */
+/*   Updated: 2025/02/27 15:31:29 by rkaras        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,5 @@ void	render_wall(t_data *data, int ray)
 		top_pixel = 0;
 	draw_ceiling(data, ray, top_pixel);
 	draw_floor(data, ray, bottom_pixel);
-	draw_walls(data, top_pixel, bottom_pixel);
+	// draw_walls(data, top_pixel, bottom_pixel, wall_height);
 }

@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/12/11 11:42:29 by sramos        #+#    #+#                 */
-/*   Updated: 2025/02/14 15:53:25 by rkaras        ########   odam.nl         */
+/*   Updated: 2025/02/27 15:05:44 by rkaras        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,12 @@ typedef struct s_parse_utils
 
 typedef struct s_mlx_textures
 {
-	mlx_image_t	*no;
-	mlx_image_t	*so;
-	mlx_image_t	*we;
-	mlx_image_t	*ea;
-	uint32_t	floor;
-	uint32_t	ceiling;
+	mlx_texture_t	*no;
+	mlx_texture_t	*so;
+	mlx_texture_t	*we;
+	mlx_texture_t	*ea;
+	uint32_t		floor;
+	uint32_t		ceiling;
 }	t_mlx_textures;
 
 typedef struct s_player

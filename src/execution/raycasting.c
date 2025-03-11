@@ -6,7 +6,7 @@
 /*   By: rkaras <rkaras@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/01/24 14:30:52 by rkaras        #+#    #+#                 */
-/*   Updated: 2025/02/15 14:20:39 by rkaras        ########   odam.nl         */
+/*   Updated: 2025/03/11 17:12:45 by rkaras        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ bool	wall_hit(double x, double y, t_data *data)
 	y_map = floor(y / TILE_SIZE);
 	if (y_map >= data->map_height || x_map >= data->map_width)
 		return (false);
-	if (data->map[(int)y_map] && x_map <= ft_strlen(data->map[(int)y_map]))
+	if (data->map[(int)y_map] && x_map <= (int)ft_strlen(data->map[(int)y_map]))
 	{
 		if (data->map[(int)y_map][(int)x_map] == '1')
 			return (true);
@@ -52,6 +52,8 @@ double	get_h_inter(t_data *data, double angle)
 		h_x += x_step;
 		h_y += y_step;
 	}
+	data->ray->horiz_x = h_x;
+	data->ray->horiz_y = h_y;
 	return (sqrt(pow(h_x - data->player->pos_x, 2)
 			+ pow(h_y - data->player->pos_y, 2)));
 }
@@ -65,7 +67,7 @@ double	get_v_inter(t_data *data, double angle)
 	int		pixel;
 
 	x_step = TILE_SIZE;
-	y_step = TILE_SIZE / tan(angle);
+	y_step = TILE_SIZE * tan(angle);
 	v_x = floor(data->player->pos_x / TILE_SIZE) * TILE_SIZE;
 	pixel = inter_check(angle, &v_x, &x_step, VERTICAL);
 	v_y = data->player->pos_y + (v_x - data->player->pos_x) * tan(angle);

@@ -6,7 +6,7 @@
 /*   By: rkaras <rkaras@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/02/11 14:38:09 by rkaras        #+#    #+#                 */
-/*   Updated: 2025/02/27 15:31:29 by rkaras        ########   odam.nl         */
+/*   Updated: 2025/03/11 17:35:21 by rkaras        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,7 @@ void	draw_ceiling(t_data *data, int ray, int top_pixel)
 	ceiling = 0;
 	while (ceiling < top_pixel)
 	{
-		if (ray < 0)
-			return ;
-		else if (ray >= WIDTH)
+		if (ray < 0 || ray >= WIDTH)
 			return ;
 		mlx_put_pixel(data->img, ray, ceiling, data->mlx_textures->ceiling);
 		ceiling++;
@@ -35,13 +33,7 @@ void	draw_floor(t_data *data, int ray, int bottom_pixel)
 	floor = bottom_pixel;
 	while (floor < HEIGHT)
 	{
-		if (ray < 0)
-			return ;
-		else if (ray >= WIDTH)
-			return ;
-		if (floor < 0)
-			return ;
-		else if (floor >= HEIGHT)
+		if (ray < 0 || ray >= WIDTH || floor < 0 || floor >= HEIGHT)
 			return ;
 		mlx_put_pixel(data->img, ray, floor, data->mlx_textures->floor);
 		floor++;
@@ -68,7 +60,8 @@ void	render_wall(t_data *data, int ray)
 		bottom_pixel = HEIGHT;
 	if (top_pixel < 0)
 		top_pixel = 0;
+	data->ray->slice = ray;
+	draw_walls(data, top_pixel, bottom_pixel, wall_height);
 	draw_ceiling(data, ray, top_pixel);
 	draw_floor(data, ray, bottom_pixel);
-	// draw_walls(data, top_pixel, bottom_pixel, wall_height);
 }

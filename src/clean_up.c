@@ -12,13 +12,13 @@
 
 #include "../include/cub3d.h"
 
-void	delete_images(t_data *data)
-{
-	mlx_delete_image(data->mlx, data->mlx_textures->ea);
-	mlx_delete_image(data->mlx, data->mlx_textures->no);
-	mlx_delete_image(data->mlx, data->mlx_textures->so);
-	mlx_delete_image(data->mlx, data->mlx_textures->we);
-}
+// void	delete_images(t_data *data)
+// {
+// 	mlx_delete_image(data->mlx, data->mlx_textures->ea);
+// 	mlx_delete_image(data->mlx, data->mlx_textures->no);
+// 	mlx_delete_image(data->mlx, data->mlx_textures->so);
+// 	mlx_delete_image(data->mlx, data->mlx_textures->we);
+// }
 
 void	free_char_pointer(char *str)
 {

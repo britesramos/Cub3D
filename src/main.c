@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/12/11 11:42:06 by sramos        #+#    #+#                 */
-/*   Updated: 2025/02/14 15:53:14 by rkaras        ########   odam.nl         */
+/*   Updated: 2025/03/11 16:25:39 by rkaras        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,6 @@ int	main(int argc, char *argv[])
 		valid_map_file(argv[1], data);
 		// print_data(data); //TEMP - DELETE THIS!
 		start_game(data);
-		delete_images(data);
 		mlx_terminate(data->mlx);
 		clean_up(data);
 	}

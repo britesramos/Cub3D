@@ -6,7 +6,7 @@
 /*   By: rkaras <rkaras@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/01/16 18:47:44 by rkaras        #+#    #+#                 */
-/*   Updated: 2025/02/15 13:45:31 by rkaras        ########   odam.nl         */
+/*   Updated: 2025/03/11 15:46:30 by rkaras        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	rotate_player(t_data *data, int i)
 	if (i == RIGHT)
 	{
 		data->player->angle += PLAYER_ROTATION_SPEED;
-		if (data->player->angle > 2 * PI) // 2 * PI is a full circle in radians
+		if (data->player->angle > 2 * PI)
 			data->player->angle -= 2 * PI;
 	}
 	else if (i == LEFT)

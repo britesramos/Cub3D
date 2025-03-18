@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/12/11 11:42:06 by sramos        #+#    #+#                 */
-/*   Updated: 2025/03/11 16:25:39 by rkaras        ########   odam.nl         */
+/*   Updated: 2025/03/18 12:55:45 by rkaras        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void	game_loop(void *data)
 	t_data	*input;
 
 	input = data;
-	hook_player_directions(data, 0, 0);
+	hook_player_directions(input, 0, 0);
 	raycasting(input);
 }
 
@@ -108,9 +108,8 @@ int	start_game(t_data *input)
 	init_textures(input);
 	mlx_image_to_window(input->mlx, input->img, 0, 0);
 	// mini_map(input);
-	// print_texture_colors(input->mlx_textures);
 	// mlx_key_hook(input->mlx, key_actions_mm, input);
-	mlx_key_hook(input->mlx, key_actions, input); //done
+	mlx_key_hook(input->mlx, key_actions, input);
 	mlx_loop_hook(input->mlx, &game_loop, input);
 	mlx_loop(input->mlx);
 	mlx_delete_image(input->mlx, input->img);
@@ -129,9 +128,8 @@ int	main(int argc, char *argv[])
 		if (!data)
 			return (error_print_exit(NULL, "Error\nFail to malloc data.\n", 1));
 		init_data(data);
-		init_player(data);
 		valid_map_file(argv[1], data);
-		// print_data(data); //TEMP - DELETE THIS!
+		init_player(data);
 		start_game(data);
 		mlx_terminate(data->mlx);
 		clean_up(data);

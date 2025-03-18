@@ -6,26 +6,11 @@
 /*   By: sramos <sramos@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/01/13 15:51:42 by sramos        #+#    #+#                 */
-/*   Updated: 2025/02/27 15:30:57 by rkaras        ########   odam.nl         */
+/*   Updated: 2025/03/18 12:51:21 by rkaras        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
-
-// static int	init_textures_util(t_data *data, char *png, mlx_image_t *mlx_t)
-// {
-// 	mlx_texture_t	*tex;
-
-// 	tex = NULL;
-// 	tex = mlx_load_png(png);
-// 	if (!tex)
-// 		error_print_exit(data, "Fail to load png.\n", -3);
-// 	mlx_t = mlx_texture_to_image(data->mlx, tex);
-// 	if (!mlx_t)
-// 		return (0);
-// 	mlx_delete_texture(tex);
-// 	return (1);
-// }
 
 static int	init_rgb(t_data *data, char ch)
 {

@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/12/11 11:42:29 by sramos        #+#    #+#                 */
-/*   Updated: 2025/03/11 17:34:53 by rkaras        ########   odam.nl         */
+/*   Updated: 2025/03/18 13:30:19 by rkaras        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@
 # define DOWN -1
 # define PLAYER_MOVE_SPEED 3
 # define PLAYER_ROTATION_SPEED 0.05
+# define HIT_BOX 5
 
 # define VERTICAL 0
 # define HORIZONTAL 1
@@ -166,28 +167,28 @@ void			hook_player_directions(t_data *data, double move_x,
 void			raycasting(t_data *data);
 double			get_v_inter(t_data *data, double angle);
 double			get_h_inter(t_data *data, double angle);
-bool			wall_hit(double x, double y, t_data *data);
+int				wall_hit(double x, double y, t_data *data);
 double			angle_check(double angle);
 int				unit_circle(double angle, char ch);
 int				inter_check(double angle, double *inter, double *step,
 					int is_horizontal);
 void			render_wall(t_data *data, int ray);
-void			draw_ceiling(t_data *data, int ray, int top_pixel);
-void			draw_floor(t_data *data, int ray, int bottom_pixel);
+void			draw_ceiling_floor(t_data *data, int ray, int top_pixel,
+					int bottom_pixel);
 void			draw_walls(t_data *data, int top_pixel, int bottom_pixel,
 					double wall_height);
 int				shift_color_bytes(int c);
-void			pixel_to_the_wall(t_data *data, int slice, double top_pixel,
-					int color);
 double			get_x_offset(mlx_texture_t *texture, t_data *data);
 mlx_texture_t	*get_texture(t_data *data, int int_type);
+void			pixel_put(t_data *data, int x, int y, int color);
+
 
 //------------MINI_MAP-------------------//
 // void	mini_map(t_data *data);
 
 //------------KEY_ACTIONS-------------------//
 void			key_actions(mlx_key_data_t keydata, void *param);
-void			key_actions_mm(mlx_key_data_t keydata, void *param);
+// void			key_actions_mm(mlx_key_data_t keydata, void *param);
 
 //------------ERROR EXIT---------------//
 int				error_print_exit(t_data *data, char *str, int error);

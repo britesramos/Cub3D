@@ -6,29 +6,29 @@
 /*   By: rkaras <rkaras@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/01/24 14:30:52 by rkaras        #+#    #+#                 */
-/*   Updated: 2025/03/11 17:12:45 by rkaras        ########   odam.nl         */
+/*   Updated: 2025/03/18 13:00:37 by rkaras        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-bool	wall_hit(double x, double y, t_data *data)
+int	wall_hit(double x, double y, t_data *data)
 {
 	double	x_map;
 	double	y_map;
 
 	if (x < 0 || y < 0)
-		return (false);
+		return (0);
 	x_map = floor(x / TILE_SIZE);
 	y_map = floor(y / TILE_SIZE);
 	if (y_map >= data->map_height || x_map >= data->map_width)
-		return (false);
+		return (0);
 	if (data->map[(int)y_map] && x_map <= (int)ft_strlen(data->map[(int)y_map]))
 	{
 		if (data->map[(int)y_map][(int)x_map] == '1')
-			return (true);
+			return (0);
 	}
-	return (false);
+	return (1);
 }
 
 double	get_h_inter(t_data *data, double angle)
@@ -79,6 +79,8 @@ double	get_v_inter(t_data *data, double angle)
 		v_x += x_step;
 		v_y += y_step;
 	}
+	data->ray->vert_x = v_x;
+	data->ray->vert_y = v_y;
 	return (sqrt(pow(v_x - data->player->pos_x, 2)
 			+ pow(v_y - data->player->pos_y, 2)));
 }

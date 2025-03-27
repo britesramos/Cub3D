@@ -6,7 +6,7 @@
 /*   By: rkaras <rkaras@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/01/24 14:30:52 by rkaras        #+#    #+#                 */
-/*   Updated: 2025/03/18 13:00:37 by rkaras        ########   odam.nl         */
+/*   Updated: 2025/03/27 11:38:40 by rkaras        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,8 +96,8 @@ void	raycasting(t_data *data)
 	while (ray < WIDTH)
 	{
 		data->ray->intersection_type = VERTICAL;
-		h_intersection = get_h_inter(data, angle_check(data->ray->ray_angle));
-		v_intersection = get_v_inter(data, angle_check(data->ray->ray_angle));
+		h_intersection = get_h_inter(data, data->ray->ray_angle);
+		v_intersection = get_v_inter(data, data->ray->ray_angle);
 		if (v_intersection <= h_intersection)
 			data->ray->wall_distance = v_intersection;
 		else

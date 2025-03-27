@@ -6,13 +6,13 @@
 /*   By: sramos <sramos@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/01/13 15:43:26 by sramos        #+#    #+#                 */
-/*   Updated: 2025/03/27 13:31:53 by sramos        ########   odam.nl         */
+/*   Updated: 2025/03/27 13:43:06 by sramos        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-void	release_key(mlx_key_data_t keydata, t_data *data)
+static void	release_key(t_data *data)
 {
 	data->player->horizontal = 0;
 	data->player->horizontal = 0;
@@ -48,5 +48,5 @@ void	key_actions(mlx_key_data_t keydata, void *data)
 			input->player->rotation = RIGHT;
 	}
 	else if (keydata.action == MLX_RELEASE)
-		release_key(keydata, input);
+		release_key(input);
 }

@@ -6,7 +6,7 @@
 /*   By: rkaras <rkaras@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/02/11 14:38:09 by rkaras        #+#    #+#                 */
-/*   Updated: 2025/03/27 10:52:42 by sramos        ########   odam.nl         */
+/*   Updated: 2025/03/27 12:17:31 by rkaras        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,19 @@ void	pixel_put(t_data *data, int x, int y, int color)
 void	draw_ceiling_floor(t_data *data, int ray, int top_pixel,
 		int bottom_pixel)
 {
-	int	i;
+	int	y;
 
-	i = bottom_pixel;
-	while (i < HEIGHT)
+	y = bottom_pixel;
+	while (y < HEIGHT)
 	{
-		pixel_put(data, ray, i, data->mlx_textures->floor);
-		i++;
+		pixel_put(data, ray, y, data->mlx_textures->floor);
+		y++;
 	}
-	i = 0;
-	while (i < top_pixel)
+	y = 0;
+	while (y < top_pixel)
 	{
-		pixel_put(data, ray, i, data->mlx_textures->ceiling);
-		i++;
+		pixel_put(data, ray, y, data->mlx_textures->ceiling);
+		y++;
 	}
 }
 
@@ -55,6 +55,6 @@ void	render_wall(t_data *data, int ray)
 	if (top_pixel < 0)
 		top_pixel = 0;
 	data->ray->slice = ray;
-	draw_walls(data, top_pixel, bottom_pixel, wall_height);
 	draw_ceiling_floor(data, ray, top_pixel, bottom_pixel);
+	draw_walls(data, top_pixel, bottom_pixel, wall_height);
 }

@@ -6,7 +6,7 @@
 /*   By: sramos <sramos@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/01/13 15:43:26 by sramos        #+#    #+#                 */
-/*   Updated: 2025/02/15 14:31:33 by rkaras        ########   odam.nl         */
+/*   Updated: 2025/03/27 13:31:53 by sramos        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,12 @@
 
 void	release_key(mlx_key_data_t keydata, t_data *data)
 {
-	if (keydata.key == MLX_KEY_A)
-		data->player->horizontal = 0;
-	else if (keydata.key == MLX_KEY_D)
-		data->player->horizontal = 0;
-	else if (keydata.key == MLX_KEY_S)
-		data->player->vertical = 0;
-	else if (keydata.key == MLX_KEY_W)
-		data->player->vertical = 0;
-	else if (keydata.key == MLX_KEY_LEFT)
-		data->player->rotation = 0;
-	else if (keydata.key == MLX_KEY_RIGHT)
-		data->player->rotation = 0;
+	data->player->horizontal = 0;
+	data->player->horizontal = 0;
+	data->player->vertical = 0;
+	data->player->vertical = 0;
+	data->player->rotation = 0;
+	data->player->rotation = 0;
 }
 
 void	key_actions(mlx_key_data_t keydata, void *data)

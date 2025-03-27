@@ -6,7 +6,7 @@
 /*   By: sramos <sramos@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/01/13 15:51:42 by sramos        #+#    #+#                 */
-/*   Updated: 2025/03/18 12:51:21 by rkaras        ########   odam.nl         */
+/*   Updated: 2025/03/27 13:27:27 by sramos        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	init_rgb(t_data *data, char ch)
 		red = ft_atoi(data->c_color[0]);
 		green = ft_atoi(data->c_color[1]);
 		blue = ft_atoi(data->c_color[2]);
-		data->mlx_textures->ceiling = (red << 16) | (green << 8) | blue;
+		data->mlx_textures->ceiling = (red << 24) | (green << 16) | (blue << 8) | 255;
 		return (1);
 	}
 	else if (ch == 'f')
@@ -31,7 +31,7 @@ static int	init_rgb(t_data *data, char ch)
 		red = ft_atoi(data->f_color[0]);
 		green = ft_atoi(data->f_color[1]);
 		blue = ft_atoi(data->f_color[2]);
-		data->mlx_textures->floor = (red << 16) | (green << 8) | blue;
+		data->mlx_textures->floor = (red << 24) | (green << 16) | (blue << 8) | 255;
 		return (1);
 	}
 	else

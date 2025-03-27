@@ -6,7 +6,7 @@
 /*   By: rkaras <rkaras@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/02/26 15:32:33 by rkaras        #+#    #+#                 */
-/*   Updated: 2025/03/27 10:52:46 by sramos        ########   odam.nl         */
+/*   Updated: 2025/03/27 12:39:15 by rkaras        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ double	get_x_offset(mlx_texture_t *texture, t_data *data)
 	}
 	return (x_offset);
 }
+
 
 int	shift_color_bytes(int c)
 {

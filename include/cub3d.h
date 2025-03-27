@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/12/11 11:42:29 by sramos        #+#    #+#                 */
-/*   Updated: 2025/03/27 11:22:23 by rkaras        ########   odam.nl         */
+/*   Updated: 2025/03/27 16:16:39 by rkaras        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@
 # define DOWN -1
 # define PLAYER_MOVE_SPEED 3
 # define PLAYER_ROTATION_SPEED 0.05
-# define HIT_BOX 5
 
 # define VERTICAL 0
 # define HORIZONTAL 1
@@ -176,18 +175,17 @@ void			draw_ceiling_floor(t_data *data, int ray, int top_pixel,
 					int bottom_pixel);
 void			draw_walls(t_data *data, int top_pixel, int bottom_pixel,
 					double wall_height);
-int				shift_color_bytes(int c);
 double			get_x_offset(mlx_texture_t *texture, t_data *data);
 mlx_texture_t	*get_texture(t_data *data, int int_type);
 void			pixel_put(t_data *data, int x, int y, int color);
 
 
 //------------MINI_MAP-------------------//
-// void	mini_map(t_data *data);
+void	mini_map(t_data *data);
 
 //------------KEY_ACTIONS-------------------//
 void			key_actions(mlx_key_data_t keydata, void *param);
-// void			key_actions_mm(mlx_key_data_t keydata, void *param);
+void			key_actions_mm(mlx_key_data_t keydata, void *param);
 
 //------------ERROR EXIT---------------//
 int				error_print_exit(t_data *data, char *str, int error);

@@ -6,7 +6,7 @@
 /*   By: rkaras <rkaras@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/02/26 15:32:33 by rkaras        #+#    #+#                 */
-/*   Updated: 2025/03/18 12:57:37 by rkaras        ########   odam.nl         */
+/*   Updated: 2025/03/27 10:52:46 by sramos        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ int	shift_color_bytes(int c)
 	b |= (c & 0xFF000000) >> 24;
 	return (b);
 }
-
 
 void	draw_walls(t_data *data, int top_pixel, int bottom_pixel,
 	double wall_height)

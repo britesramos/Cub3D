@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/12/12 12:02:10 by sramos        #+#    #+#                 */
-/*   Updated: 2025/03/18 12:56:27 by rkaras        ########   odam.nl         */
+/*   Updated: 2025/03/27 10:50:06 by sramos        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ static char	*realloc_str_file(t_data *data, char *str_file, int s_alloc, int fd)
 	return (str_file);
 }
 
+//Fix this!
 static char	*read_file(t_data *data, int fd)
 {
 	int		i;

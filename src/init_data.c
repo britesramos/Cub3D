@@ -15,7 +15,6 @@
 void	init_player(t_data *input)
 {
 	input->player->pos_x = (input->player_sp_x * TILE_SIZE) + TILE_SIZE / 2;
-	//divided by 2 so that the player is in the middle of a tile
 	input->player->pos_y = (input->player_sp_y * TILE_SIZE) + TILE_SIZE / 2;
 	input->player->fov_rad = (60 * PI) / 180;
 	input->player->angle = facing_angle(input->player_facing);

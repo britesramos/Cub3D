@@ -6,87 +6,11 @@
 /*   By: marvin <marvin@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/12/11 11:42:06 by sramos        #+#    #+#                 */
-/*   Updated: 2025/03/18 12:55:45 by rkaras        ########   odam.nl         */
+/*   Updated: 2025/03/27 10:52:01 by sramos        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
-
-// #include <stdio.h>
-
-// void	print_data(t_data *data)
-// {
-// 	if (!data)
-// 	{
-// 		printf("Error: t_data is NULL\n");
-// 		return;
-// 	}
-
-// 	// Print string fields
-// 	printf("North Texture (NO): %s\n", data->no);
-// 	printf("South Texture (SO): %s\n", data->so);
-// 	printf("West Texture (WE): %s\n", data->we);
-// 	printf("East Texture (EA): %s\n", data->ea);
-// 	printf("Floor Color (F): %s, %s, %s\n", data->f_color[0], data->f_color[1], data->f_color[2]);
-// 	printf("Ceiling Color (C): %s, %s, %s\n", data->c_color[0], data->c_color[1], data->c_color[2]);
-
-// 	// Print player information
-// 	printf("Player Start Position (X, Y): (%d, %d)\n", data->player_sp_x, data->player_sp_y);
-// 	printf("Player Facing Direction: %s\n", data->player_facing ? data->player_facing : "NULL");
-
-// 	// Print the map
-// 	if (data->map)
-// 	{
-// 		printf("Map:\n");
-// 		for (int i = 0; data->map[i]; i++)
-// 			printf("  %s\n", data->map[i]);
-// 	}
-// 	else
-// 	{
-// 		printf("Map: NULL\n");
-// 	}
-
-// 	// Print parse_utils if needed (assumes you have a print function for t_parse_utils)
-// 	if (data->parse_utils)
-// 		printf("Parse Utils: Available (Consider adding print function)\n");
-// 	else
-// 		printf("Parse Utils: NULL\n");
-
-// 	// Print mlx_textures if needed (assumes you have a print function for t_mlx_textures)
-// 	if (data->mlx_textures)
-// 		printf("MLX Textures: Available (Consider adding print function)\n");
-// 	else
-// 		printf("MLX Textures: NULL\n");
-
-// 	// Print MLX pointer
-// 	printf("MLX Pointer: %s\n", data->mlx ? "Initialized" : "NULL");
-// }
-
-// void print_player(t_player *player)
-// {
-//     if (!player)
-//     {
-//         printf("Player structure is NULL.\n");
-//         return;
-//     }
-//     printf("Player Details:\n");
-//     printf("  Position X: %d\n", player->pos_x);
-//     printf("  Position Y: %d\n", player->pos_y);
-//     printf("  Angle (radians): %f\n", player->angle);
-//     printf("  Field of View (radians): %f\n", player->fov_rad);
-//     printf("  Rotation (radians): %f\n", player->rotation);
-//     printf("  Horizontal Movement: %d\n", player->horizontal);
-//     printf("  Vertical Movement: %d\n", player->vertical);
-// }
-
-// void print_texture_colors(t_mlx_textures *textures) {
-//     if (!textures)
-//         return;
-        
-//     // Print ceiling and floor colors in hexadecimal and decimal
-//     printf("Ceiling color: 0x%08X (%u)\n", textures->ceiling, textures->ceiling);
-//     printf("Floor color:   0x%08X (%u)\n", textures->floor, textures->floor);
-// }
 
 void	game_loop(void *data)
 {

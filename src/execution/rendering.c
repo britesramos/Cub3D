@@ -6,7 +6,7 @@
 /*   By: rkaras <rkaras@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/02/11 14:38:09 by rkaras        #+#    #+#                 */
-/*   Updated: 2025/03/18 12:58:19 by rkaras        ########   odam.nl         */
+/*   Updated: 2025/03/27 10:52:42 by sramos        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	pixel_put(t_data *data, int x, int y, int color)
 		return ;
 	mlx_put_pixel(data->img, x, y, color);
 }
-
 
 void	draw_ceiling_floor(t_data *data, int ray, int top_pixel,
 		int bottom_pixel)

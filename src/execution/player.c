@@ -6,7 +6,7 @@
 /*   By: rkaras <rkaras@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/01/16 18:47:44 by rkaras        #+#    #+#                 */
-/*   Updated: 2025/03/18 12:59:17 by rkaras        ########   odam.nl         */
+/*   Updated: 2025/03/20 18:38:07 by rkaras        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ void	move_player(t_data *data, double move_x, double move_y)
 
 	new_x = roundf(data->player->pos_x + move_x);
 	new_y = roundf(data->player->pos_y + move_y);
-	map_x = (new_x * HIT_BOX) / TILE_SIZE;
-	map_y = (new_y * HIT_BOX) / TILE_SIZE;
+	map_x = new_x / TILE_SIZE;
+	map_y = new_y / TILE_SIZE;
 	if (map_x < 0 || map_y < 0 || map_x >= data->map_width
 		|| map_y >= data->map_height)
 		return ;

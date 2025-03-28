@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/12/11 11:42:29 by sramos        #+#    #+#                 */
-/*   Updated: 2025/03/28 13:08:07 by rkaras        ########   odam.nl         */
+/*   Updated: 2025/03/28 13:11:25 by rkaras        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,6 @@ typedef struct s_mlx_textures
 
 typedef struct s_player
 {
-	float			mm_pos_x;
-	float			mm_pos_y;
 	int				pos_x;
 	int				pos_y;
 	double			angle;
@@ -100,6 +98,14 @@ typedef struct s_ray
 	int			slice;
 }	t_ray;
 
+typedef struct s_mini_map
+{
+	float		mm_pos_x;
+	float		mm_pos_y;
+	uint32_t	colour[2];
+}	t_mm_map;
+
+
 typedef struct s_data
 {
 	t_parse_utils	*parse_utils;
@@ -120,6 +126,7 @@ typedef struct s_data
 	mlx_image_t		*img;
 	t_player		*player;
 	t_ray			*ray;
+	t_mm_map		*mini_map;
 }	t_data;
 
 typedef struct s_node
@@ -181,6 +188,7 @@ void			pixel_put(t_data *data, int x, int y, int color);
 
 //------------MINI_MAP-------------------//
 void			mini_map(t_data *data);
+uint32_t		ft_my_pixel(uint32_t r, uint32_t g, uint32_t b, uint32_t a);
 
 //------------KEY_ACTIONS-------------------//
 void			key_actions(mlx_key_data_t keydata, void *param);

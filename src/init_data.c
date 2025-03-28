@@ -36,8 +36,14 @@ static void	init_parse_utils(t_data *data)
 	data->parse_utils->c = false;
 	data->parse_utils->c_util = NULL;
 	data->parse_utils->f_util = NULL;
-	data->player->mm_pos_x = 0;
-	data->player->mm_pos_y = 0;
+}
+
+static void	init_mm(t_data *data)
+{
+	data->mini_map->mm_pos_x = 0;
+	data->mini_map->mm_pos_y = 0;
+	data->mini_map->colour[0] = ft_my_pixel(0, 150, 255, 255);
+	data->mini_map->colour[1] = ft_my_pixel(6, 100, 255, 50);
 }
 
 void	init_data_helper(t_data *data)
@@ -60,6 +66,9 @@ void	init_data_helper(t_data *data)
 	data->ray = ft_calloc(1, sizeof(t_ray));
 	if (!data->ray)
 		error_print_exit(data, "Fail alloc ray struct", -2);
+	data->mini_map = ft_calloc(1, sizeof(t_mm_map));
+	if (!data->mini_map)
+		error_print_exit(data, "Fail alloc mini_map.\n", -2);
 }
 
 void	init_data(t_data *data)
@@ -75,4 +84,5 @@ void	init_data(t_data *data)
 	data->player_sp_y = 0;
 	init_data_helper(data);
 	init_parse_utils(data);
+	init_mm(data);
 }

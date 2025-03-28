@@ -6,7 +6,7 @@
 /*   By: rkaras <rkaras@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/02/26 15:32:33 by rkaras        #+#    #+#                 */
-/*   Updated: 2025/03/27 12:39:15 by rkaras        ########   odam.nl         */
+/*   Updated: 2025/03/27 16:36:40 by rkaras        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,7 @@ double	get_x_offset(mlx_texture_t *texture, t_data *data)
 	return (x_offset);
 }
 
-
-int	shift_color_bytes(int c)
+static int	shift_color_bytes(uint32_t c)
 {
 	unsigned int	b;
 

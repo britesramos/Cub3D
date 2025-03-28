@@ -21,8 +21,6 @@ void	init_player(t_data *input)
 	input->player->rotation = 0;
 	input->player->horizontal = 0;
 	input->player->vertical = 0;
-	input->player->mm_pos_x = 0;
-	input->player->mm_pos_y = 0;
 }
 
 static void	init_parse_utils(t_data *data)
@@ -38,6 +36,8 @@ static void	init_parse_utils(t_data *data)
 	data->parse_utils->c = false;
 	data->parse_utils->c_util = NULL;
 	data->parse_utils->f_util = NULL;
+	data->player->mm_pos_x = 0;
+	data->player->mm_pos_y = 0;
 }
 
 void	init_data_helper(t_data *data)

@@ -6,7 +6,7 @@
 /*   By: sramos <sramos@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/01/27 10:49:16 by sramos        #+#    #+#                 */
-/*   Updated: 2025/03/27 16:24:36 by rkaras        ########   odam.nl         */
+/*   Updated: 2025/03/28 12:00:45 by sramos        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ static int	move(t_data *data, float x_increment, float y_increment)
 	int		map_x;
 	int		map_y;
 
-	new_x = data->player->mm_pos_x + x_increment;
-	new_y = data->player->mm_pos_y + y_increment;
+	new_x = data->mini_map->mm_pos_x + x_increment;
+	new_y = data->mini_map->mm_pos_y + y_increment;
 	map_x = (int)new_x;
 	map_y = (int)new_y;
 	if (data->map[map_y][map_x] == '0')
 	{
-		data->player->mm_pos_x = new_x;
-		data->player->mm_pos_y = new_y;
+		data->mini_map->mm_pos_x = new_x;
+		data->mini_map->mm_pos_y = new_y;
 		return (1);
 	}
 	return (0);

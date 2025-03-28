@@ -6,7 +6,7 @@
 /*   By: rkaras <rkaras@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/01/16 18:47:44 by rkaras        #+#    #+#                 */
-/*   Updated: 2025/03/28 11:49:07 by sramos        ########   odam.nl         */
+/*   Updated: 2025/03/28 12:01:05 by sramos        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ void	move_player(t_data *data, double move_x, double move_y)
 	{
 		data->player->pos_x = new_x;
 		data->player->pos_y = new_y;
-		data->player->mm_pos_x = (new_x + (MM_TILE_SIZE / 2.3)) / TILE_SIZE;
-		data->player->mm_pos_y = (new_y + (MM_TILE_SIZE / 2.3)) / TILE_SIZE;
+		data->mini_map->mm_pos_x = (new_x + (MM_TILE_SIZE / 2.3)) / TILE_SIZE;
+		data->mini_map->mm_pos_y = (new_y + (MM_TILE_SIZE / 2.3)) / TILE_SIZE;
 	}
 }
 

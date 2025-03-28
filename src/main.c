@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/12/11 11:42:06 by sramos        #+#    #+#                 */
-/*   Updated: 2025/03/27 16:38:27 by rkaras        ########   odam.nl         */
+/*   Updated: 2025/03/27 17:00:09 by rkaras        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ int	start_game(t_data *input)
 	init_textures(input);
 	mlx_image_to_window(input->mlx, input->img, 0, 0);
 	mlx_key_hook(input->mlx, key_actions, input);
-	// mlx_key_hook(input->mlx, key_actions_mm, input);
 	mlx_loop_hook(input->mlx, &game_loop, input);
 	mlx_loop(input->mlx);
 	mlx_delete_image(input->mlx, input->img);
@@ -55,7 +54,6 @@ int	main(int argc, char *argv[])
 		valid_map_file(argv[1], data);
 		init_player(data);
 		start_game(data);
-		// mlx_terminate(data->mlx);
 		clean_up(data);
 	}
 	else

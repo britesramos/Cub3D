@@ -6,7 +6,7 @@
 /*   By: sramos <sramos@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/01/20 18:01:50 by sramos        #+#    #+#                 */
-/*   Updated: 2025/03/27 16:07:04 by rkaras        ########   odam.nl         */
+/*   Updated: 2025/03/27 17:53:41 by rkaras        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,10 @@ static void	draw_map(t_data *data)
 	{
 		while (data->map[y][x])
 		{
+			i = 0;
 			while (i < MM_TILE_SIZE)
 			{
+				j = 0;
 				while (j < MM_TILE_SIZE)
 				{
 					if (data->map[y][x] == '0')
@@ -45,10 +47,8 @@ static void	draw_map(t_data *data)
 						mlx_put_pixel(data->img, (x * MM_TILE_SIZE) + j, (y * MM_TILE_SIZE) + i, colour[0]);
 					j++;
 				}
-				j = 0;
 				i++;
 			}
-			i = 0;
 			x++;
 		}
 		x = 0;
@@ -61,17 +61,19 @@ static void	draw_player(t_data *data)
 	int				i;
 	int				j;
 	uint32_t		colour[1];
+	int				player_x;
+	int				player_y;
 
 	i = 0;
 	j = 0;
+	player_x = roundf(data->player->mm_pos_x * MM_TILE_SIZE);
+	player_y = roundf(data->player->mm_pos_y * MM_TILE_SIZE);
 	colour[0] = ft_my_pixel(255, 0, 255, 255);
 	while (i < PLAYER_TILE_SIZE)
 	{
-		printf ("X:%f\n", data->player->mm_pos_x);
-		printf ("Y:%f\n", data->player->mm_pos_y);
 		while (j < PLAYER_TILE_SIZE)
 		{
-			mlx_put_pixel(data->img, (data->player->mm_pos_x * MM_TILE_SIZE) - (PLAYER_TILE_SIZE / 2) + j, (data->player->mm_pos_y * MM_TILE_SIZE) - (PLAYER_TILE_SIZE / 2) + i, colour[0]);
+			mlx_put_pixel(data->img, player_x - (PLAYER_TILE_SIZE / 2) + j, player_y - (PLAYER_TILE_SIZE / 2) + i, colour[0]);
 			j++;
 		}
 		j = 0;

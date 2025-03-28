@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/12/11 11:42:06 by sramos        #+#    #+#                 */
-/*   Updated: 2025/03/28 11:07:26 by sramos        ########   odam.nl         */
+/*   Updated: 2025/03/28 11:49:19 by sramos        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ int	main(int argc, char *argv[])
 		valid_map_file(argv[1], data);
 		init_player(data);
 		start_game(data);
-		// mlx_terminate(data->mlx);
 		clean_up(data);
 	}
 	else

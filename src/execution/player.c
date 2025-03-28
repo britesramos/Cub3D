@@ -6,7 +6,7 @@
 /*   By: rkaras <rkaras@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/01/16 18:47:44 by rkaras        #+#    #+#                 */
-/*   Updated: 2025/03/28 11:31:13 by sramos        ########   odam.nl         */
+/*   Updated: 2025/03/28 11:49:07 by sramos        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ void	move_player(t_data *data, double move_x, double move_y)
 {
 	float	new_x;
 	float	new_y;
-	int	map_x;
-	int	map_y;
+	int		map_x;
+	int		map_y;
 
 	new_x = roundf(data->player->pos_x + move_x);
 	new_y = roundf(data->player->pos_y + move_y);

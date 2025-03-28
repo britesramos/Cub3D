@@ -6,7 +6,7 @@
 /*   By: rkaras <rkaras@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/01/16 18:47:44 by rkaras        #+#    #+#                 */
-/*   Updated: 2025/03/28 10:33:12 by sramos        ########   odam.nl         */
+/*   Updated: 2025/03/28 11:31:13 by sramos        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ void	rotate_player(t_data *data, int i)
 
 void	move_player(t_data *data, double move_x, double move_y)
 {
-	int	new_x;
-	int	new_y;
+	float	new_x;
+	float	new_y;
 	int	map_x;
 	int	map_y;
 
@@ -61,10 +61,8 @@ void	move_player(t_data *data, double move_x, double move_y)
 	{
 		data->player->pos_x = new_x;
 		data->player->pos_y = new_y;
-		// printf("new_x: %f\n", new_x * 0.05);
-		// printf("new_y: %f\n", new_y * 0.05);
-		// data->player->mm_pos_x = (new_x) / TILE_SIZE;
-		// data->player->mm_pos_y = (new_x) / TILE_SIZE;
+		data->player->mm_pos_x = (new_x + (MM_TILE_SIZE / 2.3)) / TILE_SIZE;
+		data->player->mm_pos_y = (new_y + (MM_TILE_SIZE / 2.3)) / TILE_SIZE;
 	}
 }
 

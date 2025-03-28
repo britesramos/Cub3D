@@ -6,7 +6,7 @@
 /*   By: sramos <sramos@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/01/20 18:01:50 by sramos        #+#    #+#                 */
-/*   Updated: 2025/03/27 16:07:04 by rkaras        ########   odam.nl         */
+/*   Updated: 2025/03/28 11:12:51 by sramos        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,6 @@ static void	draw_player(t_data *data)
 	colour[0] = ft_my_pixel(255, 0, 255, 255);
 	while (i < PLAYER_TILE_SIZE)
 	{
-		printf ("X:%f\n", data->player->mm_pos_x);
-		printf ("Y:%f\n", data->player->mm_pos_y);
 		while (j < PLAYER_TILE_SIZE)
 		{
 			mlx_put_pixel(data->img, (data->player->mm_pos_x * MM_TILE_SIZE) - (PLAYER_TILE_SIZE / 2) + j, (data->player->mm_pos_y * MM_TILE_SIZE) - (PLAYER_TILE_SIZE / 2) + i, colour[0]);

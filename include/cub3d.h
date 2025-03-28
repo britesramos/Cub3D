@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/12/11 11:42:29 by sramos        #+#    #+#                 */
-/*   Updated: 2025/03/28 15:04:35 by rkaras        ########   odam.nl         */
+/*   Updated: 2025/03/28 15:22:27 by rkaras        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@
 # define PLAYER_MOVE_SPEED 3
 # define PLAYER_ROTATION_SPEED 0.05
 
+//------------INTERSECTIONS-------------//
 # define VERTICAL 0
 # define HORIZONTAL 1
 
@@ -105,7 +106,6 @@ typedef struct s_mini_map
 	uint32_t	colour[2];
 }	t_mm_map;
 
-
 typedef struct s_data
 {
 	t_parse_utils	*parse_utils;
@@ -136,7 +136,10 @@ typedef struct s_node
 	struct s_node	*next;
 }	t_node;
 
+//------------INITIALIZATION-------------------//
 void			init_data(t_data *data);
+void			init_textures(t_data *data);
+void			init_player(t_data *input);
 
 //------------INPUT CHECKER-------------//
 void			valid_map_extension_checker(char *str);
@@ -161,21 +164,12 @@ t_node			*find_player_position(t_data *data, t_node *q,
 					char **map_flood);
 
 //------------EXECUTION-------------------//
-void			init_textures(t_data *data);
-void			init_player(t_data *input);
-double			facing_angle(char *player_facing);
-void			rotate_player(t_data *data, int i);
-void			move_player(t_data *data, double move_x, double move_y);
-void			hook_player_directions(t_data *data, double move_x,
-					double move_y);
+//------------RAYCASTING-------------------//
 void			raycasting(t_data *data);
 double			v_inter(t_data *data, double angle);
 double			h_inter(t_data *data, double angle);
 int				wall_hit(double x, double y, t_data *data);
-double			angle_check(double angle);
-int				circle_check(double angle, char ch);
-int				inter_check(double angle, double *inter, double *step,
-					int is_horizontal);
+//------------RENDERING-------------------//
 void			rendering(t_data *data, int ray);
 void			render_ceiling_floor(t_data *data, int ray, int top_pixel,
 					int bottom_pixel);
@@ -184,7 +178,11 @@ void			render_walls(t_data *data, int top_pixel, int bottom_pixel,
 double			get_x_offset(mlx_texture_t *texture, t_data *data);
 mlx_texture_t	*get_texture(t_data *data, int int_type);
 void			pixel_put(t_data *data, int x, int y, int color);
-
+//------------RAYCASTING_CHECKS-------------------//
+double			angle_check(double angle);
+int				circle_check(double angle, char ch);
+int				inter_check(double angle, double *inter, double *step,
+					int is_horizontal);
 
 //------------MINI_MAP-------------------//
 void			mini_map(t_data *data);
@@ -192,6 +190,11 @@ uint32_t		ft_my_pixel(uint32_t r, uint32_t g, uint32_t b, uint32_t a);
 
 //------------KEY_ACTIONS-------------------//
 void			key_actions(mlx_key_data_t keydata, void *param);
+void			rotate_player(t_data *data, int i);
+void			move_player(t_data *data, double move_x, double move_y);
+void			hook_player_directions(t_data *data, double move_x,
+					double move_y);
+double			facing_angle(char *player_facing);
 
 //------------ERROR EXIT---------------//
 int				error_print_exit(t_data *data, char *str, int error);

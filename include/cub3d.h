@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/12/11 11:42:29 by sramos        #+#    #+#                 */
-/*   Updated: 2025/03/28 13:11:25 by rkaras        ########   odam.nl         */
+/*   Updated: 2025/03/28 15:04:35 by rkaras        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,17 +169,17 @@ void			move_player(t_data *data, double move_x, double move_y);
 void			hook_player_directions(t_data *data, double move_x,
 					double move_y);
 void			raycasting(t_data *data);
-double			get_v_inter(t_data *data, double angle);
-double			get_h_inter(t_data *data, double angle);
+double			v_inter(t_data *data, double angle);
+double			h_inter(t_data *data, double angle);
 int				wall_hit(double x, double y, t_data *data);
 double			angle_check(double angle);
-int				unit_circle(double angle, char ch);
+int				circle_check(double angle, char ch);
 int				inter_check(double angle, double *inter, double *step,
 					int is_horizontal);
-void			render_wall(t_data *data, int ray);
-void			draw_ceiling_floor(t_data *data, int ray, int top_pixel,
+void			rendering(t_data *data, int ray);
+void			render_ceiling_floor(t_data *data, int ray, int top_pixel,
 					int bottom_pixel);
-void			draw_walls(t_data *data, int top_pixel, int bottom_pixel,
+void			render_walls(t_data *data, int top_pixel, int bottom_pixel,
 					double wall_height);
 double			get_x_offset(mlx_texture_t *texture, t_data *data);
 mlx_texture_t	*get_texture(t_data *data, int int_type);

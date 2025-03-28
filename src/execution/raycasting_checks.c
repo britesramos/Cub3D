@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   raycasting_utils.c                                 :+:    :+:            */
+/*   raycasting_checks.c                                :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rkaras <rkaras@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/02/11 14:28:15 by rkaras        #+#    #+#                 */
-/*   Updated: 2025/03/27 11:39:12 by rkaras        ########   odam.nl         */
+/*   Updated: 2025/03/28 15:13:44 by rkaras        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 double	angle_check(double angle)
 {
 	if (angle > 2 * PI)
-		angle -= 2 * PI;
+		angle = angle - 2 * PI;
 	if (angle < 0)
-		angle += 2 * PI;
+		angle = angle + 2 * PI;
 	return (angle);
 }
 
-int	unit_circle(double angle, char ch)
+int	circle_check(double angle, char ch)
 {
 	if (ch == 'x')
 	{
@@ -42,19 +42,19 @@ int	inter_check(double angle, double *inter, double *step, int is_horizontal)
 	{
 		if (angle > 0 && angle < PI)
 		{
-			*inter += TILE_SIZE;
+			*inter = *inter + TILE_SIZE;
 			return (-1);
 		}
-		*step *= -1;
+		*step = *step * -1;
 	}
 	else
 	{
 		if (!(angle > PI / 2 && angle < 3 * PI / 2))
 		{
-			*inter += TILE_SIZE;
+			*inter = *inter + TILE_SIZE;
 			return (-1);
 		}
-		*step *= -1;
+		*step = *step * -1;
 	}
 	return (1);
 }

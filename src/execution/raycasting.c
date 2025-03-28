@@ -6,7 +6,7 @@
 /*   By: rkaras <rkaras@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/01/24 14:30:52 by rkaras        #+#    #+#                 */
-/*   Updated: 2025/03/27 11:38:40 by rkaras        ########   odam.nl         */
+/*   Updated: 2025/03/28 15:03:33 by rkaras        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	wall_hit(double x, double y, t_data *data)
 	return (1);
 }
 
-double	get_h_inter(t_data *data, double angle)
+double	h_inter(t_data *data, double angle)
 {
 	double	h_x;
 	double	h_y;
@@ -39,18 +39,18 @@ double	get_h_inter(t_data *data, double angle)
 	double	y_step;
 	int		pixel;
 
-	y_step = TILE_SIZE;
-	x_step = TILE_SIZE / tan(angle);
 	h_y = floor(data->player->pos_y / TILE_SIZE) * TILE_SIZE;
+	x_step = TILE_SIZE / tan(angle);
+	y_step = TILE_SIZE;
 	pixel = inter_check(angle, &h_y, &y_step, HORIZONTAL);
 	h_x = data->player->pos_x + (h_y - data->player->pos_y) / tan(angle);
-	if ((unit_circle(angle, 'y') && x_step > 0)
-		|| (!unit_circle(angle, 'y') && x_step < 0))
-		x_step *= -1;
+	if ((!circle_check(angle, 'y') && x_step < 0)
+		|| (circle_check(angle, 'y') && x_step > 0))
+		x_step = x_step * -1;
 	while (wall_hit(h_x, h_y - pixel, data))
 	{
-		h_x += x_step;
-		h_y += y_step;
+		h_x = h_x + x_step;
+		h_y = h_y + y_step;
 	}
 	data->ray->horiz_x = h_x;
 	data->ray->horiz_y = h_y;
@@ -58,7 +58,7 @@ double	get_h_inter(t_data *data, double angle)
 			+ pow(h_y - data->player->pos_y, 2)));
 }
 
-double	get_v_inter(t_data *data, double angle)
+double	v_inter(t_data *data, double angle)
 {
 	double	v_x;
 	double	v_y;
@@ -66,18 +66,18 @@ double	get_v_inter(t_data *data, double angle)
 	double	y_step;
 	int		pixel;
 
+	v_x = floor(data->player->pos_x / TILE_SIZE) * TILE_SIZE;
 	x_step = TILE_SIZE;
 	y_step = TILE_SIZE * tan(angle);
-	v_x = floor(data->player->pos_x / TILE_SIZE) * TILE_SIZE;
 	pixel = inter_check(angle, &v_x, &x_step, VERTICAL);
 	v_y = data->player->pos_y + (v_x - data->player->pos_x) * tan(angle);
-	if ((unit_circle(angle, 'x') && y_step < 0)
-		|| (!unit_circle(angle, 'x') && y_step > 0))
-		y_step *= -1;
+	if ((!circle_check(angle, 'x') && y_step > 0)
+		|| (circle_check(angle, 'x') && y_step < 0))
+		y_step = y_step * -1;
 	while (wall_hit(v_x - pixel, v_y, data))
 	{
-		v_x += x_step;
-		v_y += y_step;
+		v_x = v_x + x_step;
+		v_y = v_y + y_step;
 	}
 	data->ray->vert_x = v_x;
 	data->ray->vert_y = v_y;
@@ -87,26 +87,27 @@ double	get_v_inter(t_data *data, double angle)
 
 void	raycasting(t_data *data)
 {
+	int		ray;
 	double	h_intersection;
 	double	v_intersection;
-	int		ray;
 
-	ray = 0;
 	data->ray->ray_angle = data->player->angle - (data->player->fov_rad / 2);
+	ray = 0;
 	while (ray < WIDTH)
 	{
+		h_intersection = h_inter(data, data->ray->ray_angle);
+		v_intersection = v_inter(data, data->ray->ray_angle);
 		data->ray->intersection_type = VERTICAL;
-		h_intersection = get_h_inter(data, data->ray->ray_angle);
-		v_intersection = get_v_inter(data, data->ray->ray_angle);
 		if (v_intersection <= h_intersection)
 			data->ray->wall_distance = v_intersection;
 		else
 		{
-			data->ray->wall_distance = h_intersection;
 			data->ray->intersection_type = HORIZONTAL;
+			data->ray->wall_distance = h_intersection;
 		}
-		render_wall(data, ray);
+		rendering(data, ray);
 		ray++;
-		data->ray->ray_angle += (data->player->fov_rad / WIDTH);
+		data->ray->ray_angle = data->ray->ray_angle
+			+ (data->player->fov_rad / WIDTH);
 	}
 }

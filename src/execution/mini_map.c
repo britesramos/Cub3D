@@ -6,7 +6,7 @@
 /*   By: sramos <sramos@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/01/20 18:01:50 by sramos        #+#    #+#                 */
-/*   Updated: 2025/03/28 12:09:17 by sramos        ########   odam.nl         */
+/*   Updated: 2025/03/28 12:16:29 by sramos        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,13 @@ static void	draw_player(t_data *data)
 	int				i;
 	int				j;
 	uint32_t		colour[1];
+	int				player_x;
+	int				player_y;
 
 	i = 0;
 	j = 0;
+	player_x = roundf(data->mini_map->mm_pos_x * MM_TILE_SIZE);
+	player_y = roundf(data->mini_map->mm_pos_y * MM_TILE_SIZE);
 	colour[0] = ft_my_pixel(255, 0, 255, 255);
 	while (i < PLAYER_TILE_SIZE)
 	{

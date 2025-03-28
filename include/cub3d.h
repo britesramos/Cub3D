@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/12/11 11:42:29 by sramos        #+#    #+#                 */
-/*   Updated: 2025/03/28 12:02:40 by sramos        ########   odam.nl         */
+/*   Updated: 2025/03/28 12:15:25 by sramos        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,8 @@
 # define HORIZONTAL 1
 
 //------------MINI-MAP-------------//
-# define MM_TILE_SIZE 20
-# define PLAYER_TILE_SIZE 10
-# define OFFSET 0.25
+# define MM_TILE_SIZE 16
+# define PLAYER_TILE_SIZE 8
 
 typedef enum e_textures
 {

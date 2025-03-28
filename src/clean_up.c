@@ -33,6 +33,15 @@ void	free_char_pointer_pointer(char **str)
 	str = NULL;
 }
 
+static void	delete_mlx_textures(t_mlx_textures *textures)
+{
+	mlx_delete_texture(textures->ea);
+	mlx_delete_texture(textures->no);
+	mlx_delete_texture(textures->so);
+	mlx_delete_texture(textures->we);
+	free(textures);
+}
+
 void	clean_up(t_data *data)
 {
 	if (data->c_color)
@@ -54,7 +63,7 @@ void	clean_up(t_data *data)
 	if (data->parse_utils)
 		free(data->parse_utils);
 	if (data->mlx_textures)
-		free(data->mlx_textures);
+		delete_mlx_textures(data->mlx_textures);
 	if (data->player)
 		free(data->player);
 	if (data)

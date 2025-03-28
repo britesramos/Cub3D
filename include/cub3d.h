@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/12/11 11:42:29 by sramos        #+#    #+#                 */
-/*   Updated: 2025/03/28 11:38:30 by rkaras        ########   odam.nl         */
+/*   Updated: 2025/03/28 13:08:07 by rkaras        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,11 +180,10 @@ void			pixel_put(t_data *data, int x, int y, int color);
 
 
 //------------MINI_MAP-------------------//
-void	mini_map(t_data *data);
+void			mini_map(t_data *data);
 
 //------------KEY_ACTIONS-------------------//
 void			key_actions(mlx_key_data_t keydata, void *param);
-void			key_actions_mm(mlx_key_data_t keydata, void *param);
 
 //------------ERROR EXIT---------------//
 int				error_print_exit(t_data *data, char *str, int error);
@@ -194,7 +193,5 @@ int				error_print_return(char *str, int error); //
 void			clean_up(t_data *data);
 void			free_char_pointer(char *str);
 void			free_char_pointer_pointer(char **str);
-
-void			print_player(t_player *player);
 
 #endif

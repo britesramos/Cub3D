@@ -57,9 +57,6 @@ void	init_data_helper(t_data *data)
 	data->mlx_textures = malloc(sizeof(t_mlx_textures));
 	if (!data->mlx_textures)
 		error_print_exit(data, "Fail alloc mlx_textures\n", -2);
-	data->player = malloc(sizeof(t_player));
-	if (!data->player)
-		error_print_exit(data, "Fail alloc player\n", -2);
 	data->ray = ft_calloc(1, sizeof(t_ray));
 	if (!data->ray)
 		error_print_exit(data, "Fail alloc ray struct", -2);

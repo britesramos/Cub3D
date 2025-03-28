@@ -26,13 +26,15 @@ static char	*add_texture_u(t_data *data, char *texture, char *str, char **file)
 	len = get_len(str, 2);
 	while (is_space(str[i]))
 		i++;
+	if (texture)
+		(free(texture));
 	texture = ft_calloc(sizeof(char), len + 1);
 	if (!texture)
 	{
 		free_char_pointer_pointer(file);
 		error_print_exit(data, "Error\nFail to alloc for new texture.\n", -1);
 	}
-	ft_strlcpy(texture, &str[i], len + 4);
+	ft_strlcpy(texture, &str[i], len + 1);
 	return (texture);
 }
 

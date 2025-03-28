@@ -6,7 +6,7 @@
 /*   By: rkaras <rkaras@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/01/16 18:47:44 by rkaras        #+#    #+#                 */
-/*   Updated: 2025/03/27 17:15:52 by rkaras        ########   odam.nl         */
+/*   Updated: 2025/03/28 11:38:08 by rkaras        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ void	rotate_player(t_data *data, int i)
 
 void	move_player(t_data *data, double move_x, double move_y)
 {
-	int	new_x;
-	int	new_y;
+	float	new_x;
+	float	new_y;
 	int	map_x;
 	int	map_y;
 
@@ -55,14 +55,14 @@ void	move_player(t_data *data, double move_x, double move_y)
 	if (map_x < 0 || map_y < 0 || map_x >= data->map_width
 		|| map_y >= data->map_height)
 		return ;
-	if (data->map[(int)map_y][(int)map_x] != '1' &&
-		data->map[(int)map_y][data->player->pos_x / TILE_SIZE] != '1' &&
-		data->map[data->player->pos_y / TILE_SIZE][(int)map_x] != '1')
+	if (data->map[map_y][map_x] != '1' &&
+		data->map[map_y][data->player->pos_x / TILE_SIZE] != '1' &&
+		data->map[data->player->pos_y / TILE_SIZE][map_x] != '1')
 	{
 		data->player->pos_x = new_x;
 		data->player->pos_y = new_y;
-		data->player->mm_pos_x = (float)(new_x / TILE_SIZE);
-		data->player->mm_pos_y = (float)(new_y / TILE_SIZE);
+		data->player->mm_pos_x = (new_x + (MM_TILE_SIZE / 2.3)) / TILE_SIZE;
+		data->player->mm_pos_y = (new_y + (MM_TILE_SIZE / 2.3)) / TILE_SIZE;
 	}
 }
 

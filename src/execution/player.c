@@ -6,7 +6,7 @@
 /*   By: rkaras <rkaras@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/01/16 18:47:44 by rkaras        #+#    #+#                 */
-/*   Updated: 2025/03/31 11:00:24 by rkaras        ########   odam.nl         */
+/*   Updated: 2025/03/31 11:41:07 by rkaras        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ double	facing_angle(char *player_facing)
 {
 	double	angle;
 
-	if (strcmp(player_facing, "N") == 0)
+	if (ft_strncmp(player_facing, "N", 1) == 0)
 		angle = (3 * PI) / 2;
-	else if (strcmp(player_facing, "S") == 0)
+	else if (ft_strncmp(player_facing, "S", 1) == 0)
 		angle = PI / 2;
-	else if (strcmp(player_facing, "E") == 0)
+	else if (ft_strncmp(player_facing, "E", 1) == 0)
 		angle = 0;
 	else
 		angle = PI;

@@ -6,7 +6,7 @@
 #    By: marvin <marvin@student.42.fr>                +#+                      #
 #                                                    +#+                       #
 #    Created: 2024/12/11 11:43:31 by sramos        #+#    #+#                  #
-#    Updated: 2025/03/28 15:12:32 by rkaras        ########   odam.nl          #
+#    Updated: 2025/03/31 13:11:20 by sramos        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,7 +75,6 @@ libmlx:
 $(NAME): $(OBJ_FILES) $(HEADER)
 	@echo "SOURCE FILES COMPILED"
 	make -C $(LIBFT_PATH)
-	make -C $(MLX42_PATH)
 	@echo "CREATING CUB3D"
 	$(CC) $(OBJ_FILES) $(CFLAGS) $(OFLAGS) -o $(NAME) $(LIBFT) $(MLX42) $(MLXFLAGS)
 	@echo "CUB3D CREATED"

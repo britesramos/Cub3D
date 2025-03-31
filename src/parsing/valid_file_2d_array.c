@@ -31,6 +31,8 @@ static int	png_checker(char *str)
 	i--;
 	while (is_space(str[i]))
 		i--;
+	if (ft_strlen(str) < 4)
+		return (error_print_return("Invalid texture\n", 0));
 	if (ft_strncmp(&str[i - 3], ".png", 4) != 0)
 		return (error_print_return("Invalid texture extension\n", 0));
 	return (1);

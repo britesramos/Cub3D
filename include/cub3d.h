@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/12/11 11:42:29 by sramos        #+#    #+#                 */
-/*   Updated: 2025/03/31 11:25:57 by rkaras        ########   odam.nl         */
+/*   Updated: 2025/03/31 12:15:28 by sramos        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,6 +155,8 @@ int				is_space(char c);
 int				parse_textures(char **file_2d_array, t_data *data);
 int				get_i(char *str);
 int				get_len(char *str, int i);
+void			check_texture_name_duplicate(t_data *data, char *str);
+void			check_misconfig(t_data *data, char *str);
 int				parse_map(char **file_2d_array, t_data *data);
 int				valid_map(t_data *data);
 int				no_limit(t_data *data);

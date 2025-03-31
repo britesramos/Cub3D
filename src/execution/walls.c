@@ -6,7 +6,7 @@
 /*   By: rkaras <rkaras@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/02/26 15:32:33 by rkaras        #+#    #+#                 */
-/*   Updated: 2025/03/28 16:52:02 by sramos        ########   odam.nl         */
+/*   Updated: 2025/03/31 12:48:11 by sramos        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,10 @@ void	render_walls(t_data *data, int top_pixel, int bottom_pixel,
 	y_offset = (top_pixel - (HEIGHT / 2) + (wall_height / 2)) * scaling_factor;
 	if (y_offset < 0)
 		y_offset = 0;
+	if (x_offset >= texture->width)
+   		x_offset = texture->width - 1;
+	if (y_offset >= texture->height)
+   		y_offset = texture->height - 1;
 	while (top_pixel < bottom_pixel)
 	{
 		pixel_put(data, data->ray->slice, top_pixel, swap_bytes

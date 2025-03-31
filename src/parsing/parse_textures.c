@@ -19,6 +19,7 @@ static char	*add_texture_u(t_data *data, char *texture, char *str, char **file)
 
 	i = 0;
 	len = 0;
+	check_texture_name_duplicate(data, str);
 	if (get_i(str) == 1)
 		i = 2;
 	else if (get_i(str) == 2)
@@ -40,6 +41,7 @@ static char	*add_texture_u(t_data *data, char *texture, char *str, char **file)
 
 static void	add_texture_snew(t_data *data, char *str, int type, char **file)
 {
+	check_misconfig(data, str);
 	if (type == SO && data->parse_utils->so == false)
 	{
 		data->so = add_texture_u(data, data->so, str, file);

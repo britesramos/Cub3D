@@ -6,7 +6,7 @@
 /*   By: rkaras <rkaras@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/01/16 18:47:44 by rkaras        #+#    #+#                 */
-/*   Updated: 2025/03/31 11:00:24 by rkaras        ########   odam.nl         */
+/*   Updated: 2025/03/31 12:41:26 by sramos        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ double	facing_angle(char *player_facing)
 {
 	double	angle;
 
-	if (strcmp(player_facing, "N") == 0)
+	if (ft_strncmp(player_facing, "N", 1) == 0)
 		angle = (3 * PI) / 2;
-	else if (strcmp(player_facing, "S") == 0)
+	else if (ft_strncmp(player_facing, "S", 1) == 0)
 		angle = PI / 2;
-	else if (strcmp(player_facing, "E") == 0)
+	else if (ft_strncmp(player_facing, "E", 1) == 0)
 		angle = 0;
 	else
 		angle = PI;
@@ -69,7 +69,6 @@ void	move_player(t_data *data, double move_x, double move_y)
 		data->mini_map->mm_pos_y = (new_y + (MM_TILE_SIZE / 2.3)) / TILE_SIZE;
 	}
 }
-
 
 void	hook_player_directions(t_data *data, double move_x, double move_y)
 {

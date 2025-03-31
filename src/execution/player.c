@@ -6,7 +6,7 @@
 /*   By: rkaras <rkaras@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/01/16 18:47:44 by rkaras        #+#    #+#                 */
-/*   Updated: 2025/03/28 13:13:04 by rkaras        ########   odam.nl         */
+/*   Updated: 2025/03/31 11:00:24 by rkaras        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,16 +48,20 @@ void	move_player(t_data *data, double move_x, double move_y)
 	int		map_x;
 	int		map_y;
 
-	new_x = roundf(data->player->pos_x + move_x);
-	new_y = roundf(data->player->pos_y + move_y);
-	map_x = new_x / TILE_SIZE;
-	map_y = new_y / TILE_SIZE;
+	new_x = data->player->pos_x + move_x;
+	new_y = data->player->pos_y + move_y;
+	if (move_x < 0)
+		map_x = (new_x - 16) / TILE_SIZE;
+	else
+		map_x = (new_x + 16) / TILE_SIZE;
+	if (move_y < 0)
+		map_y = (new_y - 16) / TILE_SIZE;
+	else
+		map_y = (new_y + 16) / TILE_SIZE;
 	if (map_x < 0 || map_y < 0 || map_x >= data->map_width
 		|| map_y >= data->map_height)
 		return ;
-	if (data->map[map_y][map_x] != '1' &&
-		data->map[map_y][data->player->pos_x / TILE_SIZE] != '1' &&
-		data->map[data->player->pos_y / TILE_SIZE][map_x] != '1')
+	if ((data->map[map_y][map_x] != '1'))
 	{
 		data->player->pos_x = new_x;
 		data->player->pos_y = new_y;
@@ -65,6 +69,7 @@ void	move_player(t_data *data, double move_x, double move_y)
 		data->mini_map->mm_pos_y = (new_y + (MM_TILE_SIZE / 2.3)) / TILE_SIZE;
 	}
 }
+
 
 void	hook_player_directions(t_data *data, double move_x, double move_y)
 {

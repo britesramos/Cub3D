@@ -6,7 +6,7 @@
 #    By: marvin <marvin@student.42.fr>                +#+                      #
 #                                                    +#+                       #
 #    Created: 2024/12/11 11:43:31 by sramos        #+#    #+#                  #
-#    Updated: 2025/03/31 13:11:20 by sramos        ########   odam.nl          #
+#    Updated: 2025/03/31 14:53:31 by rkaras        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,17 +67,24 @@ RD = rm -rf
 info-%:
 	$(info $($*))
 
-all: libmlx $(NAME)
+all: $(NAME)
 
 libmlx:
 	@cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4
 
-$(NAME): $(OBJ_FILES) $(HEADER)
+$(LIBFT):
+	$(MAKE) -C $(LIBFT_PATH)
+
+$(MLX42): 
+	@cmake $(LIBMLX) -B $(LIBMLX)/build && $(MAKE) -C $(LIBMLX)/build -j4
+
+$(NAME): $(OBJ_FILES) $(HEADER) $(LIBFT) $(MLX42)
 	@echo "SOURCE FILES COMPILED"
 	make -C $(LIBFT_PATH)
 	@echo "CREATING CUB3D"
 	$(CC) $(OBJ_FILES) $(CFLAGS) $(OFLAGS) -o $(NAME) $(LIBFT) $(MLX42) $(MLXFLAGS)
 	@echo "CUB3D CREATED"
+
 
 $(OBJ_PATH)/%.o:$(SRC_PATH)/%.c
 	@if [ ! -d "$(@D)" ]; then mkdir $(@D) & echo "$(@D) MADE"; fi

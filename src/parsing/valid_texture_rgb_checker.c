@@ -39,7 +39,7 @@ static int	cpy_value_to_data(char **str, char **dst)
 	c = 0;
 	while (str[i])
 	{
-		while (is_space(str[i][j]) || str[i][j] == '0')
+		while (is_space(str[i][j]))
 			j++;
 		while (str[i][j + c] && !is_space(str[i][j + c]))
 			c++;

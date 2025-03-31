@@ -1,17 +1,17 @@
 
-SO ./path_to_the_south_texture.png
+SO ./textures/texture_1.png
 
-NO ./path_to_the_north_texture.png
+NO ./textures/texture_2.png
 
-EA ./path_to_the_east_texture.png
+EA ./textures/texture_3.png
 
-WE						       ./path_to_the_west_texture.png
+WE		./textures/texture_4.png
 
 
 
-C			 225,30,0
+C			 0000225,30, 0
 
-F 220,100,0
+F 220,100, 0
 
 		1111111111111111111111111
 		1000000000110000000000001
